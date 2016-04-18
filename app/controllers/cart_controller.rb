@@ -2,7 +2,7 @@ class CartController < ApplicationController
   
   def add
   	id = params[:id]
-  	if session [:cart]
+  	if session[:cart]
   		cart = session[:cart]
   	else
   		session[:cart] = {}
@@ -16,6 +16,14 @@ class CartController < ApplicationController
   	end
   	redirect_to :action => :index
   end
+
+  def remove
+    id = params[:id]
+    cart = session[:cart]
+    cart.delete(id)
+    redirect_to :action => :index
+  end
+
 
   def clear_cart
   	session[:cart] = nil
