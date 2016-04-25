@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :custom_products
   devise_for :users
   
   resources :products

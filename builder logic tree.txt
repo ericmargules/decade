@@ -1,0 +1,34 @@
+x category
+	-billfold
+		-design
+			-pockets 4/6
+			x corners square/rounded/round
+			x lining yes/no
+		-materials
+			x exterior
+			-interior
+			o lining
+			x stitching
+			x edges
+	-id wallet
+		-design
+			- pockets straight/curved/notched
+			x corners square/rounded/round
+			x lining yes/no
+		-materials
+			-exterior
+			o lining
+			x stitching
+			x edges
+	-notebook cover
+		-design
+			x corners square/rounded/round
+			x lining yes/no
+		-materials
+			x exterior
+			-interior
+			o lining
+			x stitching
+			x edges
+		-other
+			-notebook blank/ruled/grid

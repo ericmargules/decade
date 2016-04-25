@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Custom Products</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Price</th>
+      <th>User</th>
+      <th>Options</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @custom_products.each do |custom_product| %>
+      <tr>
+        <td><%= custom_product.name %></td>
+        <td><%= custom_product.category %></td>
+        <td><%= custom_product.price %></td>
+        <td><%= custom_product.user_id %></td>
+        <td><%= custom_product.options %></td>
+        <td><%= link_to 'Show', custom_product %></td>
+        <td><%= link_to 'Edit', edit_custom_product_path(custom_product) %></td>
+        <td><%= link_to 'Destroy', custom_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Custom product', new_custom_product_path %>
