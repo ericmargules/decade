@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   get '/cart/:id/remove' => 'cart#remove'
 
-  get 'page/custom'
+  get 'page/custom' => 'custom_products#new'
 
   get 'page/about'
 
