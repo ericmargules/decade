@@ -20,95 +20,101 @@
     <%= f.select :category, ["Billfold", "ID Wallet", "Notebook"], options={ :include_blank => true } %>
   </div>
 
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.hidden_field :price %>
-    <%= f.label :price %> [render price here]
-  </div>
+  <div id="custom_options">
 
-  <div class="field">
-    <%= f.hidden_field :user_id %>
-  </div>
+    <div class="field">
+      <%= f.label :price %><br>
+      <%= f.hidden_field :price %>
+      <%= f.label :price %> [render price here]
+    </div>
 
-  <div class="field">
-    <%= f.hidden_field :options %>
-  </div>
+    <div class="field">
+      <%= f.hidden_field :user_id %>
+    </div>
 
-  <p>Design</p>
+    <div class="field">
+      <%= f.hidden_field :options %>
+    </div>
 
-  <div id="pockets">
-    <%= label_tag :pockets %><br>
-    <%= radio_button_tag "pockets", "4" %>
-    <%= radio_button_tag "pockets", "6" %>
-  </div>
+    <p>Design</p>
 
-  <div id="pocket_shape">
-    <%= label_tag :pocket_shape %><br>
-    <%= radio_button_tag "pocket_shape", "straight" %>
-    <%= radio_button_tag "pocket_shape", "curved"%>
-    <%= radio_button_tag "pocket_shape", "notched"%>
-  </div>
+    <div id="pockets">
+      <%= label_tag :pockets %><br>
+      <%= radio_button_tag "pockets", "4" %>
+      <%= radio_button_tag "pockets", "6" %>
+    </div>
 
-  <div id="corners">
-    <%= label_tag :corners %><br>
-    <%= radio_button_tag "corners", "square" %>
-    <%= radio_button_tag "corners", "rounded" %>
-    <%= radio_button_tag "corners", "round" %>
-  </div>
+    <div id="pocket_shape">
+      <%= label_tag :pocket_shape %><br>
+      <%= radio_button_tag "pocket_shape", "straight" %>
+      <%= radio_button_tag "pocket_shape", "curved"%>
+      <%= radio_button_tag "pocket_shape", "notched"%>
+    </div>
 
-  <div id="lined">
-    <%= label_tag :lined %><br>
-    <%= check_box_tag "lined" %>
-  </div>
+    <div id="corners">
+      <%= label_tag :corners %><br>
+      <%= radio_button_tag "corners", "square" %>
+      <%= radio_button_tag "corners", "rounded" %>
+      <%= radio_button_tag "corners", "round" %>
+    </div>
 
-  <p>Materials</p>
+    <div id="lined">
+      <%= label_tag :lined %><br>
+      <%= check_box_tag "lined" %>
+    </div>
 
-  <div id="exterior">
-    <%= label_tag :exterior %><br>
-    <%= radio_button_tag "exterior", "material1" %>
-    <%= radio_button_tag "exterior", "material2" %>
-    <%= radio_button_tag "exterior", "material3" %>
-  </div>
+    <p>Materials</p>
 
-  <div id="interior">
-    <%= label_tag :interior %><br>
-    <%= radio_button_tag "interior", "material1" %>
-    <%= radio_button_tag "interior", "material2" %>
-    <%= radio_button_tag "interior", "material3" %>
-  </div>
+    <div id="exterior">
+      <%= label_tag :exterior %><br>
+      <%= radio_button_tag "exterior", "material1" %>
+      <%= radio_button_tag "exterior", "material2" %>
+      <%= radio_button_tag "exterior", "material3" %>
+    </div>
 
-  <div id="lining">
-    <%= label_tag :lining %><br>
-    <%= radio_button_tag "lining", "material1" %>
-    <%= radio_button_tag "lining", "material2" %>
-    <%= radio_button_tag "lining", "material3" %>
-  </div>
+    <div id="interior">
+      <%= label_tag :interior %><br>
+      <%= radio_button_tag "interior", "material1" %>
+      <%= radio_button_tag "interior", "material2" %>
+      <%= radio_button_tag "interior", "material3" %>
+    </div>
 
-  <div id="stitching">
-    <%= label_tag :stitching %><br>
-    <%= radio_button_tag "stitching", "material1" %>
-    <%= radio_button_tag "stitching", "material2" %>
-    <%= radio_button_tag "stitching", "material3" %>
-  </div>
+    <div id="lining">
+      <%= label_tag :lining %><br>
+      <%= radio_button_tag "lining", "material1" %>
+      <%= radio_button_tag "lining", "material2" %>
+      <%= radio_button_tag "lining", "material3" %>
+    </div>
 
-  <div id="edges">
-    <%= label_tag :edges %><br>
-    <%= radio_button_tag "edges", "material1" %>
-    <%= radio_button_tag "edges", "material2" %>
-    <%= radio_button_tag "edges", "material3" %>
-  </div>
+    <div id="stitching">
+      <%= label_tag :stitching %><br>
+      <%= radio_button_tag "stitching", "material1" %>
+      <%= radio_button_tag "stitching", "material2" %>
+      <%= radio_button_tag "stitching", "material3" %>
+    </div>
 
-  <p>Misc.</p>
-  
-  <div id="notebook_style">
-    <%= label_tag :notebook_style %><br>
-    <%= radio_button_tag "notebook_style", "blank" %>Blank 
-    <%= radio_button_tag "notebook_style", "ruled" %>Ruled 
-    <%= radio_button_tag "notebook_style", "grid" %>Grid 
-  </div>
+    <div id="edges">
+      <%= label_tag :edges %><br>
+      <%= radio_button_tag "edges", "material1" %>
+      <%= radio_button_tag "edges", "material2" %>
+      <%= radio_button_tag "edges", "material3" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit %>
+    <div id="misc">
+      <p>Misc.</p>
+      
+      <div id="notebook_style">
+        <%= label_tag :notebook_style %><br>
+        <%= radio_button_tag "notebook_style", "blank" %>Blank 
+        <%= radio_button_tag "notebook_style", "ruled" %>Ruled 
+        <%= radio_button_tag "notebook_style", "grid" %>Grid 
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+
   </div>
 
 <% end %>

@@ -1,6 +1,8 @@
 class CustomProductsController < ApplicationController
   before_action :set_custom_product, only: [:show, :edit, :update, :destroy]
 
+  layout "custom_products"
+
   # GET /custom_products
   # GET /custom_products.json
   def index
