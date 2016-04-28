@@ -43,6 +43,18 @@ function buildForm() {
 			document.getElementById("pocket_shape").style.display = "block";
 			document.getElementById("interior").style.display = "block";
 			document.getElementById("misc").style.display = "none";
+			document.getElementById("new_custom_product").reset();
+			category.value = "Billfold";
+
+		} else if(category.value == "Card Wallet"){
+
+			document.getElementById("custom_options").style.display = "block";
+			document.getElementById("pockets").style.display = "none";
+			document.getElementById("pocket_shape").style.display = "block";
+			document.getElementById("interior").style.display = "block";
+			document.getElementById("misc").style.display = "none";
+			document.getElementById("new_custom_product").reset();
+			category.value = "Card Wallet";
 
 		} else if(category.value == "ID Wallet"){
 
@@ -51,6 +63,9 @@ function buildForm() {
 			document.getElementById("pocket_shape").style.display = "block";
 			document.getElementById("interior").style.display = "none";
 			document.getElementById("misc").style.display = "none";
+			document.getElementById("new_custom_product").reset();
+			category.value = "ID Wallet";
+
 
 		}	else if(category.value == "Notebook"){
 
@@ -59,6 +74,8 @@ function buildForm() {
 			document.getElementById("pocket_shape").style.display = "none";
 			document.getElementById("interior").style.display = "block";
 			document.getElementById("misc").style.display = "block";
+			document.getElementById("new_custom_product").reset();
+			category.value = "Notebook";
 
 		}
 	}

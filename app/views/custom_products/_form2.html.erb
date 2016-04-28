@@ -16,8 +16,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :category %><br>
-    <%= f.select :category, ["Billfold", "ID Wallet", "Notebook"], options={ :include_blank => true } %>
+    <%= f.label :style %><br>
+    <%= f.select :category, ["Billfold", "Card Wallet", "ID Wallet", "Notebook"], options={ :include_blank => true } %>
   </div>
 
   <div id="custom_options">
@@ -112,7 +112,7 @@
     </div>
 
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit "Add to Cart" %>
     </div>
 
   </div>
