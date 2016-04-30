@@ -29,9 +29,9 @@ function declareVariables() {
 	//Style Requirements
 
 	billfoldReqs = [["pockets", pockets], ["pocket_shape", pocketShape], ["corners", corners], ["exterior", exterior], ["interior", interior], ["lining", lining], ["stitching", stitching], ["edges", edges]];
-	cardWalletReqs = ["pocket_shape", "corners", "exterior", "interior", "lining", "stitching", "edges"];
-	idWalletReqs = ["pocket_shape", "corners", "exterior", "lining", "stitching", "edges"];
-	notebookReqs = ["corners", "exterior", "interior", "lining", "stitching", "edges", "notebook_style"];	
+	cardWalletReqs = [["pocket_shape", pocketShape], ["corners", corners], ["exterior", exterior], ["interior", interior], ["lining", lining], ["stitching", stitching], ["edges", edges]];
+	idWalletReqs = [["pocket_shape", pocketShape], ["corners", corners], ["exterior", exterior], ["lining", lining], ["stitching", stitching], ["edges", edges]];
+	notebookReqs = [["corners", corners], ["exterior", exterior], ["interior", interior], ["lining", lining], ["stitching", stitching], ["edges", edges], ["notebook_style", notebookStyle]];	
 
 }
 
