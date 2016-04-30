@@ -66,3 +66,9 @@
 	text-transform: uppercase;
 
 }
+
+.error_highlight {
+
+	border: 1px solid red;
+
+}
