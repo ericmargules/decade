@@ -1,4 +1,12 @@
-var category, price, pockets, pocketShape, corners, exterior, interior, lining, stitching, edges, notebookStyle, submit, billfoldReqs, cardWalletReqs, idWalletReqs, notebookReqs;
+var category, price, pockets, pocketShape, corners, exterior, interior, lining, stitching, edges, notebookStyle, submit, billfoldReqs, cardWalletReqs, idWalletReqs, notebookReqs, inputs;
+
+function removeHighlight(){
+	if (this.value != "" && this.parentNode.className == "error_highlight") {
+
+		$(this.parentNode).removeClass("error_highlight");
+
+	}
+}
 
 function declareVariables() {
 
@@ -16,6 +24,7 @@ function declareVariables() {
 	edges = document.forms.custom_product.edges;
 	notebookStyle = document.forms.custom_product.notebook_style;
 	submit = document.forms.custom_product.commit;
+	inputs = [price, pockets, pocketShape, corners, exterior, interior, lining, stitching, edges, notebookStyle, submit, billfoldReqs, cardWalletReqs, idWalletReqs, notebookReqs];
 
 	//Style Requirements
 
@@ -53,6 +62,7 @@ function buildForm() {
 		if(category.value == ""){
 
 			document.getElementById("custom_options").style.display = "none";
+			$("div").removeClass("error_highlight");
 
 		} else if(category.value == "Billfold"){
 
@@ -62,6 +72,7 @@ function buildForm() {
 			document.getElementById("interior").style.display = "block";
 			document.getElementById("misc").style.display = "none";
 			document.getElementById("new_custom_product").reset();
+			$("div").removeClass("error_highlight");
 			category.value = "Billfold";
 
 		} else if(category.value == "Card Wallet"){
@@ -72,6 +83,7 @@ function buildForm() {
 			document.getElementById("interior").style.display = "block";
 			document.getElementById("misc").style.display = "none";
 			document.getElementById("new_custom_product").reset();
+			$("div").removeClass("error_highlight");
 			category.value = "Card Wallet";
 
 		} else if(category.value == "ID Wallet"){
@@ -82,6 +94,7 @@ function buildForm() {
 			document.getElementById("interior").style.display = "none";
 			document.getElementById("misc").style.display = "none";
 			document.getElementById("new_custom_product").reset();
+			$("div").removeClass("error_highlight");
 			category.value = "ID Wallet";
 
 
@@ -93,15 +106,14 @@ function buildForm() {
 			document.getElementById("interior").style.display = "block";
 			document.getElementById("misc").style.display = "block";
 			document.getElementById("new_custom_product").reset();
+			$("div").removeClass("error_highlight");
 			category.value = "Notebook";
 
 		}
-	}
+	};
 
 	submit.onclick = function() {
 
-
-		alert("you clicked submit");
     if(category.value == "Billfold"){
 
       if(validateForm(billfoldReqs) == false) {
@@ -134,7 +146,7 @@ function buildForm() {
     
       }
     }
-	}
+	};
 }
 
 $(document).ready(function(){
@@ -146,5 +158,8 @@ $(document).ready(function(){
 
 	// Build Form
 	buildForm();
+
+	// Add Event Listeners	
+	$("input").on("change", removeHighlight);
 
 });
