@@ -72,3 +72,9 @@
 	border: 1px solid red;
 
 }
+
+.hidden_field {
+
+	display: none;
+
+}

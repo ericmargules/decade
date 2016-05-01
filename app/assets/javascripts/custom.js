@@ -42,7 +42,7 @@ function validateForm(reqs) {
 
     if(reqs[i][1].value == "") {
         
-      missingReqs.push(reqs[i][1])
+      missingReqs.push(reqs[i][1]);
       document.getElementById(reqs[i][0]).className = "error_highlight";
 
     }
@@ -52,7 +52,21 @@ function validateForm(reqs) {
   
     return false;
   
+  } else {
+
+  	buildOptions(reqs);
+
   }
+}
+
+function buildOptions(reqs) { 
+
+	var productOptions = document.getElementById("custom_product_options");
+
+	for (var i = 0; i < reqs.length; i++) {
+
+		productOptions.value = String(productOptions.value + reqs[i][0] + ": " + reqs[i][1].value+ "; "); 
+	}
 }
 
 function buildForm() {
