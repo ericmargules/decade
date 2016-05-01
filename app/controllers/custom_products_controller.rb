@@ -29,12 +29,15 @@ class CustomProductsController < ApplicationController
   # POST /custom_products
   # POST /custom_products.json
   def create
+
     @custom_product = CustomProduct.new(custom_product_params)
     current_user ? @user_id = current_user.id : @user_id = "Guest" 
     respond_to do |format|
       if @custom_product.save
-        format.html { redirect_to @custom_product, notice: 'Custom product was successfully created.' }
-        format.json { render :show, status: :created, location: @custom_product }
+        # I don't know what the following line of code does.
+         # format.json { render :show, status: :created, location: @custom_product }
+        format.html { redirect_to "/cart/#{@custom_product.id}", notice: 'Custom product was successfully created.' }
+
       else
         format.html { render :new }
         format.json { render json: @custom_product.errors, status: :unprocessable_entity }

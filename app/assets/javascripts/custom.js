@@ -56,7 +56,7 @@ function validateForm(reqs) {
 
   	buildOptions(reqs);
   	setName();
-  	setUserId();
+  	setPrice();
 
   }
 }
@@ -78,18 +78,12 @@ function setName() {
 
 }
 
-// function setUserId() {
+function setPrice() {
 
-// 	var productUserId = document.getElementById("custom_product_user_id");
-// 	productUserId.value = function () {
+	var productPrice = document.getElementById("custom_product_price");
+	productPrice.value = 500;
 
-// 	//	if (typeof(@user_id) !== undefined) {
-
-// 			productUserId.value = String(@user_id);
-
-// 	//	}
-// 	};
-// }
+}
 
 function buildForm() {
 	

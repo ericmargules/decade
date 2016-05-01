@@ -1,4 +1,4 @@
-<%= form_for(@custom_product) do |f| %>
+<%= form_for(@custom_product, :html => {:name => "custom_product"}) do |f| %>
   <% if @custom_product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@custom_product.errors.count, "error") %> prohibited this custom_product from being saved:</h2>
@@ -11,27 +11,108 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
+  <div class="hidden_field">
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :category %><br>
-    <%= f.text_field :category %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
+
+  <div class="hidden_field">
     <%= f.text_field :price %>
   </div>
+
   <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
+    <%= f.label :style %><br>
+    <%= f.select :category, ["Billfold", "Card Wallet", "ID Wallet", "Notebook"], options={ :include_blank => true } %>
   </div>
+
   <div class="field">
-    <%= f.label :options %><br>
+    <%= f.label :price %>[render price here]<br>
+  </div>
+
+  <div class="hidden_field">
+    <%= f.text_field :user_id, :value => @user_id %>
+  </div>
+
+  <div class="hidden_field">
     <%= f.text_area :options %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  
+  <div id="custom_options">
+
+
+    <p>Design</p>
+
+    <div id="pockets">
+      <%= label_tag :pockets %><br>
+      <%= radio_button_tag "pockets", "4" %>
+      <%= radio_button_tag "pockets", "6" %>
+    </div>
+
+    <div id="pocket_shape">
+      <%= label_tag :pocket_shape %><br>
+      <%= radio_button_tag "pocket_shape", "straight" %>
+      <%= radio_button_tag "pocket_shape", "curved"%>
+      <%= radio_button_tag "pocket_shape", "notched"%>
+    </div>
+
+    <div id="corners">
+      <%= label_tag :corners %><br>
+      <%= radio_button_tag "corners", "square" %>
+      <%= radio_button_tag "corners", "rounded" %>
+      <%= radio_button_tag "corners", "round" %>
+    </div>
+
+    <p>Materials</p>
+
+    <div id="exterior">
+      <%= label_tag :exterior %><br>
+      <%= radio_button_tag "exterior", "material1" %>
+      <%= radio_button_tag "exterior", "material2" %>
+      <%= radio_button_tag "exterior", "material3" %>
+    </div>
+
+    <div id="interior">
+      <%= label_tag :interior %><br>
+      <%= radio_button_tag "interior", "material1" %>
+      <%= radio_button_tag "interior", "material2" %>
+      <%= radio_button_tag "interior", "material3" %>
+    </div>
+
+    <div id="lining">
+      <%= label_tag :lining %><br>
+      <%= radio_button_tag "lining", "material1" %>
+      <%= radio_button_tag "lining", "material2" %>
+      <%= radio_button_tag "lining", "material3" %>
+    </div>
+
+    <div id="stitching">
+      <%= label_tag :stitching %><br>
+      <%= radio_button_tag "stitching", "material1" %>
+      <%= radio_button_tag "stitching", "material2" %>
+      <%= radio_button_tag "stitching", "material3" %>
+    </div>
+
+    <div id="edges">
+      <%= label_tag :edges %><br>
+      <%= radio_button_tag "edges", "material1" %>
+      <%= radio_button_tag "edges", "material2" %>
+      <%= radio_button_tag "edges", "material3" %>
+    </div>
+
+    <div id="misc">
+      <p>Misc.</p>
+      
+      <div id="notebook_style">
+        <%= label_tag :notebook_style %><br>
+        <%= radio_button_tag "notebook_style", "blank" %>Blank 
+        <%= radio_button_tag "notebook_style", "ruled" %>Ruled 
+        <%= radio_button_tag "notebook_style", "grid" %>Grid 
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Add to Cart" %>
+    </div>
+
   </div>
+
 <% end %>

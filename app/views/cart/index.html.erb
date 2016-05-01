@@ -7,7 +7,12 @@
 <% total = 0.0 %>
 
 <% @cart.each do |id, quantity| %>
-	<% product = Product.find_by_id(id) %>
+	
+	<% if Product.find_by_id(id) %>
+		<% product = Product.find_by_id(id) %>
+	<% else %>
+		<% product = CustomProduct.find_by_id(id) %>
+	<% end %>
 
 	<li>
 
