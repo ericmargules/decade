@@ -55,6 +55,8 @@ function validateForm(reqs) {
   } else {
 
   	buildOptions(reqs);
+  	setName();
+  	setUserId();
 
   }
 }
@@ -68,6 +70,26 @@ function buildOptions(reqs) {
 		productOptions.value = String(productOptions.value + reqs[i][0] + ": " + reqs[i][1].value+ "; "); 
 	}
 }
+
+function setName() {
+
+	var productName = document.getElementById("custom_product_name");
+	productName.value = "Custom " + String(category.value);
+
+}
+
+// function setUserId() {
+
+// 	var productUserId = document.getElementById("custom_product_user_id");
+// 	productUserId.value = function () {
+
+// 	//	if (typeof(@user_id) !== undefined) {
+
+// 			productUserId.value = String(@user_id);
+
+// 	//	}
+// 	};
+// }
 
 function buildForm() {
 	

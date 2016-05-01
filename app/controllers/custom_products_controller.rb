@@ -16,7 +16,10 @@ class CustomProductsController < ApplicationController
 
   # GET /custom_products/new
   def new
+    
+    current_user ? @user_id = current_user.id : @user_id = "Guest"
     @custom_product = CustomProduct.new
+  
   end
 
   # GET /custom_products/1/edit
@@ -27,7 +30,7 @@ class CustomProductsController < ApplicationController
   # POST /custom_products.json
   def create
     @custom_product = CustomProduct.new(custom_product_params)
-
+    current_user ? @user_id = current_user.id : @user_id = "Guest" 
     respond_to do |format|
       if @custom_product.save
         format.html { redirect_to @custom_product, notice: 'Custom product was successfully created.' }
