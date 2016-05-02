@@ -1,12 +1,4 @@
-var category, price, pockets, pocketShape, corners, exterior, interior, lining, stitching, edges, notebookStyle, submit, billfoldReqs, cardWalletReqs, idWalletReqs, notebookReqs, inputs;
-
-function removeHighlight(){
-	if (this.value != "" && this.parentNode.className == "error_highlight") {
-
-		$(this.parentNode).removeClass("error_highlight");
-
-	}
-}
+var category, price, pockets, pocketShape, corners, exterior, interior, lining, stitching, edges, notebookStyle, submit, billfoldReqs, cardWalletReqs, idWalletReqs, notebookReqs, inputs, canvas;
 
 function declareVariables() {
 
@@ -33,6 +25,18 @@ function declareVariables() {
 	idWalletReqs = [["pocket_shape", pocketShape], ["corners", corners], ["exterior", exterior], ["lining", lining], ["stitching", stitching], ["edges", edges]];
 	notebookReqs = [["corners", corners], ["exterior", exterior], ["interior", interior], ["lining", lining], ["stitching", stitching], ["edges", edges], ["notebook_style", notebookStyle]];	
 
+	//Image Elements
+
+	canvas = document.getElementById("custom_canvas");
+
+}
+
+function removeHighlight(){
+	if (this.value != "" && this.parentNode.className == "error_highlight") {
+
+		$(this.parentNode).removeClass("error_highlight");
+
+	}
 }
 
 function validateForm(reqs) {
@@ -179,6 +183,14 @@ function buildForm() {
 	};
 }
 
+function buildImage() {
+
+	$('#new_custom_product input[type="radio"]:checked').each(function(k,v) {
+
+			console.log(k + ": " + v.value)
+	});
+}
+
 $(document).ready(function(){
 
 	document.getElementById("custom_options").style.display = "none";
@@ -191,5 +203,6 @@ $(document).ready(function(){
 
 	// Add Event Listeners	
 	$("input").on("change", removeHighlight);
+	$("input").on("change", buildImage);
 
 });
