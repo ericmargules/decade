@@ -1,7 +1,7 @@
 class CustomProductsController < ApplicationController
   before_action :set_custom_product, only: [:show, :edit, :update, :destroy]
 
-  layout "custom_products"
+  layout :resolve_layout
 
   # GET /custom_products
   # GET /custom_products.json
@@ -35,7 +35,7 @@ class CustomProductsController < ApplicationController
     respond_to do |format|
       if @custom_product.save
         # I don't know what the following line of code does.
-         # format.json { render :show, status: :created, location: @custom_product }
+        # format.json { render :show, status: :created, location: @custom_product }
         format.html { redirect_to "/cart/#{@custom_product.id}", notice: 'Custom product was successfully created.' }
 
       else
@@ -78,5 +78,14 @@ class CustomProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def custom_product_params
       params.require(:custom_product).permit(:name, :category, :price, :user_id, :options)
+    end
+
+    def resolve_layout
+      case action_name
+      when "new", "create", "edit"
+        "custom_products"
+      else
+        "application"
+      end
     end
 end
