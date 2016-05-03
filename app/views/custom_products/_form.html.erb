@@ -107,6 +107,12 @@
         <%= radio_button_tag "notebook_style", "ruled" %>Ruled 
         <%= radio_button_tag "notebook_style", "grid" %>Grid 
       </div>
+      
+      <div id="currency">
+        <%= label_tag: currency %><br>
+        <%= f.select :currency, ["US Dollars", "British Pounds", "Euro", "Japanese Yen"] %>
+      </div>
+
     </div>
 
     <div class="actions">
