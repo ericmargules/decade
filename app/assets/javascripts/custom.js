@@ -41,6 +41,22 @@ function removeHighlight() {
 	}
 }
 
+function sameAsInterior() {
+
+	if (document.getElementById("same_as_interior").checked) {
+
+		document.getElementById("pockets_same").style.display = "none";
+		allPockets.checked = "checked";
+		separatePockets.style.display = "none";
+
+	} else {
+
+		document.getElementById("pockets_same").style.display = "block";
+
+
+	}
+}
+
 function checkAllPockets() {
 
 	if (allPockets.checked) {
@@ -149,6 +165,9 @@ function buildForm() {
 		document.getElementById("pockets").style.display = "block";
 		document.getElementById("pocket_shape").style.display = "block";
 		document.getElementById("interior").style.display = "block";
+		document.getElementById("pocket_options").style.display = "block";
+		document.getElementById("pockets_interior").style.display = "block";
+		document.getElementById("misc").style.display = "block";
 		document.getElementById("currency").style.display = "block";
 		document.getElementById("notebook_style").style.display = "none";
 		separatePockets.style.display = "none";
@@ -159,6 +178,8 @@ function buildForm() {
 		document.getElementById("pockets").style.display = "none";
 		document.getElementById("pocket_shape").style.display = "block";
 		document.getElementById("interior").style.display = "block";
+		document.getElementById("pocket_options").style.display = "block";
+		document.getElementById("pockets_interior").style.display = "block";
 		document.getElementById("misc").style.display = "none";
 		separatePockets.style.display = "none";
 
@@ -168,6 +189,8 @@ function buildForm() {
 		document.getElementById("pockets").style.display = "none";
 		document.getElementById("pocket_shape").style.display = "block";
 		document.getElementById("interior").style.display = "none";
+		document.getElementById("pocket_options").style.display = "block";
+		document.getElementById("pockets_interior").style.display = "none";
 		document.getElementById("misc").style.display = "none";
 		separatePockets.style.display = "none";
 
@@ -196,6 +219,7 @@ function setDefaultValues() {
 			break;
 		case "Card Wallet":
 			corners.value = "rounded";
+			pockets.value = "6";
 			pocketShape.value = "straight";
 			break;
 		case "ID Wallet":
@@ -217,6 +241,23 @@ function buildImage() {
 	});
 }
 
+
+function maintenance() {
+
+	// Check Same As Interior Status
+	sameAsInterior();
+
+	// Check All Pockets Same Status
+	checkAllPockets();
+
+	// Check How Many Pockets
+	checkPockets();
+
+	// Build Product Image
+	buildImage;
+
+}
+
 $(document).ready(function(){
 
 	// Hide Full Form
@@ -228,33 +269,20 @@ $(document).ready(function(){
 	// Watch Category
 	category.onchange = function() {
 		
+		// Reset Form
 		var style = category.value;
-		document.getElementById("new_custom_product").reset();
-		$("div").removeClass("error_highlight");
+		document.forms.new_custom_product.reset();
 		category.value = style;
+		$("div").removeClass("error_highlight");
 		buildForm();
 		setDefaultValues();
-		checkPockets();
+		maintenance();
 	
 	};
 
 	// Watch Input	
+	$("input").on("change", maintenance);
 	$("input").on("change", removeHighlight);
-	$("input").on("change", buildImage);
-
-	//Watch Pockets
-	document.getElementById("pockets").onclick = function() {
-
-		checkPockets();
-
-	};
-
-	//Watch Pockets all same
-	allPockets.onchange = function() {
-
-		checkAllPockets();
-
-	};
 
 	// Watch Submit
 	submit.onclick = function() {
@@ -262,5 +290,4 @@ $(document).ready(function(){
 		return validateForm();
 
 	};
-
 });
