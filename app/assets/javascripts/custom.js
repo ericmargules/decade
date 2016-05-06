@@ -1,4 +1,4 @@
-var category, price, pockets, pocketShape, corners, exterior, interior, lining, stitching, edges, notebookStyle, sameAsInt, allPockets, separatePockets, submit, billfoldReqs, cardWalletReqs, idWalletReqs, notebookReqs, canvas;
+var category, price, pockets, pocketShape, corners, exterior, interior, lining, stitching, edges, notebookStyle, sameAsInt, submit, billfoldReqs, cardWalletReqs, idWalletReqs, notebookReqs, canvas;
 
 function declareVariables() {
 
@@ -9,23 +9,14 @@ function declareVariables() {
 	pockets = document.forms.custom_product.pockets; 
 	pocketShape = document.forms.custom_product.pocket_shape;
 	corners = document.forms.custom_product.corners;
-	exterior = document.forms.custom_product.exterior;
-	interior = document.forms.custom_product.interior;
+	exterior = document.forms.custom_product.exterior_materials;
+	interior = document.forms.custom_product.interior_materials;
 	lining = document.forms.custom_product.lining;
 	stitching = document.forms.custom_product.stitching;
 	edges = document.forms.custom_product.edges;
 	notebookStyle = document.forms.custom_product.notebook_style;
 	sameAsInt = document.forms.custom_product.same_as_interior;
-	allPockets = document.forms.custom_product.pockets_all_same;
-	separatePockets = document.getElementById("separate_pockets");
 	submit = document.forms.custom_product.commit;
-
-	//Style Requirements
-
-	billfoldReqs = [["pockets", pockets], ["pocket_shape", pocketShape], ["corners", corners], ["exterior", exterior], ["interior", interior], ["lining", lining], ["stitching", stitching], ["edges", edges]];
-	cardWalletReqs = [["pocket_shape", pocketShape], ["corners", corners], ["exterior", exterior], ["interior", interior], ["lining", lining], ["stitching", stitching], ["edges", edges]];
-	idWalletReqs = [["pocket_shape", pocketShape], ["corners", corners], ["exterior", exterior], ["lining", lining], ["stitching", stitching], ["edges", edges]];
-	notebookReqs = [["corners", corners], ["exterior", exterior], ["interior", interior], ["lining", lining], ["stitching", stitching], ["edges", edges], ["notebook_style", notebookStyle]];	
 
 	//Image Elements
 
@@ -34,6 +25,7 @@ function declareVariables() {
 }
 
 function removeHighlight() {
+
 	if (this.value != "" && this.parentNode.className == "error_highlight") {
 
 		$(this.parentNode).removeClass("error_highlight");
@@ -45,13 +37,16 @@ function sameAsInterior() {
 
 	if (document.getElementById("same_as_interior").checked) {
 
-		document.getElementById("pockets_same").style.display = "none";
-		allPockets.checked = "checked";
-		separatePockets.style.display = "none";
+		document.getElementById("pockets_same").className = "hidden_field";
+		document.getElementById("pockets_all_same").checked = "checked";
+		document.getElementById("separate_pockets").className = "hidden_field";
+		document.getElementById("pocket_materials").className = "hidden_field";
+
 
 	} else {
 
-		document.getElementById("pockets_same").style.display = "block";
+		document.getElementById("pockets_same").className = "required_field";
+		document.getElementById("pocket_materials").className = "required_field";
 
 
 	}
@@ -59,13 +54,14 @@ function sameAsInterior() {
 
 function checkAllPockets() {
 
-	if (allPockets.checked) {
+	if (document.getElementById("pockets_all_same").checked) {
 
-		separatePockets.style.display = "none";
+		document.getElementById("separate_pockets").className = "hidden_field";
 
 	} else {
 
-		separatePockets.style.display = "block";
+		document.getElementById("separate_pockets").className = "required_section";
+		document.getElementById("pocket_materials").className = "hidden_field";
 
 	}
 }
@@ -74,18 +70,23 @@ function checkPockets() {
 
 	if(pockets.value == "6") {
 
-		document.getElementById("pocket_lb").style.display = "block";
-		document.getElementById("pocket_rb").style.display = "block";
+		document.getElementById("pocket_lb").className = "required_field";
+		document.getElementById("pocket_rb").className = "required_field";
 
 	}else {
 
-		document.getElementById("pocket_lb").style.display = "none";
-		document.getElementById("pocket_rb").style.display = "none";
+		document.getElementById("pocket_lb").className = "hidden_field";
+		document.getElementById("pocket_rb").className = "hidden_field";
 
 	}
 }
 
 function validateForm() {
+
+	var billfoldReqs = [["pockets", pockets], ["pocket_shape", pocketShape], ["corners", corners], ["exterior_materials", exterior], ["interior_materials", interior], ["lining", lining], ["stitching", stitching], ["edges", edges]];
+	var cardWalletReqs = [["pocket_shape", pocketShape], ["corners", corners], ["exterior_materials", exterior], ["interior_materials", interior], ["lining", lining], ["stitching", stitching], ["edges", edges]];
+	var idWalletReqs = [["pocket_shape", pocketShape], ["corners", corners], ["exterior_materials", exterior], ["lining", lining], ["stitching", stitching], ["edges", edges]];
+	var notebookReqs = [["corners", corners], ["exterior_materials", exterior], ["interior_materials", interior], ["lining", lining], ["stitching", stitching], ["edges", edges], ["notebook_style", notebookStyle]];	
 
 	var reqs;
   var missingReqs = new Array();
@@ -157,53 +158,107 @@ function buildForm() {
 
 	if(category.value == ""){
 
-		document.getElementById("custom_options").style.display = "none";
+		document.getElementById("custom_options").className = "hidden_field";
 
 	} else if(category.value == "Billfold"){
 
-		document.getElementById("custom_options").style.display = "block";
-		document.getElementById("pockets").style.display = "block";
-		document.getElementById("pocket_shape").style.display = "block";
-		document.getElementById("interior").style.display = "block";
-		document.getElementById("pocket_options").style.display = "block";
-		document.getElementById("pockets_interior").style.display = "block";
-		document.getElementById("misc").style.display = "block";
-		document.getElementById("currency").style.display = "block";
-		document.getElementById("notebook_style").style.display = "none";
-		separatePockets.style.display = "none";
+		// Show Fields 
+		document.getElementById("custom_options").className = "required_section";
+		document.getElementById("exterior_options").className = "required_section";
+		document.getElementById("exterior_materials").className = "required_field";
+		document.getElementById("corners").className = "required_field";
+		document.getElementById("stitching").className = "required_field";
+		document.getElementById("edges").className = "required_field";
+		document.getElementById("interior_options").className = "required_section";
+		document.getElementById("interior_materials").className = "required_field";
+		document.getElementById("lining").className = "required_field";
+		document.getElementById("pocket_options").className = "required_section";
+		document.getElementById("pockets").className = "required_field";
+		document.getElementById("pocket_shape").className = "required_field";
+		document.getElementById("pockets_interior").className = "required_field";
+		document.getElementById("misc").className = "required_section";
+		document.getElementById("currency").className = "required_field";
+		
+		// Hide Fields 
+		document.getElementById("notebook_style").className = "hidden_field";
+		document.getElementById("pockets_same").className = "hidden_field";
+		document.getElementById("pocket_materials").className = "hidden_field";
+		document.getElementById("separate_pockets").className = "hidden_field";
 
 	} else if(category.value == "Card Wallet"){
 
-		document.getElementById("custom_options").style.display = "block";
-		document.getElementById("pockets").style.display = "none";
-		document.getElementById("pocket_shape").style.display = "block";
-		document.getElementById("interior").style.display = "block";
-		document.getElementById("pocket_options").style.display = "block";
-		document.getElementById("pockets_interior").style.display = "block";
-		document.getElementById("misc").style.display = "none";
-		separatePockets.style.display = "none";
+		// Show Fields 
+		document.getElementById("custom_options").className = "required_section";
+		document.getElementById("exterior_options").className = "required_section";
+		document.getElementById("exterior_materials").className = "required_field";
+		document.getElementById("corners").className = "required_field";
+		document.getElementById("stitching").className = "required_field";
+		document.getElementById("edges").className = "required_field";
+		document.getElementById("interior_options").className = "required_section";
+		document.getElementById("interior_materials").className = "required_field";
+		document.getElementById("lining").className = "required_field";
+		document.getElementById("pocket_options").className = "required_section";
+		document.getElementById("pocket_shape").className = "required_field";
+		document.getElementById("pockets_interior").className = "required_field";
+		
+		// Hide Fields 
+		document.getElementById("pockets").className = "hidden_field";
+		document.getElementById("pockets_same").className = "hidden_field";
+		document.getElementById("pocket_materials").className = "hidden_field";
+		document.getElementById("separate_pockets").className = "hidden_field";
+		document.getElementById("misc").className = "hidden_field";
+		document.getElementById("currency").className = "hidden_field";
+		document.getElementById("notebook_style").className = "hidden_field";
 
 	} else if(category.value == "ID Wallet"){
 
-		document.getElementById("custom_options").style.display = "block";
-		document.getElementById("pockets").style.display = "none";
-		document.getElementById("pocket_shape").style.display = "block";
-		document.getElementById("interior").style.display = "none";
-		document.getElementById("pocket_options").style.display = "block";
-		document.getElementById("pockets_interior").style.display = "none";
-		document.getElementById("misc").style.display = "none";
-		separatePockets.style.display = "none";
+		// Show Fields 
+		document.getElementById("custom_options").className = "required_section";
+		document.getElementById("exterior_options").className = "required_section";
+		document.getElementById("exterior_materials").className = "required_field";
+		document.getElementById("corners").className = "required_field";
+		document.getElementById("stitching").className = "required_field";
+		document.getElementById("edges").className = "required_field";
+		document.getElementById("interior_options").className = "required_section";
+		document.getElementById("lining").className = "required_field";
+		document.getElementById("pocket_options").className = "required_section";
+		document.getElementById("pocket_shape").className = "required_field";
+		
+		// Hide Fields 
+		document.getElementById("interior_materials").className = "hidden_field";
+		document.getElementById("pockets").className = "hidden_field";
+		document.getElementById("pockets_interior").className = "hidden_field";
+		document.getElementById("pockets_same").className = "hidden_field";
+		document.getElementById("pocket_materials").className = "hidden_field";
+		document.getElementById("separate_pockets").className = "hidden_field";
+		document.getElementById("misc").className = "hidden_field";
+		document.getElementById("currency").className = "hidden_field";
+		document.getElementById("notebook_style").className = "hidden_field";
 
 	}	else if(category.value == "Notebook"){
 
-		document.getElementById("custom_options").style.display = "block";
-		document.getElementById("pockets").style.display = "none";
-		document.getElementById("pocket_shape").style.display = "none";
-		document.getElementById("interior").style.display = "block";
-		document.getElementById("misc").style.display = "block";
-		document.getElementById("notebook_style").style.display = "block";
-		document.getElementById("pocket_options").style.display = "none";
-		document.getElementById("currency").style.display = "none";
+		// Show Fields 
+		document.getElementById("custom_options").className = "required_section";
+		document.getElementById("exterior_options").className = "required_section";
+		document.getElementById("exterior_materials").className = "required_field";
+		document.getElementById("corners").className = "required_field";
+		document.getElementById("stitching").className = "required_field";
+		document.getElementById("edges").className = "required_field";
+		document.getElementById("interior_options").className = "required_section";
+		document.getElementById("interior_materials").className = "required_field";
+		document.getElementById("lining").className = "required_field";
+		document.getElementById("misc").className = "required_section";
+		document.getElementById("notebook_style").className = "required_field";
+		
+		// Hide Fields 
+		document.getElementById("pocket_options").className = "hidden_field";
+		document.getElementById("pocket_shape").className = "hidden_field";
+		document.getElementById("pockets").className = "hidden_field";
+		document.getElementById("pockets_interior").className = "hidden_field";
+		document.getElementById("pockets_same").className = "hidden_field";
+		document.getElementById("pocket_materials").className = "hidden_field";
+		document.getElementById("separate_pockets").className = "hidden_field";
+		document.getElementById("currency").className = "hidden_field";
 
 	}
 }
@@ -261,7 +316,7 @@ function maintenance() {
 $(document).ready(function(){
 
 	// Hide Full Form
-	document.getElementById("custom_options").style.display = "none";
+	document.getElementById("custom_options").className = "hidden_field";
 	
 	// Capture Form Elements
 	declareVariables();
@@ -276,7 +331,7 @@ $(document).ready(function(){
 		$("div").removeClass("error_highlight");
 		buildForm();
 		setDefaultValues();
-		maintenance();
+		//maintenance();
 	
 	};
 

@@ -41,11 +41,11 @@
     <div id="exterior_options">
       <p>Exterior</p>
 
-      <div id="exterior">
+      <div id="exterior_materials">
         <%= label_tag :exterior %><br>
-        <%= radio_button_tag "exterior", "material1" %>
-        <%= radio_button_tag "exterior", "material2" %>
-        <%= radio_button_tag "exterior", "material3" %>
+        <%= radio_button_tag "exterior_materials", "material1" %>
+        <%= radio_button_tag "exterior_materials", "material2" %>
+        <%= radio_button_tag "exterior_materials", "material3" %>
       </div>
 
       <div id="corners">
@@ -75,11 +75,11 @@
 
       <p>Interior</p>
    
-      <div id="interior">
+      <div id="interior_materials">
         <%= label_tag :interior %><br>
-        <%= radio_button_tag "interior", "material1" %>
-        <%= radio_button_tag "interior", "material2" %>
-        <%= radio_button_tag "interior", "material3" %>
+        <%= radio_button_tag "interior_materials", "material1" %>
+        <%= radio_button_tag "interior_materials", "material2" %>
+        <%= radio_button_tag "interior_materials", "material3" %>
       </div>
 
       <div id="lining">
@@ -110,6 +110,13 @@
       <div id="pockets_interior">
         <%= label_tag :same_as_interior %><br>
         <%= check_box_tag :same_as_interior, 1, true %>
+      </div>      
+
+      <div id="pocket_materials">
+        <%= label_tag :pocket_materials %><br>
+        <%= radio_button_tag "pocket_materials", "material1" %>
+        <%= radio_button_tag "pocket_materials", "material2" %>
+        <%= radio_button_tag "pocket_materials", "material3" %>
       </div>
 
       <div id="pockets_same">
