@@ -24,14 +24,14 @@ function declareVariables() {
 
 }
 
-function buildRequirements() {
+// function buildRequirements() {
 
-	var billfoldReqs = [["pockets", pockets], ["pocket_shape", pocketShape], ["corners", corners], ["exterior_materials", exterior], ["interior_materials", interior], ["lining", lining], ["stitching", stitching], ["edges", edges]];
-	var cardWalletReqs = [["pocket_shape", pocketShape], ["corners", corners], ["exterior_materials", exterior], ["interior_materials", interior], ["lining", lining], ["stitching", stitching], ["edges", edges]];
-	var idWalletReqs = [["pocket_shape", pocketShape], ["corners", corners], ["exterior_materials", exterior], ["lining", lining], ["stitching", stitching], ["edges", edges]];
-	var notebookReqs = [["corners", corners], ["exterior_materials", exterior], ["interior_materials", interior], ["lining", lining], ["stitching", stitching], ["edges", edges], ["notebook_style", notebookStyle]];	
+// 	var billfoldReqs = [["pockets", pockets], ["pocket_shape", pocketShape], ["corners", corners], ["exterior_materials", exterior], ["interior_materials", interior], ["lining", lining], ["stitching", stitching], ["edges", edges]];
+// 	var cardWalletReqs = [["pocket_shape", pocketShape], ["corners", corners], ["exterior_materials", exterior], ["interior_materials", interior], ["lining", lining], ["stitching", stitching], ["edges", edges]];
+// 	var idWalletReqs = [["pocket_shape", pocketShape], ["corners", corners], ["exterior_materials", exterior], ["lining", lining], ["stitching", stitching], ["edges", edges]];
+// 	var notebookReqs = [["corners", corners], ["exterior_materials", exterior], ["interior_materials", interior], ["lining", lining], ["stitching", stitching], ["edges", edges], ["notebook_style", notebookStyle]];	
 
-}
+// }
 
 function removeHighlight() {
 
@@ -92,7 +92,7 @@ function checkAllPockets() {
 
 function checkPockets() {
 
-	if(document.forms.custom_product["pockets"].value == "6") {
+	if(document.forms.custom_product["pockets"].value == "6" && document.forms.custom_product["pockets_same"].value != "1") {
 
 		toggleError("pocket_lb");
 		toggleError("pocket_rb");
@@ -132,9 +132,9 @@ function validateForm() {
   
   } else {
 
-  	buildOptions(reqs);
-  	setName();
   	setPrice();
+  	setName();
+  	buildOptions(reqs);
 
   }
 }
@@ -145,14 +145,14 @@ function buildOptions(reqs) {
 
 	for (var i = 0; i < reqs.length; i++) {
 
-		productOptions.value = String(productOptions.value + reqs[i][0] + ": " + reqs[i][1].value+ "; "); 
+		productOptions.value = String(productOptions.value + String(reqs[i]) + ": " + document.forms.custom_product[reqs[i]].value + "; "); 
 	}
 }
 
 function setName() {
 
 	var productName = document.getElementById("custom_product_name");
-	productName.value = "Custom " + String(category.value);
+	productName.value = "Custom " + category.value;
 
 }
 
