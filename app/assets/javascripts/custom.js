@@ -62,16 +62,30 @@ function sameAsInterior() {
 	}
 }
 
+function toggleError(divId) {
+
+	document.getElementById(divId).className == "error_highlight" ? document.getElementById(divId).className = "error_highlight" : document.getElementById(divId).className = "required_field";
+
+}
+
 function checkAllPockets() {
 
 	if (document.forms.custom_product["pockets_same"].checked) {
 
 		document.getElementById("separate_pockets").className = "hidden_field";
+		document.getElementById("pocket_r1").className = "hidden_field";
+		document.getElementById("pocket_r2").className = "hidden_field";
+		document.getElementById("pocket_l1").className = "hidden_field";
+		document.getElementById("pocket_l2").className = "hidden_field";
 
 	} else {
 
 		document.getElementById("separate_pockets").className = "required_section";
 		document.getElementById("pocket_materials").className = "hidden_field";
+		toggleError("pocket_r1");
+		toggleError("pocket_r2");
+		toggleError("pocket_l1");
+		toggleError("pocket_l2");
 
 	}
 }
@@ -80,8 +94,8 @@ function checkPockets() {
 
 	if(document.forms.custom_product["pockets"].value == "6") {
 
-		document.getElementById("pocket_lb").className = "required_field";
-		document.getElementById("pocket_rb").className = "required_field";
+		toggleError("pocket_lb");
+		toggleError("pocket_rb");
 
 	}else {
 
