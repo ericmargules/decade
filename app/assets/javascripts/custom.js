@@ -262,16 +262,71 @@ function setDefaultValues() {
 	}
 }
 
+/*
+function createImage(src) {
+
+	var img = IEWIN? new Image() : document.createElement('img');
+	img.src = src;
+	return img;
+
+}
+
+function createPath() {
+
+	var source "/assets/custom_products/" + view + "/" + String(document.getElementById("custom_product_category").value) + "/"; 
+	if (element == "corners") {
+
+		source += (String(document.forms.custom_product.corners.value) + ".png");
+
+	} else {
+
+		source += (String(document.forms.custom_product.corners.value) + "/" + String(element) + "/" + String(document.forms.custom_product[element].value) + ".png");
+	}
+
+	return source;
+
+}
+
+function layerImage() {
+
+	var path = createPath();
+	var img = createImage(path);
+	var ctx = canvas.getContext("2d");
+	ctx.drawImage(img,0,0);
+
+}
+
+*/
+
 function buildImage() {
 
 	var canvas = document.getElementById("custom_canvas");
+	// if(document.getElementById("view_exterior").checked) { 
 
-	$('#new_custom_product input[type="radio"]:checked').each(function(k,v) {
+	// 	var view = "exterior"; 
+	// 	$('#exterior_materials input[type="radio"]:checked').each(function() {
 
-			console.log(k + ": " + v.value)
-	});
+	// 	var element = this.id;
+	// 	layerImage();
+
+	// 	});
+
+	// } else {
+
+	// 	var view = "interior";
+	// 	$('#exterior_materials input[type="radio"]:checked').each(function() {
+
+	// 	var element = this.id;
+	// 	layerImage();
+
+	// 	});
+	// }
+
+	// $('#new_custom_product input[type="radio"]:checked').each(function(k,v) {
+
+	// 		console.log(k + ": " + v.value)
+	// });
 }
-
 
 function maintenance() {
 
