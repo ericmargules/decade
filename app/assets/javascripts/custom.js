@@ -1,29 +1,21 @@
 function removeHighlight() {
 
 	if (this.value != "" && this.parentNode.className == "error_highlight") {
-
 		$(this.parentNode).removeClass("error_highlight");
 		$(this.parentNode).addClass("required_field");
-
 	}
 }
 
 function sameAsInterior() {
 
 	if (document.forms.custom_product["pockets_interior"].checked) {
-
 		document.getElementById("pockets_same").className = "hidden_field";
 		document.forms.custom_product["pockets_same"].checked = "checked";
 		document.getElementById("separate_pockets").className = "hidden_field";
 		document.getElementById("pocket_materials").className = "hidden_field";
-
-
 	} else {
-
 		document.getElementById("pockets_same").className = "required_field";
 		document.getElementById("pocket_materials").className = "required_field";
-
-
 	}
 }
 
@@ -36,46 +28,36 @@ function toggleError(divId) {
 function checkAllPockets() {
 
 	if (document.forms.custom_product["pockets_same"].checked) {
-
 		document.getElementById("separate_pockets").className = "hidden_field";
 		document.getElementById("pocket_r1").className = "hidden_field";
 		document.getElementById("pocket_r2").className = "hidden_field";
 		document.getElementById("pocket_l1").className = "hidden_field";
 		document.getElementById("pocket_l2").className = "hidden_field";
-
 	} else {
-
 		document.getElementById("separate_pockets").className = "required_section";
 		document.getElementById("pocket_materials").className = "hidden_field";
 		toggleError("pocket_r1");
 		toggleError("pocket_r2");
 		toggleError("pocket_l1");
 		toggleError("pocket_l2");
-
 	}
 }
 
 function checkPockets() {
 
 	if(document.forms.custom_product["pockets"].value == "6" && !document.forms.custom_product["pockets_same"].checked) {
-
 		toggleError("pocket_lb");
 		toggleError("pocket_rb");
-
 	}else {
-
 		document.getElementById("pocket_lb").className = "hidden_field";
 		document.getElementById("pocket_rb").className = "hidden_field";
-
 	}
 }
 
 function buildOptions(reqs) { 
 
 	var productOptions = document.getElementById("custom_product_options");
-
 	for (var i = 0; i < reqs.length; i++) {
-
 		productOptions.value = String(productOptions.value + String(reqs[i]) + ": " + document.forms.custom_product[reqs[i]].value + "; "); 
 	}
 }
@@ -98,42 +80,33 @@ function validateForm() {
 
 	var reqs = new Array();
 	$("#new_custom_product .required_field, .error_highlight").each(function() {
-	
 		reqs.push(this.id)
-		
 	});
 
   var missingReqs = new Array();
 
   for (var i = 0; i < reqs.length; i++) {
-
     if(document.forms.custom_product[reqs[i]].value == "" && document.forms.custom_product[reqs[i]].type != "checkbox") {
-        
       missingReqs.push(reqs[i]);
       document.getElementById(reqs[i]).className = "error_highlight";
-
     }
   }
     
   if(missingReqs.length != 0) {
-  
-    return false;
-  
+    return false;  
   } else {
-
   	setPrice();
   	setName();
   	buildOptions(reqs);
-
   }
 }
 
 function buildForm() {
 
 	switch (document.getElementById("custom_product_category").value) {
-
 		case "":
 			document.getElementById("custom_options").className = "hidden_field";
+			return;
 			break;
 		case "Billfold":
 			var requiredSections = ["custom_options", "exterior_options", "interior_options", "pocket_options", "misc"];
@@ -158,28 +131,21 @@ function buildForm() {
 		}
 
 	for (var i = 0; i < requiredSections.length; i++) {
-
   	document.getElementById(requiredSections[i]).className = "required_section";
-
 	}
 
 	for (var i = 0; i < requiredFields.length; i++) {
-
   	document.getElementById(requiredFields[i]).className = "required_field";
-
 	}
 
 	for (var i = 0; i < hiddenFields.length; i++) {
-
   	document.getElementById(hiddenFields[i]).className = "hidden_field";
-
 	}
 }
 
 function setDefaultValues() {
 
 	switch (document.getElementById("custom_product_category").value) {
-
 		case "Billfold":
 			document.forms.custom_product.corners.value = "rounded";
 			document.forms.custom_product.pockets.value = "4";
@@ -199,20 +165,28 @@ function setDefaultValues() {
 			document.forms.custom_product.notebook_style.value = "ruled";
 			break;
 	}
+
+	$('#exterior_options .required_field').each(function() {
+		if (document.forms.custom_product[this.id].value != "") {
+			console.log(this.id);
+		}
+	});
 }
 
-/*
+
 function createImage(src) {
 
-	var img = IEWIN? new Image() : document.createElement('img');
+	var img = document.createElement('img');
 	img.src = src;
+	img.width = "500";
+	img.height = "500";
 	return img;
 
 }
 
-function createPath() {
+function createPath(element) {
 
-	var source "/assets/custom_products/" + view + "/" + String(document.getElementById("custom_product_category").value) + "/"; 
+	var source = "/assets/custom_products/" + String(document.forms.custom_product.view.value) + "/" + String(document.getElementById("custom_product_category").value).toLowerCase() + "/"; 
 	if (element == "corners") {
 
 		source += (String(document.forms.custom_product.corners.value) + ".png");
@@ -222,49 +196,50 @@ function createPath() {
 		source += (String(document.forms.custom_product.corners.value) + "/" + String(element) + "/" + String(document.forms.custom_product[element].value) + ".png");
 	}
 
+	//console.log(source);
 	return source;
 
 }
 
-function layerImage() {
+function buildCanvas(){
 
-	var path = createPath();
-	var img = createImage(path);
+	var canvas = document.getElementById("custom_canvas");
 	var ctx = canvas.getContext("2d");
-	ctx.drawImage(img,0,0);
-
+	
+	// Add closure to return ctx
 }
 
-*/
+function layerImage(element) {
+	var path = createPath(element);
+	var img = createImage(path);
+	// call buildCanvas to access ctx
+	ctx.drawImage(img, 0, 0);
+}
+
 
 function buildImage() {
 
-	var canvas = document.getElementById("custom_canvas");
-	// if(document.getElementById("view_exterior").checked) { 
+	if(document.forms.custom_product.view.value = "exterior") { 
 
-	// 	var view = "exterior"; 
-	// 	$('#exterior_materials input[type="radio"]:checked').each(function() {
+		$('#exterior_options .required_field').each(function() {
 
-	// 	var element = this.id;
-	// 	layerImage();
+			if (document.forms.custom_product[this.id].value != "") {
+				layerImage(this.id);
+			}
 
-	// 	});
+		});
 
-	// } else {
+	} else {
 
-	// 	var view = "interior";
-	// 	$('#exterior_materials input[type="radio"]:checked').each(function() {
+		$('#exterior_options .required_field').each(function() {
 
-	// 	var element = this.id;
-	// 	layerImage();
+			if (document.forms.custom_product[this.id].value != "") {
+				layerImage(this.id);
+			}
 
-	// 	});
-	// }
+		});
 
-	// $('#new_custom_product input[type="radio"]:checked').each(function(k,v) {
-
-	// 		console.log(k + ": " + v.value)
-	// });
+	}
 }
 
 function maintenance() {
@@ -280,7 +255,6 @@ function maintenance() {
 
 	// Build Product Image
 	buildImage();
-
 }
 
 $(document).ready(function(){
@@ -298,7 +272,7 @@ $(document).ready(function(){
 		$("div").removeClass("error_highlight");
 		buildForm();
 		setDefaultValues();
-	
+		buildImage();
 	};
 
 	// Watch Input	
@@ -307,8 +281,6 @@ $(document).ready(function(){
 
 	// Watch Submit
 	document.forms.custom_product.commit.onclick = function() {
-
 		return validateForm();
-
 	};
 });
