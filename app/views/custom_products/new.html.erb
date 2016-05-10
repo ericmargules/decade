@@ -2,12 +2,4 @@
 
 <%= render 'form2' %>
 
-<canvas id="custom_canvas"></canvas>
-
-<div id="product_view">
-        <%= label_tag :view %><br>
-        <%= radio_button_tag "view", "exterior", :value => "checked" %>Exterior 
-        <%= radio_button_tag "view", "interior" %>Interior 
-</div>
-
 <%= link_to 'Back', custom_products_path %>

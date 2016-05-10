@@ -130,109 +130,48 @@ function validateForm() {
 
 function buildForm() {
 
-	if(document.getElementById("custom_product_category").value == ""){
+	switch (document.getElementById("custom_product_category").value) {
 
-		document.getElementById("custom_options").className = "hidden_field";
+		case "":
+			document.getElementById("custom_options").className = "hidden_field";
+			break;
+		case "Billfold":
+			var requiredSections = ["custom_options", "exterior_options", "interior_options", "pocket_options", "misc"];
+			var requiredFields = ["exterior_materials", "corners", "stitching", "edges", "interior_materials", "lining", "pockets", "pocket_shape", "pockets_interior", "currency"];
+			var hiddenFields = ["pockets_same", "pocket_materials", "separate_pockets", "notebook_style"];
+			break;
+		case "Card Wallet":
+			var requiredSections = ["custom_options", "exterior_options", "interior_options", "pocket_options"];
+			var requiredFields = ["exterior_materials", "corners", "stitching", "edges", "interior_materials", "lining", "pocket_shape", "pockets_interior"];
+			var hiddenFields = ["pockets", "pockets_same", "pocket_materials", "separate_pockets", "misc",  "currency", "notebook_style"];
+			break;
+		case "ID Wallet":
+			var requiredSections = ["custom_options", "exterior_options", "interior_options", "pocket_options"];
+			var requiredFields = ["exterior_materials", "corners", "stitching", "edges", "lining", "pocket_shape"];
+			var hiddenFields = ["interior_materials", "pockets", "pockets_interior", "pockets_same", "pocket_materials", "separate_pockets", "misc",  "currency", "notebook_style"];
+			break;
+		case "Notebook":
+			var requiredSections = ["custom_options", "exterior_options", "interior_options", "misc"];
+			var requiredFields = ["exterior_materials", "corners", "stitching", "edges", "interior_materials", "lining", "notebook_style"];
+			var hiddenFields = ["pocket_options", "pockets", "pocket_shape", "pockets_interior", "pockets_same", "pocket_materials", "separate_pockets", "currency"];
+			break;
+		}
 
-	} else if(document.getElementById("custom_product_category").value == "Billfold"){
+	for (var i = 0; i < requiredSections.length; i++) {
 
-		// Show Fields 
-		document.getElementById("custom_options").className = "required_section";
-		document.getElementById("exterior_options").className = "required_section";
-		document.getElementById("exterior_materials").className = "required_field";
-		document.getElementById("corners").className = "required_field";
-		document.getElementById("stitching").className = "required_field";
-		document.getElementById("edges").className = "required_field";
-		document.getElementById("interior_options").className = "required_section";
-		document.getElementById("interior_materials").className = "required_field";
-		document.getElementById("lining").className = "required_field";
-		document.getElementById("pocket_options").className = "required_section";
-		document.getElementById("pockets").className = "required_field";
-		document.getElementById("pocket_shape").className = "required_field";
-		document.getElementById("pockets_interior").className = "required_field";
-		document.getElementById("misc").className = "required_section";
-		document.getElementById("currency").className = "required_field";
-		
-		// Hide Fields 
-		document.getElementById("notebook_style").className = "hidden_field";
-		document.getElementById("pockets_same").className = "hidden_field";
-		document.getElementById("pocket_materials").className = "hidden_field";
-		document.getElementById("separate_pockets").className = "hidden_field";
+  	document.getElementById(requiredSections[i]).className = "required_section";
 
-	} else if(document.getElementById("custom_product_category").value == "Card Wallet"){
+	}
 
-		// Show Fields 
-		document.getElementById("custom_options").className = "required_section";
-		document.getElementById("exterior_options").className = "required_section";
-		document.getElementById("exterior_materials").className = "required_field";
-		document.getElementById("corners").className = "required_field";
-		document.getElementById("stitching").className = "required_field";
-		document.getElementById("edges").className = "required_field";
-		document.getElementById("interior_options").className = "required_section";
-		document.getElementById("interior_materials").className = "required_field";
-		document.getElementById("lining").className = "required_field";
-		document.getElementById("pocket_options").className = "required_section";
-		document.getElementById("pocket_shape").className = "required_field";
-		document.getElementById("pockets_interior").className = "required_field";
-		
-		// Hide Fields 
-		document.getElementById("pockets").className = "hidden_field";
-		document.getElementById("pockets_same").className = "hidden_field";
-		document.getElementById("pocket_materials").className = "hidden_field";
-		document.getElementById("separate_pockets").className = "hidden_field";
-		document.getElementById("misc").className = "hidden_field";
-		document.getElementById("currency").className = "hidden_field";
-		document.getElementById("notebook_style").className = "hidden_field";
+	for (var i = 0; i < requiredFields.length; i++) {
 
-	} else if(document.getElementById("custom_product_category").value == "ID Wallet"){
+  	document.getElementById(requiredFields[i]).className = "required_field";
 
-		// Show Fields 
-		document.getElementById("custom_options").className = "required_section";
-		document.getElementById("exterior_options").className = "required_section";
-		document.getElementById("exterior_materials").className = "required_field";
-		document.getElementById("corners").className = "required_field";
-		document.getElementById("stitching").className = "required_field";
-		document.getElementById("edges").className = "required_field";
-		document.getElementById("interior_options").className = "required_section";
-		document.getElementById("lining").className = "required_field";
-		document.getElementById("pocket_options").className = "required_section";
-		document.getElementById("pocket_shape").className = "required_field";
-		
-		// Hide Fields 
-		document.getElementById("interior_materials").className = "hidden_field";
-		document.getElementById("pockets").className = "hidden_field";
-		document.getElementById("pockets_interior").className = "hidden_field";
-		document.getElementById("pockets_same").className = "hidden_field";
-		document.getElementById("pocket_materials").className = "hidden_field";
-		document.getElementById("separate_pockets").className = "hidden_field";
-		document.getElementById("misc").className = "hidden_field";
-		document.getElementById("currency").className = "hidden_field";
-		document.getElementById("notebook_style").className = "hidden_field";
+	}
 
-	}	else if(document.getElementById("custom_product_category").value == "Notebook"){
+	for (var i = 0; i < hiddenFields.length; i++) {
 
-		// Show Fields 
-		document.getElementById("custom_options").className = "required_section";
-		document.getElementById("exterior_options").className = "required_section";
-		document.getElementById("exterior_materials").className = "required_field";
-		document.getElementById("corners").className = "required_field";
-		document.getElementById("stitching").className = "required_field";
-		document.getElementById("edges").className = "required_field";
-		document.getElementById("interior_options").className = "required_section";
-		document.getElementById("interior_materials").className = "required_field";
-		document.getElementById("lining").className = "required_field";
-		document.getElementById("misc").className = "required_section";
-		document.getElementById("notebook_style").className = "required_field";
-		
-		// Hide Fields 
-		document.getElementById("pocket_options").className = "hidden_field";
-		document.getElementById("pocket_shape").className = "hidden_field";
-		document.getElementById("pockets").className = "hidden_field";
-		document.getElementById("pockets_interior").className = "hidden_field";
-		document.getElementById("pockets_same").className = "hidden_field";
-		document.getElementById("pocket_materials").className = "hidden_field";
-		document.getElementById("separate_pockets").className = "hidden_field";
-		document.getElementById("currency").className = "hidden_field";
+  	document.getElementById(hiddenFields[i]).className = "hidden_field";
 
 	}
 }
