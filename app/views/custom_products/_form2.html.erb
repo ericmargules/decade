@@ -24,10 +24,6 @@
     <%= f.select :category, ["Billfold", "Card Wallet", "ID Wallet", "Notebook"], options={ :include_blank => true } %>
   </div>
 
-  <div class="field">
-    <%= f.label :price %>[render price here]<br>
-  </div>
-
   <div class="hidden_field">
     <%= f.text_field :user_id, :value => @user_id %>
   </div>
@@ -38,6 +34,11 @@
   
   <div id="custom_options">
 
+    <div class="field">
+      <%= f.label :price %>
+      <div id="product_price">[render price here]</div>
+    </div>
+    
     <div id="exterior_options">
       <p>Exterior</p>
 

@@ -72,7 +72,27 @@ function setName() {
 function setPrice() {
 
 	var productPrice = document.getElementById("custom_product_price");
-	productPrice.value = 500;
+	switch(document.getElementById("custom_product_category").value){
+		case "Billfold":
+			productPrice.value = 200;
+			document.forms.custom_product["pockets"].value == "6" ? productPrice.value = Number(productPrice.value) + 50 : productPrice.value;
+			document.forms.custom_product["currency"].value != "US Dollars" ? productPrice.value = Number(	productPrice.value) + 20 : productPrice.value;
+			!document.forms.custom_product["pockets_interior"].checked ? productPrice.value = Number(	productPrice.value) + 20 : productPrice.value;
+
+			break;
+		case "Card Wallet":
+			productPrice.value = 150;
+			break;
+		case "ID Wallet":
+			productPrice.value = 80;
+			break;
+		case "Notebook":
+			productPrice.value = 120;
+			break;
+	}
+
+
+	document.getElementById("product_price").innerHTML = "$" + String(productPrice.value);
 
 }
 
@@ -100,6 +120,26 @@ function validateForm() {
   	buildOptions(reqs);
   }
 }
+
+function maintenance() {
+
+	// Check Same As Interior Status
+	sameAsInterior();
+
+	// Check All Pockets Same Status
+	checkAllPockets();
+
+	// Check How Many Pockets
+	checkPockets();
+
+	// Set Price
+	setPrice();
+
+	// Build Product Image
+	buildImage();
+}
+
+// Initial Form Building Functions
 
 function buildForm() {
 
@@ -173,6 +213,7 @@ function setDefaultValues() {
 	});
 }
 
+// Image Building Functions
 
 function createImage(src) {
 
@@ -218,42 +259,21 @@ function layerImage(element) {
 function buildImage() {
 
 	if(document.forms.custom_product.view.value == "exterior") { 
-
 		$('#exterior_options .required_field').each(function() {
-
 			if (document.forms.custom_product[this.id].value != "") {
 				layerImage(this.id);
 			}
-
 		});
-
 	} else {
-
-		$('#exterior_options .required_field').each(function() {
-
+		$('#interior_options .required_field').each(function() {
 			if (document.forms.custom_product[this.id].value != "") {
 				layerImage(this.id);
 			}
-
 		});
-
 	}
 }
 
-function maintenance() {
-
-	// Check Same As Interior Status
-	sameAsInterior();
-
-	// Check All Pockets Same Status
-	checkAllPockets();
-
-	// Check How Many Pockets
-	checkPockets();
-
-	// Build Product Image
-	buildImage();
-}
+// Kick Things Off
 
 $(document).ready(function(){
 
@@ -270,11 +290,16 @@ $(document).ready(function(){
 		$("div").removeClass("error_highlight");
 		buildForm();
 		setDefaultValues();
-		buildImage();
+		maintenance();
 	};
 
 	// Watch Input	
-	$("input").on("change", maintenance);
+	document.forms.custom_product.onchange = function () {
+
+		maintenance();
+
+	}
+	//$("input").on("change", maintenance);
 	$("input").on("change", removeHighlight);
 
 	// Watch Submit
