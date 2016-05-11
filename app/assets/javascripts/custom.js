@@ -195,31 +195,29 @@ function createPath(element) {
 
 		source += (String(document.forms.custom_product.corners.value) + "/" + String(element) + "/" + String(document.forms.custom_product[element].value) + ".png");
 	}
-
-	//console.log(source);
 	return source;
-
 }
 
-function buildCanvas(){
-
-	var canvas = document.getElementById("custom_canvas");
-	var ctx = canvas.getContext("2d");
-	
-	// Add closure to return ctx
+function processId(element) {
+ var id = String(element) + "_view";
+ if (document.getElementById(id) != null) {
+ 	document.getElementById(id).remove();
+ }
+ return id
 }
+
 
 function layerImage(element) {
 	var path = createPath(element);
 	var img = createImage(path);
-	// call buildCanvas to access ctx
-	ctx.drawImage(img, 0, 0);
+	img.id = processId(element);
+	document.getElementById("product_view").appendChild(img);
 }
 
 
 function buildImage() {
 
-	if(document.forms.custom_product.view.value = "exterior") { 
+	if(document.forms.custom_product.view.value == "exterior") { 
 
 		$('#exterior_options .required_field').each(function() {
 

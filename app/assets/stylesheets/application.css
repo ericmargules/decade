@@ -79,7 +79,7 @@
 
 }
 
-#custom_canvas {
+#product_view {
 
 }
 
@@ -93,4 +93,24 @@
 
 	display: block;
 
+}
+
+#corners_view {
+	position: absolute;
+	z-index: 10;
+}
+
+#exterior_materials_view {
+	position: absolute;
+	z-index: 11;
+}
+
+#stitching_view {
+	position: absolute;
+	z-index: 12;
+}
+
+#edges_view {
+	position: absolute;
+	z-index: 13;
 }
