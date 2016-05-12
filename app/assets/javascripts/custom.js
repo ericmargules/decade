@@ -277,6 +277,12 @@ function buildImage() {
 
 $(document).ready(function(){
 
+	// Hide JS Notice
+	document.getElementById("js_notice").className = "hidden_field";
+
+	// Show Page Content
+	document.getElementById("custom_product_content").style.display = "block";
+	
 	// Hide Full Form
 	document.getElementById("custom_options").className = "hidden_field";
 	

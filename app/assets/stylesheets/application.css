@@ -66,6 +66,11 @@
 	text-transform: uppercase;
 
 }
+#custom_product_content {
+
+	display: none;
+
+}
 
 .error_highlight {
 
@@ -114,3 +119,4 @@
 	position: absolute;
 	z-index: 13;
 }
+
