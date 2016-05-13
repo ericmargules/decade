@@ -78,10 +78,10 @@ function setPrice() {
 			document.forms.custom_product["pockets"].value == "6" ? productPrice.value = Number(productPrice.value) + 50 : productPrice.value;
 			document.forms.custom_product["currency"].value != "US Dollars" ? productPrice.value = Number(	productPrice.value) + 20 : productPrice.value;
 			!document.forms.custom_product["pockets_interior"].checked ? productPrice.value = Number(	productPrice.value) + 20 : productPrice.value;
-
 			break;
 		case "Card Wallet":
 			productPrice.value = 150;
+			!document.forms.custom_product["pockets_interior"].checked ? productPrice.value = Number(	productPrice.value) + 20 : productPrice.value;
 			break;
 		case "ID Wallet":
 			productPrice.value = 80;
@@ -91,9 +91,15 @@ function setPrice() {
 			break;
 	}
 
-
 	document.getElementById("product_price").innerHTML = "$" + String(productPrice.value);
+}
 
+function setLabels() {
+	$("span").each(function(){
+
+		this.innerHTML = String(document.forms.custom_product[this.parentNode.id].value);
+
+	});
 }
 
 function validateForm() {
@@ -134,6 +140,9 @@ function maintenance() {
 
 	// Set Price
 	setPrice();
+
+	// Set Labels
+	setLabels();
 
 	// Build Product Image
 	buildImage();
@@ -282,14 +291,13 @@ $(document).ready(function(){
 
 	// Show Page Content
 	document.getElementById("custom_product_content").style.display = "block";
-	
+
 	// Hide Full Form
 	document.getElementById("custom_options").className = "hidden_field";
 	
 	// Watch Category
 	document.getElementById("custom_product_category").onchange = function() {
 		
-		// Reset Form
 		var style = document.getElementById("custom_product_category").value;
 		document.forms.new_custom_product.reset();
 		document.getElementById("custom_product_category").value = style;
@@ -301,10 +309,9 @@ $(document).ready(function(){
 
 	// Watch Input	
 	document.forms.custom_product.onchange = function () {
-
 		maintenance();
-
 	}
+
 	//$("input").on("change", maintenance);
 	$("input").on("change", removeHighlight);
 

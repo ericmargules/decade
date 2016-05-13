@@ -36,7 +36,7 @@
 
     <div class="field">
       <%= f.label :price %>
-      <div id="product_price">[render price here]</div>
+      <div id="product_price"></div>
     </div>
     
     <div id="exterior_options">
@@ -44,6 +44,7 @@
 
       <div id="exterior_materials">
         <%= label_tag :exterior %><br>
+        <span id="exterior_materials_label"></span><br>
         <%= radio_button_tag "exterior_materials", "material1" %>
         <%= radio_button_tag "exterior_materials", "material2" %>
         <%= radio_button_tag "exterior_materials", "material3" %>
@@ -51,6 +52,7 @@
 
       <div id="corners">
         <%= label_tag :corners %><br>
+        <span id="corners_label"></span><br>
         <%= radio_button_tag "corners", "square" %>
         <%= radio_button_tag "corners", "rounded" %>
         <%= radio_button_tag "corners", "round" %>
@@ -58,6 +60,7 @@
 
       <div id="stitching">
         <%= label_tag :stitching %><br>
+        <span id="stitching_label"></span><br>
         <%= radio_button_tag "stitching", "material1" %>
         <%= radio_button_tag "stitching", "material2" %>
         <%= radio_button_tag "stitching", "material3" %>
@@ -65,6 +68,7 @@
 
       <div id="edges">
         <%= label_tag :edges %><br>
+        <span id="edges_label"></span><br>
         <%= radio_button_tag "edges", "material1" %>
         <%= radio_button_tag "edges", "material2" %>
         <%= radio_button_tag "edges", "material3" %>
@@ -78,6 +82,7 @@
    
       <div id="interior_materials">
         <%= label_tag :interior %><br>
+        <span id="interior_materials_label"></span><br>
         <%= radio_button_tag "interior_materials", "material1" %>
         <%= radio_button_tag "interior_materials", "material2" %>
         <%= radio_button_tag "interior_materials", "material3" %>
@@ -85,6 +90,7 @@
 
       <div id="lining">
         <%= label_tag :lining %><br>
+        <span id="lining_label"></span><br>
         <%= radio_button_tag "lining", "material1" %>
         <%= radio_button_tag "lining", "material2" %>
         <%= radio_button_tag "lining", "material3" %>
@@ -97,12 +103,14 @@
 
       <div id="pockets">
         <%= label_tag :pockets %><br>
+        <span id="pockets_label"></span><br>
         <%= radio_button_tag "pockets", "4" %>
         <%= radio_button_tag "pockets", "6" %>
       </div>
 
       <div id="pocket_shape">
         <%= label_tag :pocket_shape %><br>
+        <span id="pocket_shape_label"></span><br>
         <%= radio_button_tag "pocket_shape", "straight" %>
         <%= radio_button_tag "pocket_shape", "curved"%>
         <%= radio_button_tag "pocket_shape", "notched"%>
@@ -115,6 +123,7 @@
 
       <div id="pocket_materials">
         <%= label_tag :pocket_materials %><br>
+        <span id="pocket_materials_label"></span><br>
         <%= radio_button_tag "pocket_materials", "material1" %>
         <%= radio_button_tag "pocket_materials", "material2" %>
         <%= radio_button_tag "pocket_materials", "material3" %>
@@ -128,6 +137,7 @@
       <div id="separate_pockets">
         <div id="pocket_l1">
           <%= label_tag :pocket_l1 %><br>
+          <span id="pocket_l1_label"></span><br>
           <%= radio_button_tag "pocket_l1", "material1" %>
           <%= radio_button_tag "pocket_l1", "material2" %>
           <%= radio_button_tag "pocket_l1", "material3" %>
@@ -135,6 +145,7 @@
 
         <div id="pocket_l2">
           <%= label_tag :pocket_l2 %><br>
+          <span id="pocket_l2_label"></span><br>
           <%= radio_button_tag "pocket_l2", "material1" %>
           <%= radio_button_tag "pocket_l2", "material2" %>
           <%= radio_button_tag "pocket_l2", "material3" %>
@@ -142,6 +153,7 @@
 
         <div id="pocket_lb">
           <%= label_tag :pocket_lb %><br>
+          <span id="pocket_lb_label"></span><br>
           <%= radio_button_tag "pocket_lb", "material1" %>
           <%= radio_button_tag "pocket_lb", "material2" %>
           <%= radio_button_tag "pocket_lb", "material3" %>
@@ -149,6 +161,7 @@
 
         <div id="pocket_r1">
           <%= label_tag :pocket_r1 %><br>
+          <span id="pocket_r1_label"></span><br>
           <%= radio_button_tag "pocket_r1", "material1" %>
           <%= radio_button_tag "pocket_r1", "material2" %>
           <%= radio_button_tag "pocket_r1", "material3" %>
@@ -156,6 +169,7 @@
 
         <div id="pocket_r2">
           <%= label_tag :pocket_r2 %><br>
+          <span id="pocket_r2_label"></span><br>
           <%= radio_button_tag "pocket_r2", "material1" %>
           <%= radio_button_tag "pocket_r2", "material2" %>
           <%= radio_button_tag "pocket_r2", "material3" %>
@@ -163,6 +177,7 @@
 
         <div id="pocket_rb">
           <%= label_tag :pocket_rb %><br>
+          <span id="pocket_rb_label"></span><br>
           <%= radio_button_tag "pocket_rb", "material1" %>
           <%= radio_button_tag "pocket_rb", "material2" %>
           <%= radio_button_tag "pocket_rb", "material3" %>
@@ -175,6 +190,7 @@
       
       <div id="notebook_style">
         <%= label_tag :notebook_style %><br>
+        <span id="notebook_style_label"></span><br>
         <%= radio_button_tag "notebook_style", "blank" %>Blank 
         <%= radio_button_tag "notebook_style", "ruled" %>Ruled 
         <%= radio_button_tag "notebook_style", "grid" %>Grid 

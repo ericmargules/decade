@@ -120,3 +120,8 @@
 	z-index: 13;
 }
 
+span {
+
+	text-transform: capitalize;
+
+}
