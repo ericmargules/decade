@@ -324,6 +324,8 @@ $(document).ready(function(){
 	}
 
 	$("input").on("change", removeHighlight);
+	
+	//Swatch Hover
 	$("input[type=radio]").on("mouseenter", function(){
 		var span = this.parentNode.getElementsByTagName("span")[0]
 		span.innerHTML = String(this.value);
