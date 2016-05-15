@@ -94,6 +94,17 @@ function setPrice() {
 	document.getElementById("product_price").innerHTML = "$" + String(productPrice.value);
 }
 
+
+function showOption(el) {
+
+	$("span").each(function(){
+
+		innerHTML = String(el.value);
+
+	});
+
+}
+
 function setLabels() {
 	$("span").each(function(){
 
@@ -312,8 +323,12 @@ $(document).ready(function(){
 		maintenance();
 	}
 
-	//$("input").on("change", maintenance);
 	$("input").on("change", removeHighlight);
+	$("input[type=radio]").on("mouseenter", function(){
+		var span = this.parentNode.getElementsByTagName("span")[0]
+		span.innerHTML = String(this.value);
+	});
+	$("input[type=radio]").on("mouseleave", setLabels);
 
 	// Watch Submit
 	document.forms.custom_product.commit.onclick = function() {
