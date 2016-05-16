@@ -69,6 +69,17 @@ function setName() {
 
 }
 
+function upCharge(){
+
+	var re1 = /cordovan/;
+	var re2 = /shark/;
+	var charge = 0;
+	re1.test(document.forms.custom_product["exterior_materials"].value) ? charge = 100 : charge;
+	re2.test(document.forms.custom_product["exterior_materials"].value) ? charge = 50 : charge;
+	return charge;
+
+}
+
 function setPrice() {
 
 	var productPrice = document.getElementById("custom_product_price");
@@ -76,18 +87,22 @@ function setPrice() {
 		case "Billfold":
 			productPrice.value = 200;
 			document.forms.custom_product["pockets"].value == "6" ? productPrice.value = Number(productPrice.value) + 50 : productPrice.value;
-			document.forms.custom_product["currency"].value != "US Dollars" ? productPrice.value = Number(	productPrice.value) + 20 : productPrice.value;
+			document.forms.custom_product["currency"].value != "US Dollars" ? productPrice.value = Number(productPrice.value) + 20 : productPrice.value;
 			!document.forms.custom_product["pockets_interior"].checked ? productPrice.value = Number(	productPrice.value) + 20 : productPrice.value;
+			productPrice.value = Number(productPrice.value) + upCharge();
 			break;
 		case "Card Wallet":
 			productPrice.value = 150;
-			!document.forms.custom_product["pockets_interior"].checked ? productPrice.value = Number(	productPrice.value) + 20 : productPrice.value;
+			!document.forms.custom_product["pockets_interior"].checked ? productPrice.value = Number(productPrice.value) + 20 : productPrice.value;
+			productPrice.value = Number(productPrice.value) + upCharge();
 			break;
 		case "ID Wallet":
 			productPrice.value = 80;
+			productPrice.value = Number(productPrice.value) + upCharge();
 			break;
 		case "Notebook":
 			productPrice.value = 120;
+			productPrice.value = Number(productPrice.value) + upCharge();
 			break;
 	}
 
