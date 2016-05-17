@@ -102,7 +102,7 @@ function setPrice() {
 			break;
 		case "Notebook":
 			productPrice.value = 120;
-			productPrice.value = Number(productPrice.value) + upCharge();
+			productPrice.value = Number(productPrice.value) + upCharge() * 1.5;
 			break;
 	}
 

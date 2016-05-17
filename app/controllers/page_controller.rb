@@ -7,4 +7,7 @@ class PageController < ApplicationController
 
   def about
   end
+
+  def policies
+  end
 end
