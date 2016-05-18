@@ -10,4 +10,9 @@ class PageController < ApplicationController
 
   def policies
   end
+
+  def catalog
+  	    @products = Product.all
+  end
+
 end
