@@ -113,18 +113,16 @@ function setPrice() {
 function showOption(el) {
 
 	$("span").each(function(){
-
 		innerHTML = String(el.value);
-
 	});
 
 }
 
 function setLabels() {
 	$("span").each(function(){
-
-		this.innerHTML = String(document.forms.custom_product[this.parentNode.id].value);
-
+		if (this.id != "currency_notice") {
+			this.innerHTML = String(document.forms.custom_product[this.parentNode.id].value);
+		}
 	});
 }
 
@@ -334,12 +332,17 @@ $(document).ready(function(){
 	};
 
 	// Watch Input	
-	document.forms.custom_product.onchange = function () {
+	document.forms.custom_product.onchange = function() {
 		maintenance();
 	}
 
 	$("input").on("change", removeHighlight);
 	
+	//Currency Notice
+	document.forms.custom_product["currency"].onchange = function() {
+		document.forms.custom_product["currency"].value != "US Dollars" ? document.getElementById("currency_notice").style.display = "block" : document.getElementById("currency_notice").style.display = "none";
+	}
+
 	//Swatch Hover
 	$("input[type=radio]").on("mouseenter", function(){
 		var span = this.parentNode.getElementsByTagName("span")[0]
