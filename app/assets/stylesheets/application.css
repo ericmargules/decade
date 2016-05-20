@@ -138,6 +138,7 @@
 #style_nav {
 
 	float: left;
+	width:	25%;
 
 }
 
@@ -148,8 +149,15 @@
 
 }
 
-footer {
+.footer {
 
 	width: 100%;
+
+}
+
+#product_list {
+
+	float: left;
+	width: 75%;
 
 }
