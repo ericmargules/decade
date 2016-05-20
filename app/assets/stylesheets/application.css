@@ -134,3 +134,22 @@
 	display: none;
 
 }
+
+#style_nav {
+
+	float: left;
+
+}
+
+
+#style_nav ul {
+
+	list-style: none;
+
+}
+
+footer {
+
+	width: 100%;
+
+}
