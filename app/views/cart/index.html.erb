@@ -31,4 +31,5 @@
 	<p>Your cart is empty</p>
 <% else %>
 	<p>Total: <%= number_to_currency(total, :unit => '$') %></p>
+	<%= link_to "Checkout" %>
 <% end %>
