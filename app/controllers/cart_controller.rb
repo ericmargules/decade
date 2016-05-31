@@ -1,5 +1,7 @@
 class CartController < ApplicationController
   
+  before_action :cleanup_cart, only: [:index]
+
   def add
   	id = params[:id]
   	if session[:cart]
@@ -36,6 +38,17 @@ class CartController < ApplicationController
   	else
   		@cart = {}
   	end
+  end
+
+  def cleanup_cart
+    if session[:cart]
+      session[:cart].each do |id, quantity|
+        if !Product.find_by_id(id) && !CustomProduct.find_by_id(id) 
+          session[:cart].delete(id) 
+          next 
+        end
+      end
+    end
   end
 
 end
