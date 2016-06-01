@@ -17,7 +17,6 @@
 
 	<li>
 		<%= link_to product.name, product %>
-		<p> <%= product %> </p>
 		<p>Quantity: <%= quantity %></p>
 		<p>Price: <%= number_to_currency(product.price, :unit => '$') %></p>
 		<a href="/cart/<%= product.id %>/remove">Remove from cart</a>

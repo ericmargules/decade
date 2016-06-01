@@ -45,7 +45,6 @@ class CartController < ApplicationController
       session[:cart].each do |id, quantity|
         if !Product.find_by_id(id) && !CustomProduct.find_by_id(id) 
           session[:cart].delete(id) 
-          next 
         end
       end
     end

@@ -1,5 +1,9 @@
 <nav id="session">
-	<%= link_to "Cart", cart_path %>
+	<% if session[:cart] %>
+		<%= link_to "Cart (#{session[:cart].keys.length})", cart_path %>
+	<% else %>
+		<%= link_to "Cart (0)", cart_path %>
+	<% end %>
 	<% if user_signed_in? %>
 		<%= link_to "Log out", destroy_user_session_path, method: :delete %>
 	<% else %>
