@@ -19,6 +19,10 @@
     <%= f.text_field :price %>
   </div>
 
+  <div class="hidden_field">
+    <%= f.hidden_field :stock, value: 1, min: 0 %>
+  </div>
+
   <div class="field">
     <%= f.label :style %><br>
     <%= f.select :category, ["Billfold", "Card Wallet", "ID Wallet", "Notebook"], options={ :include_blank => true } %>
