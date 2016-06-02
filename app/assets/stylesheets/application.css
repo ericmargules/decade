@@ -153,11 +153,23 @@
 
 	width: 100%;
 	float: left;
+
 }
 
 #product_list {
 
 	float: left;
 	width: 75%;
+
+}
+
+#product_images {
+
+	float: left;
+	width: 50%;
+
+}
+
+#product_info {
 
 }

@@ -1,47 +1,16 @@
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
+<div id="product_images">
+  <%= image_tag(@product.image_url, :alt => @product.name) %>
+</div>
 
-<p>
-  <strong>Short description:</strong>
-  <%= @product.short_description %>
-</p>
-
-<p>
-  <strong>Long description:</strong>
-  <%= @product.long_description %>
-</p>
-
-<p>
-  <strong>Image url:</strong>
-  <%= @product.image_url %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @product.category %>
-</p>
-
-<p>
-  <strong>Dimensions:</strong>
-  <%= @product.dimensions %>
-</p>
-
-<p>
-  <strong>Stock:</strong>
-  <%= @product.stock %>
-</p>
-
-<p>
-  <strong>Tags:</strong>
-  <%= @product.tags %>
-</p>
+<div id="product_info">
+  <h1><%= @product.name %><h1><br>
+  <%= number_to_currency(@product.price, :unit => '$') %>
+  <a href="/cart/<%= @product.id %>">Add to Cart</a><br>
+  <%= @product.short_description %><br>
+  <p>Dimensions: <%= @product.dimensions %></p>
+  <p>Category: <%= @product.category %></p>  
+  <p>Tags: <%= @product.tags %></p>
+</div>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
