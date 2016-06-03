@@ -6,23 +6,23 @@
 
 <% total = 0.0 %>
 
-<% @cart.each do |id, quantity| %>
+<% @cart.each do |id, info| %>
 	
-	<% if Product.find_by_id(id) %>
+	<% if info[1] == "product" %>
 		<% product = Product.find_by_id(id) %>
-	<% else %>
+	<% elsif info[1] == "custom_product" %>
 		<% product = CustomProduct.find_by_id(id) %>
 	<% end %>
 
 
 	<li>
 		<%= link_to product.name, product %>
-		<p>Quantity: <%= quantity %></p>
+		<p>Quantity: <%= info[0] %></p>
 		<p>Price: <%= number_to_currency(product.price, :unit => '$') %></p>
 		<a href="/cart/<%= product.id %>/remove">Remove from cart</a>
 	</li>
 
-	<% total += product.price * quantity %> 
+	<% total += product.price * info[0] %>
 
 <% end %>
 <br>

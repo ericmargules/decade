@@ -36,7 +36,7 @@ class CustomProductsController < ApplicationController
       if @custom_product.save
         # I don't know what the following line of code does.
         # format.json { render :show, status: :created, location: @custom_product }
-        format.html { redirect_to "/cart/#{@custom_product.id}", notice: 'Custom product was successfully created.' }
+        format.html { redirect_to "/cart/#{@custom_product.id}?type=custom_product", notice: 'Custom product was successfully created.' }
 
       else
         format.html { render :new }

@@ -4,7 +4,9 @@ class CartController < ApplicationController
 
   def add
   	id = params[:id]
-  	if session[:cart]
+    type = params[:type]
+  	
+    if session[:cart]
   		cart = session[:cart]
   	else
   		session[:cart] = {}
@@ -12,9 +14,9 @@ class CartController < ApplicationController
   	end
 
   	if cart[id]
-  		cart[id] += 1
+  		cart[id][0] += 1
   	else
-  		cart[id] = 1
+  		cart[id] = [1, type]
   	end
   	redirect_to :action => :index
   end
@@ -33,7 +35,7 @@ class CartController < ApplicationController
   end
 
   def index
-  	if session[:cart]
+    if session[:cart]
   		@cart = session[:cart]
   	else
   		@cart = {}
