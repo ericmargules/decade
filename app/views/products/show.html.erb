@@ -3,7 +3,7 @@
 </div>
 
 <div id="product_info">
-  <h1><%= @product.name %><h1><br>
+  <h1><%= @product.name %></h1><br>
   <%= number_to_currency(@product.price, :unit => '$') %>
   <a href="/cart/<%= @product.id %>?type=product">Add to Cart</a><br>
   <%= @product.short_description %><br>

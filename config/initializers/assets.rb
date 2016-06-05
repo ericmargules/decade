@@ -11,3 +11,7 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 
 Rails.application.config.assets.precompile += %w( public.js )
+Rails.application.config.assets.precompile += %w( home.js )
+Rails.application.config.assets.precompile += %w( owl.carousel.min.css )
+Rails.application.config.assets.precompile += %w( owl.theme.default.min.css )
+Rails.application.config.assets.precompile += %w( owl.carousel.min.js )
