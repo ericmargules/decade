@@ -319,6 +319,9 @@ $(document).ready(function(){
 	// Hide Full Form
 	document.getElementById("custom_options").className = "hidden_field";
 	
+	// Hide Inputs
+	$("input[type=radio]").addClass("radio_swatch");
+
 	// Watch Category
 	document.getElementById("custom_product_category").onchange = function() {
 		

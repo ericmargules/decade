@@ -173,3 +173,19 @@
 #product_info {
 
 }
+
+.label_swatch {
+
+  border: solid 2px #999;
+  width: 17px;
+  height: 17px;
+	display: inline-block;
+
+}
+
+.radio_swatch {
+
+	top: -9999px;
+	position: absolute;
+
+}
