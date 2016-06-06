@@ -321,6 +321,7 @@ $(document).ready(function(){
 	
 	// Hide Inputs
 	$("input[type=radio]").addClass("radio_swatch");
+	$("#corners,#pockets,#pocket_shape").children("input[type=radio]").removeClass("radio_swatch");
 
 	// Watch Category
 	document.getElementById("custom_product_category").onchange = function() {
@@ -347,11 +348,25 @@ $(document).ready(function(){
 	}
 
 	//Swatch Hover
+	$('[class^=label_swatch]').on("mouseenter", function(){
+		var span = this.parentNode.getElementsByTagName("span")[0]
+		span.innerHTML = String($(this).attr("alt"));
+	});
+	$('[class^=label_swatch]').on("mouseleave", setLabels);
+
+	//Radio Hover
 	$("input[type=radio]").on("mouseenter", function(){
 		var span = this.parentNode.getElementsByTagName("span")[0]
 		span.innerHTML = String(this.value);
 	});
 	$("input[type=radio]").on("mouseleave", setLabels);
+
+	//Watch Swatches
+
+	$('[class^=label_swatch]').click(function() {
+ 		$( this.parentNode ).children( 'label' ).removeClass("clicked");
+ 		$( this ).addClass( "clicked" );
+	});
 
 	// Watch Submit
 	document.forms.custom_product.commit.onclick = function() {
