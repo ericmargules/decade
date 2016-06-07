@@ -321,7 +321,7 @@ $(document).ready(function(){
 	
 	// Hide Inputs
 	$("input[type=radio]").addClass("radio_swatch");
-	$("#corners,#pockets,#pocket_shape").children("input[type=radio]").removeClass("radio_swatch");
+	$("#corners,#pockets,#pocket_shape,#view_choice").children("input[type=radio]").removeClass("radio_swatch");
 
 	// Watch Category
 	document.getElementById("custom_product_category").onchange = function() {
@@ -371,4 +371,16 @@ $(document).ready(function(){
 	document.forms.custom_product.commit.onclick = function() {
 		return validateForm();
 	};
+
+	// Stay Out of My Code!
+	// $(document).bind("contextmenu",function(e) {
+ // 		e.preventDefault();
+	// });
+
+	// $(document).keydown(function(e){
+ //    if(e.which === 123){
+ //       return false;
+ //    }
+	// });
+
 });
