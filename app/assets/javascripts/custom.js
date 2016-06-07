@@ -362,11 +362,9 @@ $(document).ready(function(){
 	$("input[type=radio]").on("mouseleave", setLabels);
 
 	//Watch Swatches
-
 	$('[class^=label_swatch]').click(function(e) {
  		$( this.parentNode ).children( 'label' ).removeClass("clicked");
  		$( this ).addClass( "clicked" );
- 		 e.preventDefault();
 	});
 
 	// Watch Submit

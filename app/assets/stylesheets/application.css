@@ -191,7 +191,6 @@
 
 .radio_swatch {
 
-	top: -9999px;
-	position: absolute;
+	display: none;
 
 }
