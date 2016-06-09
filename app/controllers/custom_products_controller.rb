@@ -16,7 +16,12 @@ class CustomProductsController < ApplicationController
 
   # GET /custom_products/new
   def new
-    @category = params[:category]
+    if params[:category] == "Billfold" || params[:category] == "Card Wallet" || params[:category] == "ID Wallet" || params[:category] == "Notebook"
+      @category = params[:category]
+    else
+      redirect_to :controller => :page, :action => :custom
+    end
+
     current_user ? @user_id = current_user.id : @user_id = "Guest"
     @custom_product = CustomProduct.new
   
