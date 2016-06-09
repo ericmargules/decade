@@ -1,11 +1,3 @@
-function removeHighlight() {
-
-	if (this.value != "" && this.parentNode.className == "error_highlight") {
-		$(this.parentNode).removeClass("error_highlight");
-		$(this.parentNode).addClass("required_field");
-	}
-}
-
 function sameAsInterior() {
 
 	if (document.forms.custom_product["pockets_interior"].checked) {
@@ -19,35 +11,32 @@ function sameAsInterior() {
 	}
 }
 
-function toggleError(divId) {
-
-	document.getElementById(divId).className == "error_highlight" ? document.getElementById(divId).className = "error_highlight" : document.getElementById(divId).className = "required_field";
-
-}
-
 function checkAllPockets() {
+
+	var allPockets = ["pocket_r1", "pocket_r2", "pocket_l1", "pocket_l2"];
 
 	if (document.forms.custom_product["pockets_same"].checked) {
 		document.getElementById("separate_pockets").className = "hidden_field";
-		document.getElementById("pocket_r1").className = "hidden_field";
-		document.getElementById("pocket_r2").className = "hidden_field";
-		document.getElementById("pocket_l1").className = "hidden_field";
-		document.getElementById("pocket_l2").className = "hidden_field";
+		
+		for (var i = 0; i < allPockets.length; i++) {
+			document.getElementById(allPockets[i]).className = "hidden_field";
+		}
+
 	} else {
 		document.getElementById("separate_pockets").className = "required_section";
 		document.getElementById("pocket_materials").className = "hidden_field";
-		toggleError("pocket_r1");
-		toggleError("pocket_r2");
-		toggleError("pocket_l1");
-		toggleError("pocket_l2");
+		
+		for (var i = 0; i < allPockets.length; i++) {
+			document.getElementById(allPockets[i]).className = "required_field";
+		};
 	}
 }
 
 function checkPockets() {
 
 	if(document.forms.custom_product["pockets"].value == "6" && !document.forms.custom_product["pockets_same"].checked) {
-		toggleError("pocket_lb");
-		toggleError("pocket_rb");
+		document.getElementById("pocket_lb").className = "required_field";
+		document.getElementById("pocket_rb").className = "required_field";
 	}else {
 		document.getElementById("pocket_lb").className = "hidden_field";
 		document.getElementById("pocket_rb").className = "hidden_field";
@@ -60,13 +49,6 @@ function buildOptions(reqs) {
 	for (var i = 0; i < reqs.length; i++) {
 		productOptions.value = String(productOptions.value + String(reqs[i]) + ": " + document.forms.custom_product[reqs[i]].value + "; "); 
 	}
-}
-
-function setName() {
-
-	var productName = document.getElementById("custom_product_name");
-	productName.value = "Custom " + document.getElementById("custom_product_category").value;
-
 }
 
 function upCharge(){
@@ -126,6 +108,19 @@ function setLabels() {
 	});
 }
 
+function markSwatches(){
+
+	$('.required_field').each(function(){
+
+		$( this ).children( 'label' ).removeClass("selected");
+
+		var forText = (this.id + "_" + document.forms.custom_product[this.id].value.replace(/ /g,"_"));
+
+		$('label[for="'+forText+'"]').addClass( "selected" ); 
+
+	})
+}
+
 function validateForm() {
 
 	var reqs = new Array();
@@ -146,7 +141,6 @@ function validateForm() {
     return false;  
   } else {
   	setPrice();
-  	setName();
   	buildOptions(reqs);
   }
 }
@@ -168,8 +162,12 @@ function maintenance() {
 	// Set Labels
 	setLabels();
 
+	// Mark Selected Swatches
+	markSwatches();
+
 	// Build Product Image
-	buildImage();
+	//buildImage();
+
 }
 
 // Initial Form Building Functions
@@ -220,21 +218,51 @@ function setDefaultValues() {
 
 	switch (document.getElementById("custom_product_category").value) {
 		case "Billfold":
+			document.forms.custom_product.exterior_materials.value = "Black Chromexcel";
 			document.forms.custom_product.corners.value = "rounded";
+			document.forms.custom_product.stitching.value = "Black Linen";
+			document.forms.custom_product.edges.value = "Ebony";
+			document.forms.custom_product.interior_materials.value = "Black Chromexcel";
+			document.forms.custom_product.lining.value = "Black Chromexcel";
 			document.forms.custom_product.pockets.value = "4";
 			document.forms.custom_product.pocket_shape.value = "straight";
+			var allPockets = ["pocket_r1", "pocket_r2", "pocket_l1", "pocket_l2", "pocket_lb", "pocket_rb", "pocket_materials"];
+			for (var i = 0; i < allPockets.length; i++) {
+
+				document.forms.custom_product[allPockets[i]].value = "Black Chromexcel";
+			}
+
 			break;
 		case "Card Wallet":
+			document.forms.custom_product.exterior_materials.value = "Black Chromexcel";
 			document.forms.custom_product.corners.value = "rounded";
+			document.forms.custom_product.stitching.value = "Black Linen";
+			document.forms.custom_product.edges.value = "Ebony";
+			document.forms.custom_product.interior_materials.value = "Black Chromexcel";
+			document.forms.custom_product.lining.value = "Black Chromexcel";
 			document.forms.custom_product.pockets.value = "6";
 			document.forms.custom_product.pocket_shape.value = "straight";
+			var allPockets = ["pocket_r1", "pocket_r2", "pocket_l1", "pocket_l2", "pocket_lb", "pocket_rb", "pocket_materials"];
+			for (var i = 0; i < allPockets.length; i++) {
+
+				document.forms.custom_product[allPockets[i]].value = "Black Chromexcel";
+			}
 			break;
 		case "ID Wallet":
+			document.forms.custom_product.exterior_materials.value = "Black Chromexcel";
 			document.forms.custom_product.corners.value = "rounded";
+			document.forms.custom_product.stitching.value = "Black Linen";
+			document.forms.custom_product.edges.value = "Ebony";
+			document.forms.custom_product.lining.value = "Black Chromexcel";
 			document.forms.custom_product.pocket_shape.value = "notched";
 			break;
 		case "Notebook":
+			document.forms.custom_product.exterior_materials.value = "Black Chromexcel";
 			document.forms.custom_product.corners.value = "rounded";
+			document.forms.custom_product.stitching.value = "Black Linen";
+			document.forms.custom_product.edges.value = "Ebony";
+			document.forms.custom_product.interior_materials.value = "Black Chromexcel";
+			document.forms.custom_product.lining.value = "Black Chromexcel";
 			document.forms.custom_product.notebook_style.value = "ruled";
 			break;
 	}
@@ -307,7 +335,6 @@ function buildImage() {
 }
 
 // Kick Things Off
-
 $(document).ready(function(){
 
 	// Hide JS Notice
@@ -321,26 +348,16 @@ $(document).ready(function(){
 	
 	// Hide Inputs
 	$("input[type=radio]").addClass("radio_swatch");
-	$("#corners,#pockets,#pocket_shape,#view_choice").children("input[type=radio]").removeClass("radio_swatch");
+	$("#corners,#pockets,#pocket_shape,#notebook_style,#view_choice").children("input[type=radio]").removeClass("radio_swatch");
 
-	// Watch Category
-	document.getElementById("custom_product_category").onchange = function() {
-		
-		var style = document.getElementById("custom_product_category").value;
-		document.forms.new_custom_product.reset();
-		document.getElementById("custom_product_category").value = style;
-		$("div").removeClass("error_highlight");
 		buildForm();
 		setDefaultValues();
 		maintenance();
-	};
 
 	// Watch Input	
 	document.forms.custom_product.onchange = function() {
 		maintenance();
 	}
-
-	$("input").on("change", removeHighlight);
 	
 	//Currency Notice
 	document.forms.custom_product["currency"].onchange = function() {
@@ -361,12 +378,6 @@ $(document).ready(function(){
 	});
 	$("input[type=radio]").on("mouseleave", setLabels);
 
-	//Watch Swatches
-	$('[class^=label_swatch]').click(function(e) {
- 		$( this.parentNode ).children( 'label' ).removeClass("clicked");
- 		$( this ).addClass( "clicked" );
-	});
-
 	// Watch Submit
 	document.forms.custom_product.commit.onclick = function() {
 		return validateForm();
@@ -382,5 +393,4 @@ $(document).ready(function(){
  //       return false;
  //    }
 	// });
-
 });

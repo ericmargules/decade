@@ -16,7 +16,7 @@ class CustomProductsController < ApplicationController
 
   # GET /custom_products/new
   def new
-    
+    @category = params[:category]
     current_user ? @user_id = current_user.id : @user_id = "Guest"
     @custom_product = CustomProduct.new
   

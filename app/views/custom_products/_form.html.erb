@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="hidden_field">
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :value => ("Custom " + @category) %>
   </div>
 
   <div class="hidden_field">
@@ -23,9 +23,9 @@
     <%= f.hidden_field :stock, value: 1, min: 0 %>
   </div>
 
-  <div class="field">
+  <div class="hidden_field">
     <%= f.label :style %><br>
-    <%= f.select :category, ["Billfold", "Card Wallet", "ID Wallet", "Notebook"], options={ :include_blank => true } %>
+    <%= f.text_field :category, :value => @category %>
   </div>
 
   <div class="hidden_field">
@@ -47,34 +47,13 @@
       <p>Exterior</p>
 
       <div id="exterior_materials">
+        <% ext_materials = { 'Black Chromexcel' =>  '#000000', 'Marine Chromexcel' => '#006080', 'Oxblood Chromexcel' => '#660000',  'Coffee Chromexcel' => '#4d2800', 'Natural Chromexcel' => '#663500', 'Natural Dublin' => '#663500', 'Natural Essex' => '#ffdd99',  'Black Shell Cordovan' => '#000000', 'Navy Shell Cordovan' => '#000066', 'Rust Shell Cordovan' => '#b37700' , 'Black Shark' => '#333', 'Coffee Shark' => '#4d2800', 'Natural Lizard' => '#fff7e6'  } %>
         <%= label_tag :exterior %><br>
         <span id="exterior_materials_label"></span><br>
-        <%= radio_button_tag "exterior_materials", "black chromexcel" %>
-        <%= label_tag :exterior_materials_black_chromexcel, '', :class => 'label_swatch', :style => 'background-color: #333', :alt => 'Black Chromexcel' %>
-        <%= radio_button_tag "exterior_materials", "marine chromexcel" %>
-        <%= label_tag :exterior_materials_marine_chromexcel, '', :class => 'label_swatch', :style => 'background-color: #006080', :alt => 'Marine Chromexcel' %>
-        <%= radio_button_tag "exterior_materials", "oxblood chromexcel" %>
-        <%= label_tag :exterior_materials_oxblood_chromexcel, '', :class => 'label_swatch', :style => 'background-color: #660000', :alt => 'Oxblood Chromexcel' %>
-        <%= radio_button_tag "exterior_materials", "coffee chromexcel" %>
-        <%= label_tag :exterior_materials_coffee_chromexcel, '', :class => 'label_swatch', :style => 'background-color:  #4d2800', :alt => 'Coffee Chromexcel' %>
-        <%= radio_button_tag "exterior_materials", "natural chromexcel" %>
-        <%= label_tag :exterior_materials_natural_chromexcel, '', :class => 'label_swatch', :style => 'background-color:  #663500', :alt => 'Natural Chromexcel' %>
-        <%= radio_button_tag "exterior_materials", "natural dublin" %>
-        <%= label_tag :exterior_materials_natural_dublin, '', :class => 'label_swatch', :style => 'background-color:  #663500', :alt => 'Natural Dublin' %>        
-        <%= radio_button_tag "exterior_materials", "natural essex" %>
-        <%= label_tag :exterior_materials_natural_essex, '', :class => 'label_swatch', :style => 'background-color:  #ffdd99', :alt => 'Natural Essex' %>
-        <%= radio_button_tag "exterior_materials", "black shell cordovan" %>
-        <%= label_tag :exterior_materials_black_shell_cordovan, '', :class => 'label_swatch', :style => 'background-color: #333', :alt => 'Black Shell Cordovan' %>
-        <%= radio_button_tag "exterior_materials", "navy shell cordovan" %>
-        <%= label_tag :exterior_materials_navy_shell_cordovan, '', :class => 'label_swatch', :style => 'background-color: #000066', :alt => 'Navy Shell Cordovan' %>
-        <%= radio_button_tag "exterior_materials", "rust shell cordovan" %>
-        <%= label_tag :exterior_materials_rust_shell_cordovan, '', :class => 'label_swatch', :style => 'background-color: #b37700', :alt => 'Rust Shell Cordovan' %>        
-        <%= radio_button_tag "exterior_materials", "black shark" %>
-        <%= label_tag :exterior_materials_black_shark, '', :class => 'label_swatch', :style => 'background-color: #333', :alt => 'Black Shark' %>
-        <%= radio_button_tag "exterior_materials", "coffee shark" %>
-        <%= label_tag :exterior_materials_coffee_shark, '', :class => 'label_swatch', :style => 'background-color:  #4d2800', :alt => 'Coffee Shark' %>
-        <%= radio_button_tag "exterior_materials", "natural lizard" %>
-        <%= label_tag :exterior_materials_natural_lizard, '', :class => 'label_swatch', :style => 'background-color:  #fff7e6', :alt => 'Natural Lizard' %>
+        <% ext_materials.each do |material, color| %>
+          <%= radio_button_tag "exterior_materials", material %>
+          <%= label_tag ("exterior_materials_" + material).to_sym, '', :class => 'label_swatch', :style => ('background-color:' + color), :alt => material %>
+        <% end %>
       </div>
 
       <div id="corners">
@@ -86,33 +65,29 @@
       </div>
 
       <div id="stitching">
+        <% stitch_options = { 'Black Linen' => '#000000', 'Brown Linen' => '#660000', 'Natural Linen' => '#fff7e6' } %>
         <%= label_tag :stitching %><br>
         <span id="stitching_label"></span><br>
-        <%= radio_button_tag "stitching", "black" %>
-        <%= label_tag :stitching_black, '', :class => 'label_swatch', :style => 'background-color:  #333', :alt => 'Black' %>
-        <%= radio_button_tag "stitching", "brown" %>
-        <%= label_tag :stitching_brown, '', :class => 'label_swatch', :style => 'background-color:  #660000', :alt => 'Brown' %>
-        <%= radio_button_tag "stitching", "natural" %>
-        <%= label_tag :stitching_natural, '', :class => 'label_swatch', :style => 'background-color:  #fff7e6', :alt => 'Natural' %>
+        <% stitch_options.each do |material, color| %>
+          <%= radio_button_tag "stitching", material %>
+          <%= label_tag ("stitching_" + material).to_sym, '', :class => 'label_swatch', :style => ('background-color:' + color), :alt => material %>
+        <% end %>
       </div>
-
+      
       <div id="edges">
+        <% edge_options = { 'Ebony' => '#333', 'Brown' => '#660000', 'Beige' => '#ecd8c6' } %>
         <%= label_tag :edges %><br>
         <span id="edges_label"></span><br>
-        <%= radio_button_tag "edges", "ebony" %>
-        <%= label_tag :edges_ebony, '', :class => 'label_swatch', :style => 'background-color:  #333', :alt => 'Ebony' %>
-        <%= radio_button_tag "edges", "brown" %>
-        <%= label_tag :edges_brown, '', :class => 'label_swatch', :style => 'background-color:  #660000', :alt => 'Brown' %>
-        <%= radio_button_tag "edges", "beige" %>
-        <%= label_tag :edges_beige, '', :class => 'label_swatch', :style => 'background-color:  #ecd8c6', :alt => 'Beige' %>
-
-      </div>
-    
+        <% edge_options.each do |material, color| %>
+          <%= radio_button_tag "edges", material %>
+          <%= label_tag ("edges_" + material).to_sym, '', :class => 'label_swatch', :style => ('background-color:' + color), :alt => material %>
+        <% end %>
+      </div> 
     </div>
 
     <div id="interior_options">
 
-    <% int_materials = {"black chromexcel" => '#333', "rust chromexcel" => '#e64d00', "natural chromexcel" => '#663500', "coffee sierra" => '#660000', "natural vermont" => '#ffdd99', "grey chevre" => '#8c8c8c', "navy chevre" => '#000066', "azure chevre" => '#0080ff', "maroon chevre" => '#800000', "crimson chevre" => '#ff0000', "lemon chevre" => '#ffff00'} %>
+    <% int_materials = {"Black Chromexcel" => '#333', "Rust Chromexcel" => '#e64d00', "Natural Chromexcel" => '#663500', "Coffee Sierra" => '#660000', "Natural Vermont" => '#ffdd99', "Grey Chevre" => '#8c8c8c', "Navy Chevre" => '#000066', "Azure Chevre" => '#0080ff', "Maroon Chevre" => '#800000', "Crimson Chevre" => '#ff0000', "Lemon Chevre" => '#ffff00'} %>
 
       <p>Interior</p>
    

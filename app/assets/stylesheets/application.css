@@ -123,7 +123,7 @@
 	z-index: 13;
 }
 
-#exterior_options span, #interior_options span, #pocket_options span {
+#custom_product_content span {
 
 	text-transform: capitalize;
 
@@ -176,14 +176,13 @@
 
 .label_swatch {
 
-  border: solid 2px #999;
-  width: 17px;
-  height: 17px;
+  width: 20px;
+  height: 20px;
 	display: inline-block;
 
 }
 
-.label_swatch.clicked {
+.label_swatch.selected {
 
   border: solid 2px #ff0000;
 
