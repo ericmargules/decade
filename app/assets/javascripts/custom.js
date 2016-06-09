@@ -53,8 +53,8 @@ function buildOptions(reqs) {
 
 function upCharge(){
 
-	var re1 = /cordovan/;
-	var re2 = /shark/;
+	var re1 = /Cordovan/;
+	var re2 = /Shark/;
 	var charge = 0;
 	re1.test(document.forms.custom_product["exterior_materials"].value) ? charge = 100 : charge;
 	re2.test(document.forms.custom_product["exterior_materials"].value) ? charge = 50 : charge;
