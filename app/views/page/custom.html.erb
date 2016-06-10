@@ -1,6 +1,17 @@
 <h1>Custom Leather Goods</h1>
 
-<a href="/builder?category=Billfold">Billfold</a><br>
-<a href="/builder?category=Card+Wallet">Card Wallet</a><br>
-<a href="/builder?category=ID+Wallet">ID Wallet</a><br>
-<a href="/builder?category=Notebook">Notebook</a>
+<% custom_products = {"Billfold" => "200", "Card Wallet" => "150", "ID Wallet" => "80", "Notebook" => "120"} %>
+
+<div id="product_list">
+  <% custom_products.each do |product, price| %>
+    <%= link_to builder_path(:category => product) do %>
+    	<div class="product_tile">
+        <%= image_tag(product, :alt => product) %>
+      	<div class="product_info">
+        	<text class="product_title"><%= product %></text><br>
+        	<text class="price">From <%= number_to_currency(price, :unit => '$') %></text><br><br>
+    		</div>
+    	</div>
+    <% end %>
+  <% end %>
+</div>
