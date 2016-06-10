@@ -1,12 +1,11 @@
 <h1>Catalog</h1>
 <div id="style_nav">
   <ul>
-    <li>All</li>
-    <li>Billfolds</li>
-    <li>Card Wallets</li>
-    <li>ID Wallets</li>
-    <li>Zip Wallets</li>
-    <li>Notebooks</li>
+    <li><%= link_to "All", catalog_path %></li>
+    <li><%= link_to "Billfolds", catalog_path(:category => "Billfold") %></li>
+    <li><%= link_to "Card Wallets", catalog_path(:category => "Card Wallet") %></li>
+    <li><%= link_to "ID Wallets", catalog_path(:category => "ID Wallet") %></li>
+    <li><%= link_to "Notebooks", catalog_path(:category => "Notebook") %></li>
   </ul>
 </div>
 <div id="product_list">

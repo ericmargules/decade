@@ -15,7 +15,13 @@ class PageController < ApplicationController
   end
 
   def catalog
-  	    @products = Product.all
+    if params[:category] == "Billfold" || params[:category] == "Card Wallet" || params[:category] == "ID Wallet" || params[:category] == "Notebook"
+      @products = Product.where(:category => params[:category])
+    else
+	    @products = Product.all
+      render :catalog
+    end
+
   end
 
   private
