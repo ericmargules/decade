@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160610034027) do
+ActiveRecord::Schema.define(version: 20160612191840) do
 
   create_table "custom_products", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -30,17 +30,29 @@ ActiveRecord::Schema.define(version: 20160610034027) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.string   "name",              limit: 255
-    t.string   "short_description", limit: 255
-    t.text     "long_description",  limit: 65535
-    t.string   "image_url",         limit: 255
-    t.decimal  "price",                           precision: 10
-    t.string   "category",          limit: 255
-    t.string   "dimensions",        limit: 255
-    t.integer  "stock",             limit: 4
-    t.string   "tags",              limit: 255
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.string   "name",                        limit: 255
+    t.string   "short_description",           limit: 255
+    t.text     "long_description",            limit: 65535
+    t.string   "image_url",                   limit: 255
+    t.decimal  "price",                                     precision: 10
+    t.string   "category",                    limit: 255
+    t.string   "dimensions",                  limit: 255
+    t.integer  "stock",                       limit: 4
+    t.string   "tags",                        limit: 255
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
+    t.string   "main_image_file_name",        limit: 255
+    t.string   "main_image_content_type",     limit: 255
+    t.integer  "main_image_file_size",        limit: 4
+    t.datetime "main_image_updated_at"
+    t.string   "interior_image_file_name",    limit: 255
+    t.string   "interior_image_content_type", limit: 255
+    t.integer  "interior_image_file_size",    limit: 4
+    t.datetime "interior_image_updated_at"
+    t.string   "context_image_file_name",     limit: 255
+    t.string   "context_image_content_type",  limit: 255
+    t.integer  "context_image_file_size",     limit: 4
+    t.datetime "context_image_updated_at"
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+
 gem 'devise', '~> 3.5', '>= 3.5.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
@@ -45,3 +46,4 @@ group :development do
   gem 'spring'
 end
 
+gem "paperclip", "~> 5.0.0.beta1"

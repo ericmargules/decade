@@ -1,9 +1,13 @@
+<div id="breadcrumb">
+	<%= link_to '← Back to Catalog', catalog_path %>
+</div>
 <div id="product_images">
-  <%= image_tag(@product.image_url, :alt => @product.name) %>
+  <%= image_tag(@product.main_image(:medium), :alt => @product.name) %>
 </div>
 
 <div id="product_info">
   <h1><%= @product.name %></h1><br>
+
   <%= number_to_currency(@product.price, :unit => '$') %>
   <a href="/cart/<%= @product.id %>?type=product">Add to Cart</a><br>
   <%= @product.short_description %><br>
@@ -12,5 +16,3 @@
   <p>Tags: <%= @product.tags %></p>
 </div>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
