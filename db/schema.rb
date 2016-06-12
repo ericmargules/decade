@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160612191840) do
+ActiveRecord::Schema.define(version: 20160612195342) do
 
   create_table "custom_products", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 20160612191840) do
     t.string   "name",                        limit: 255
     t.string   "short_description",           limit: 255
     t.text     "long_description",            limit: 65535
-    t.string   "image_url",                   limit: 255
     t.decimal  "price",                                     precision: 10
     t.string   "category",                    limit: 255
     t.string   "dimensions",                  limit: 255
