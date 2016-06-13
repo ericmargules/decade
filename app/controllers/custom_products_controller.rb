@@ -6,7 +6,11 @@ class CustomProductsController < ApplicationController
   # GET /custom_products
   # GET /custom_products.json
   def index
-    @custom_products = CustomProduct.all
+    if current_user.try(:admin?)
+      @custom_products = CustomProduct.all
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /custom_products/1
@@ -29,6 +33,10 @@ class CustomProductsController < ApplicationController
 
   # GET /custom_products/1/edit
   def edit
+    if current_user.try(:admin?)
+    else
+      redirect_to root_path
+    end
   end
 
   # POST /custom_products
@@ -53,25 +61,33 @@ class CustomProductsController < ApplicationController
   # PATCH/PUT /custom_products/1
   # PATCH/PUT /custom_products/1.json
   def update
-    respond_to do |format|
-      if @custom_product.update(custom_product_params)
-        format.html { redirect_to @custom_product, notice: 'Custom product was successfully updated.' }
-        format.json { render :show, status: :ok, location: @custom_product }
-      else
-        format.html { render :edit }
-        format.json { render json: @custom_product.errors, status: :unprocessable_entity }
+    if current_user.try(:admin?)
+      respond_to do |format|
+        if @custom_product.update(custom_product_params)
+          format.html { redirect_to @custom_product, notice: 'Custom product was successfully updated.' }
+          format.json { render :show, status: :ok, location: @custom_product }
+        else
+          format.html { render :edit }
+          format.json { render json: @custom_product.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to root_path
     end
   end
 
   # DELETE /custom_products/1
   # DELETE /custom_products/1.json
   def destroy
-    @custom_product.destroy
-    respond_to do |format|
-      format.html { redirect_to custom_products_url, notice: 'Custom product was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    if current_user.try(:admin?)
+      @custom_product.destroy
+      respond_to do |format|
+        format.html { redirect_to custom_products_url, notice: 'Custom product was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to root_path
+    end 
   end
 
   private
