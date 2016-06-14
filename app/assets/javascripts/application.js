@@ -15,3 +15,5 @@
 //= require_tree .
 //= stub custom
 //= stub home
+//= stub product
+//= stub owl.carousel.min

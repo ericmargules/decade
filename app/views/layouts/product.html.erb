@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Decade</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= stylesheet_link_tag    'owl.carousel.min' %>
+  <%= stylesheet_link_tag    'owl.theme.default.min' %>
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'product' %>
+  <%= javascript_include_tag 'owl.carousel.min' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+	<div id="wrapper">
+	
+		<%= render "layouts/header.html.erb" %>
+
+		<%= yield %>
+
+		<%= render "layouts/footer.html.erb" %>
+	
+	</div>
+
+</body>
+</html>

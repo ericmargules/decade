@@ -2,7 +2,11 @@
 	<%= link_to '← Back to Catalog', catalog_path %>
 </div>
 <div id="product_images">
-  <%= image_tag(@product.main_image(:medium), :alt => @product.name) %>
+  <div class="owl-carousel">
+		<div><%= image_tag(@product.main_image(:medium), :alt => @product.name) %></div>
+		<div><%= image_tag(@product.interior_image(:medium), :alt => @product.name) %></div>
+		<div><%= image_tag(@product.context_image(:medium), :alt => @product.name) %></div>
+	</div>
 </div>
 
 <div id="product_info">
