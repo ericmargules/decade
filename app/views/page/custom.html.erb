@@ -6,7 +6,7 @@
   <% custom_products.each do |product, price| %>
     <%= link_to builder_path(:category => product) do %>
     	<div class="product_tile">
-        <%= image_tag(product, :alt => product) %>
+        <%= image_tag(product, :class => "catalog_image" , :alt => product) %>
       	<div class="product_info">
         	<text class="product_title"><%= product %></text><br>
         	<text class="price">From <%= number_to_currency(price, :unit => '$') %></text><br><br>

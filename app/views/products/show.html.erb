@@ -3,9 +3,9 @@
 </div>
 <div id="product_images">
   <div class="owl-carousel">
-		<div><%= image_tag(@product.main_image(:medium), :alt => @product.name) %><div class="item" data-hash="zero"></div></div>
-		<div><%= image_tag(@product.interior_image(:medium), :alt => @product.name) %><div class="item" data-hash="one"></div></div>
-		<div><%= image_tag(@product.context_image(:medium), :alt => @product.name) %><div class="item" data-hash="two"></div></div>
+		<div><%= image_tag(@product.main_image(:medium), :class => "product_image" , :alt => @product.name) %><div class="item" data-hash="zero"></div></div>
+		<div><%= image_tag(@product.interior_image(:medium), :class => "product_image" , :alt => @product.name) %><div class="item" data-hash="one"></div></div>
+		<div><%= image_tag(@product.context_image(:medium), :class => "product_image" , :alt => @product.name) %><div class="item" data-hash="two"></div></div>
 	</div>
 	<a class="button secondary url" href="#zero">interior</a>
 	<a class="button secondary url" href="#one">exterior</a>

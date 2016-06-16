@@ -13,7 +13,7 @@
     <% if product.stock > 0 %>
       <%= link_to product do %>
         <div class="product_tile">
-          <%= image_tag(product.main_image(:medium), :alt => product.name) %>
+          <%= image_tag(product.main_image(:medium), :class => "catalog_image" , :alt => product.name)%>
           <div class="product_info">
             <text class="product_title"><%= product.name %></text><br>
             <text class="price"><%= number_to_currency(product.price, :unit => '$') %></text>
