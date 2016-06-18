@@ -3,9 +3,9 @@
 </div>
 <div id="product_images">
   <div class="owl-carousel">
-		<div><%= image_tag(@product.main_image(:medium), :class => "product_image" , :alt => @product.name) %><div class="item" data-hash="zero"></div></div>
-		<div><%= image_tag(@product.interior_image(:medium), :class => "product_image" , :alt => @product.name) %><div class="item" data-hash="one"></div></div>
-		<div><%= image_tag(@product.context_image(:medium), :class => "product_image" , :alt => @product.name) %><div class="item" data-hash="two"></div></div>
+		<div><a href="#img1"><%= image_tag(@product.main_image(:medium), :class => "product_image" , :alt => @product.name) %><div class="item" data-hash="zero"></div></div></a>
+		<div><a href="#img2"><%= image_tag(@product.interior_image(:medium), :class => "product_image" , :alt => @product.name) %><div class="item" data-hash="one"></div></div></a>
+		<div><a href="#img3"><%= image_tag(@product.context_image(:medium), :class => "product_image" , :alt => @product.name) %><div class="item" data-hash="two"></div></div></a>
 	</div>
 	<a class="button secondary url" href="#zero">interior</a>
 	<a class="button secondary url" href="#one">exterior</a>
@@ -22,4 +22,14 @@
   <p>Category: <%= @product.category %></p>  
   <p>Tags: <%= @product.tags %></p>
 </div>
+
+<a href="#_" class="lightbox" id="img1">
+	<%= image_tag(@product.main_image(:large), :class => "product_image" , :alt => @product.name) %>
+</a>
+<a href="#_" class="lightbox" id="img2">
+	<%= image_tag(@product.interior_image(:large), :class => "product_image" , :alt => @product.name) %>
+</a>
+<a href="#_" class="lightbox" id="img3">
+	<%= image_tag(@product.context_image(:large), :class => "product_image" , :alt => @product.name) %>
+</a>
 
