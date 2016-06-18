@@ -13,7 +13,9 @@
 
 <nav id="nav">
 	<div id="logo">
-		<%= link_to "Decade", root_path %>
+		<%= link_to root_path do %>
+			<%= image_tag '/assets/site/logotype_small.png', :alt => "Decade", :id => "logo" %>
+		<% end %>
 	</div>
 	<div id="pages_nav">
 		<%= link_to "Catalog", catalog_path %>
