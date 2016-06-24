@@ -6,6 +6,8 @@
 
 <% total = 0.0 %>
 
+<% item_list = "" %>
+
 <% @cart.each do |id, info| %>
 	
 	<% if info[1] == "product" %>
@@ -14,6 +16,7 @@
 		<% product = CustomProduct.find_by_id(id) %>
 	<% end %>
 
+	<% item_list << "#{product.name},#{info[1]} - #{id},#{product.price}.00,#{info[0]}&" %>
 
 	<li>
 		<%= link_to product.name, product %>
@@ -31,5 +34,5 @@
 	<p>Your cart is empty</p>
 <% else %>
 	<p>Total: <%= number_to_currency(total, :unit => '$') %></p>
-	<%= link_to "Checkout" %>
+	<%= link_to "Checkout", orders_path( :amount => (total.to_s << "0"), :item_list => item_list.to_s ), :method => :post %>
 <% end %>

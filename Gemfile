@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'paypal-sdk-rest'
 
 gem 'devise', '~> 3.5', '>= 3.5.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
-  
+
   resources :custom_products
   devise_for :users
   
   resources :products
+
+  resources :orders do
+    get :execute
+    get :cancel
+  end
     
   root 'page#home'
 
