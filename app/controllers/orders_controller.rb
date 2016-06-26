@@ -2,9 +2,11 @@ class OrdersController < ApplicationController
 
   def index
     if current_user.try(:admin?)
-    	@orders = Order.all( :limit => 10, :order => "id DESC" )
+    	@orders = Order.all
+    elsif user_signed_in?
+	    	@orders = Order.where(user: current_user.id)
     else
-      redirect_to root_path
+      	redirect_to root_path
     end
   end
 
@@ -14,9 +16,10 @@ class OrdersController < ApplicationController
     @order.cancel_url = order_cancel_url(":order_id")
     user_signed_in? ? @order.user = current_user.id.to_s : @order.user = "guest"
     @order.payment_method = "paypal"
+    @order.session_id = session.id
     if user_signed_in? 
     	username = User.find(@order.user)
-    	@order.description = "#{user.username}'s Order"
+    	@order.description = "#{username.username}'s Order"
     else
     	@order.description = "Guest's Order"
     end
@@ -50,7 +53,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    if current_user.try(:admin?)
+    if Order.find(params[:id]).user
 	    @order = Order.find(params[:id])
     else
       redirect_to root_path
@@ -60,7 +63,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-  	params.permit(:amount, :description, :state, :item_list, :payment_method, :return_url, :cancel_url, :payment_id, :user)
+  	params.permit(:amount, :description, :state, :item_list, :payment_method, :return_url, :cancel_url, :payment_id, :user, :session_id)
   end
 
 end
