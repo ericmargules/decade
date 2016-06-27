@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20160626224337) do
     t.text     "item_list",      limit: 65535
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
-    t.integer  "session_id",     limit: 4
+    t.string   "session_id",     limit: 255
   end
 
   create_table "products", force: :cascade do |t|
