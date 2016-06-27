@@ -53,11 +53,17 @@ class OrdersController < ApplicationController
   end
 
   def show
-    if Order.find(params[:id]).user
-	    @order = Order.find(params[:id])
-    else
-      redirect_to root_path
-    end  
+    if params[:id] != "show"
+	    if user_signed_in? && Order.find(params[:id]).user == current_user.id
+		    @order = Order.find(params[:id])
+	    elsif Order.find(params[:id]).session_id == session.id
+	    	@order = Order.find(params[:id])
+	    else
+	      redirect_to root_path
+	    end  
+	  else
+	      redirect_to root_path
+    end
   end
 
   private
