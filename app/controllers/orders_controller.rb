@@ -45,15 +45,14 @@ class OrdersController < ApplicationController
 
   def update
     if current_user.try(:admin?)
-      respond_to do |format|
-        if @order.update(order_params)
-          format.html { redirect_to @order, notice: 'Order was successfully updated.' }
-          format.json { render :show, status: :ok, location: @order }
-        else
-          format.html { render :edit }
-          format.json { render json: @order.errors, status: :unprocessable_entity }
-        end
+   		@order = Order.find(params[:id])    
+      # respond_to do |format|
+      if @order.update(edit_order_params)
+      	redirect_to @order, notice: 'Order was successfully updated.'
+      else
+      	render :edit
       end
+      # end
     else
       redirect_to root_path
     end
@@ -96,5 +95,8 @@ class OrdersController < ApplicationController
   def order_params
   	params.permit(:amount, :description, :state, :item_list, :payment_method, :return_url, :cancel_url, :payment_id, :user, :session_id, :shipped, :tracking)
   end
-
+  
+  def edit_order_params
+  	params.require(:order).permit(:amount, :description, :state, :item_list, :payment_method, :return_url, :cancel_url, :payment_id, :user, :session_id, :shipped, :tracking)
+  end
 end

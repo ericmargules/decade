@@ -6,8 +6,8 @@
 
 <% elsif @order.shipped == true %>
 
-	<text>Your order has been shipped.</text>
-	<text>Tracking Number: <%= @order.tracking_info %></text>
+	<text>Your order has been shipped.</text><br>
+	<text>Tracking Number: <%= @order.tracking %></text>
 
 <% end %>
 
@@ -26,4 +26,8 @@
 <% list.each do |item_hash| %>
 	<text><%= item_hash[:name] %> x <%= item_hash[:quantity] %>...<%= item_hash[:price] %></text><br>
 <% end %>
-<text>Total: <%= @order.amount %>
+<text>Total: <%= @order.amount %></text><br>
+
+<% if current_user.try(:admin?) %>
+  <%= link_to 'Edit', edit_order_path(@order) %>
+<% end %>
