@@ -1,7 +1,8 @@
 <h2>Orders</h2>
-<%= session.id %>
 <% if @orders.length >= 1 %>
+	<% @orders.each do |order| %>
 
+	<% end %>
 <% else %>
 	<p>You have no orders.</p>
 <% end %>

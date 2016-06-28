@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
     @order.cancel_url = order_cancel_url(":order_id")
     user_signed_in? ? @order.user = current_user.id.to_s : @order.user = "guest"
     @order.payment_method = "paypal"
+    @order.shipped = false
     @order.session_id = session.id
     if user_signed_in? 
     	username = User.find(@order.user)
