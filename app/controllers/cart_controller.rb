@@ -14,7 +14,12 @@ class CartController < ApplicationController
   	end
 
   	if cart[id]
-  		cart[id][0] += 1
+  		if type == "product"
+        Product.find(id).stock >= (cart[id][0] + 1) ? cart[id][0] += 1 : cart[id][0]
+      elsif type == "custom_product"
+        CustomProduct.find(id).stock >= (cart[id][0] + 1) ? cart[id][0] += 1 : cart[id][0]
+      end
+      # cart[id][0] += 1
   	else
   		cart[id] = [1, type]
   	end

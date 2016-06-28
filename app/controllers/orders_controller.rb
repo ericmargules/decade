@@ -61,6 +61,8 @@ class OrdersController < ApplicationController
   def execute
     order = Order.find(params[:order_id])
     if order.execute(params["PayerID"])
+    	update_stock(order)
+    	session[:cart] = nil
     	redirect_to root_path, :notice => "Your order has been placed!"
     else
     	redirect_to root_path, :alert => order.payment.error.inspect
@@ -98,5 +100,19 @@ class OrdersController < ApplicationController
   
   def edit_order_params
   	params.require(:order).permit(:amount, :description, :state, :item_list, :payment_method, :return_url, :cancel_url, :payment_id, :user, :session_id, :shipped, :tracking)
+  end
+
+  def update_stock(order)
+  	order.item_list.split("&").each do |array|
+  		item_array = array.split(",")
+  		sku_array = item_array[1].split(" - ")
+  		if sku_array[0] == "product"
+  			item = Product.find(sku_array[1])
+  		elsif sku_array[0] == "custom_product"
+  			item = CustomProduct.find(sku_array[1])
+  		end
+  		item.stock -= 1
+  		item.save
+  	end
   end
 end

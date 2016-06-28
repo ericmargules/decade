@@ -1,8 +1,8 @@
-<h2><%= @order.description %> (No: <%= @order.id %>)</h2> 
+<h2><%= @order.description %> (No. <%= @order.id %>)</h2> 
 
 <% if @order.shipped == false %> 
 
-	<text>Your order has been placed successfully and is being processed.</text>
+	<text>Your order has been placed successfully and is being processed.</text><br>
 
 <% elsif @order.shipped == true %>
 
