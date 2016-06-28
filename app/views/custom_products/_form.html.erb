@@ -48,7 +48,7 @@
 
       <div id="exterior_materials">
         <% ext_materials = { 'Black Chromexcel' =>  '#000000', 'Marine Chromexcel' => '#006080', 'Oxblood Chromexcel' => '#660000',  'Coffee Chromexcel' => '#4d2800', 'Natural Chromexcel' => '#663500', 'Natural Dublin' => '#663500', 'Natural Essex' => '#ffdd99',  'Black Shell Cordovan' => '#000000', 'Navy Shell Cordovan' => '#000066', 'Rust Shell Cordovan' => '#b37700' , 'Black Shark' => '#333', 'Coffee Shark' => '#4d2800', 'Natural Lizard' => '#fff7e6'  } %>
-        <%= label_tag :exterior %><br>
+        <%= label_tag :exterior, "Leather" %><br>
         <span id="exterior_materials_label"></span><br>
         <% ext_materials.each do |material, color| %>
           <%= radio_button_tag "exterior_materials", material %>
@@ -92,7 +92,7 @@
       <p>Interior</p>
    
       <div id="interior_materials">
-        <%= label_tag :interior %><br>
+        <%= label_tag :interior, "Leather" %><br>
         <span id="interior_materials_label"></span><br>
           <% int_materials.each do |material, color| %>
             <%= radio_button_tag "interior_materials", material %>
@@ -116,7 +116,7 @@
       <p>Pockets</p>
 
       <div id="pockets">
-        <%= label_tag :pockets %><br>
+        <%= label_tag :pockets, "Number of Pockets" %><br>
         <span id="pockets_label"></span><br>
         <%= radio_button_tag "pockets", "4" %>
         <%= radio_button_tag "pockets", "6" %>
@@ -131,12 +131,12 @@
       </div>
 
       <div id="pockets_interior">
-        <%= label_tag :pockets_interior %><br>
+        <%= label_tag :pockets_interior, "Same Leather as Interior" %><br>
         <%= check_box_tag :pockets_interior, 1, true %>
       </div>      
 
       <div id="pocket_materials">
-        <%= label_tag :pocket_materials %><br>
+        <%= label_tag :pocket_materials, "Leather" %><br>
         <span id="pocket_materials_label"></span><br>
           <% int_materials.each do |material, color| %>
             <%= radio_button_tag "pocket_materials", material %>
@@ -146,13 +146,13 @@
       </div>
 
       <div id="pockets_same">
-        <%= label_tag :pockets_same %><br>
+        <%= label_tag :pockets_same, "Same Leather for All Pockets" %><br>
         <%= check_box_tag :pockets_same, 1, true %>
       </div>
 
       <div id="separate_pockets">
         <div id="pocket_l1">
-          <%= label_tag :pocket_l1 %><br>
+          <%= label_tag :pocket_l1, "Front Left" %><br>
           <span id="pocket_l1_label"></span><br>
             <% int_materials.each do |material, color| %>
               <%= radio_button_tag "pocket_l1", material %>
@@ -161,7 +161,7 @@
         </div>
 
         <div id="pocket_l2">
-          <%= label_tag :pocket_l2 %><br>
+          <%= label_tag :pocket_l2, "Back Left" %><br>
           <span id="pocket_l2_label"></span><br>
             <% int_materials.each do |material, color| %>
               <%= radio_button_tag "pocket_l2", material %>
@@ -170,7 +170,7 @@
         </div>    
 
         <div id="pocket_lb">
-          <%= label_tag :pocket_lb %><br>
+          <%= label_tag :pocket_lb, "Hidden Left" %><br>
           <span id="pocket_lb_label"></span><br>
             <% int_materials.each do |material, color| %>
               <%= radio_button_tag "pocket_lb", material %>
@@ -179,7 +179,7 @@
         </div>   
 
         <div id="pocket_r1">
-          <%= label_tag :pocket_r1 %><br>
+          <%= label_tag :pocket_r1, "Front Right" %><br>
           <span id="pocket_r1_label"></span><br>
             <% int_materials.each do |material, color| %>
               <%= radio_button_tag "pocket_r1", material %>
@@ -188,7 +188,7 @@
         </div>
 
         <div id="pocket_r2">
-          <%= label_tag :pocket_r2 %><br>
+          <%= label_tag :pocket_r2, "Back Right" %><br>
           <span id="pocket_r2_label"></span><br>
             <% int_materials.each do |material, color| %>
               <%= radio_button_tag "pocket_r2", material %>
@@ -197,7 +197,7 @@
         </div>    
 
         <div id="pocket_rb">
-          <%= label_tag :pocket_rb %><br>
+          <%= label_tag :pocket_rb, "Hidden Right" %><br>
           <span id="pocket_rb_label"></span><br>
             <% int_materials.each do |material, color| %>
               <%= radio_button_tag "pocket_rb", material %>
@@ -220,7 +220,7 @@
       
       <div id="currency">
         <%= label_tag :currency %><br>
-        <span id="currency_notice">Dimensions of foreign currency wallets may differ from image.<br></span>
+        <span id="currency_notice">Foreign wallet dimensions may differ from image.<br></span>
         <%= select_tag :currency,  options_for_select(["US Dollars", "British Pounds", "Euro", "Japanese Yen"]) %>
       </div>
     </div>

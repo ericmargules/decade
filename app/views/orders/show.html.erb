@@ -1,1 +1,29 @@
-<h2><%= @order.description %>(No: <%= @order.id %>)</h2> 
+<h2><%= @order.description %> (No: <%= @order.id %>)</h2> 
+
+<% if @order.shipped == false %> 
+
+	<text>Your order has been placed successfully and is being processed.</text>
+
+<% elsif @order.shipped == true %>
+
+	<text>Your order has been shipped.</text>
+	<text>Tracking Number: <%= @order.tracking_info %></text>
+
+<% end %>
+
+<h3>Order Summary:</h3>
+<% list = [] %>
+<% @order.item_list.split("&").each do |array| %>
+  <% hash = {} %>
+  <% item = array.split(",") %>
+  <% hash[:name] = item[0] %>
+  <% hash[:sku] = item[1] %>
+  <% hash[:price] = item[2] %>
+  <% hash[:currency] = "USD" %>
+  <% hash[:quantity] = item[3] %>
+  <% list << hash %>
+<% end %>
+<% list.each do |item_hash| %>
+	<text><%= item_hash[:name] %> x <%= item_hash[:quantity] %>...<%= item_hash[:price] %></text><br>
+<% end %>
+<text>Total: <%= @order.amount %>
