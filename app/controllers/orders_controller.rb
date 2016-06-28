@@ -35,6 +35,30 @@ class OrdersController < ApplicationController
     end
   end
 
+  def edit
+  	if current_user.try(:admin?)
+  		@order = Order.find(params[:id])
+  	else
+  		redirect_to root_path
+  	end
+  end
+
+  def update
+    if current_user.try(:admin?)
+      respond_to do |format|
+        if @order.update(order_params)
+          format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+          format.json { render :show, status: :ok, location: @order }
+        else
+          format.html { render :edit }
+          format.json { render json: @order.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      redirect_to root_path
+    end
+  end
+
   def execute
     order = Order.find(params[:order_id])
     if order.execute(params["PayerID"])
@@ -70,7 +94,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-  	params.permit(:amount, :description, :state, :item_list, :payment_method, :return_url, :cancel_url, :payment_id, :user, :session_id)
+  	params.permit(:amount, :description, :state, :item_list, :payment_method, :return_url, :cancel_url, :payment_id, :user, :session_id, :shipped, :tracking)
   end
 
 end
