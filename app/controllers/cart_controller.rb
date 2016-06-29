@@ -41,11 +41,14 @@ class CartController < ApplicationController
 
   def index
     if session[:cart]
-  		@cart = session[:cart]
-  	else
+      @cart = session[:cart]
+      check_stock(@cart)
+    else
   		@cart = {}
   	end
   end
+
+  private 
 
   def cleanup_cart
     if session[:cart]

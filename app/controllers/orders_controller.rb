@@ -11,28 +11,30 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
-    @order.return_url = order_execute_url(":order_id")
-    @order.cancel_url = order_cancel_url(":order_id")
-    user_signed_in? ? @order.user = current_user.id.to_s : @order.user = "guest"
-    @order.payment_method = "paypal"
-    @order.shipped = false
-    @order.session_id = session.id
-    if user_signed_in? 
-    	username = User.find(@order.user)
-    	@order.description = "#{username.username}'s Order"
-    else
-    	@order.description = "Guest's Order"
-    end
-    if @order.payment_method && @order.save
-      if @order.approve_url
-        redirect_to @order.approve_url
-      else
-    		redirect_to root_path, :notice => "Your order has been placed!!"
-      end
-    else
-      render :create, :alert  => @order.errors.to_a.join(", ")
-    end
+    if check_stock(parse_item_list(params[:item_list])) != false
+	    @order = Order.new(order_params)
+	    @order.return_url = order_execute_url(":order_id")
+	    @order.cancel_url = order_cancel_url(":order_id")
+	    user_signed_in? ? @order.user = current_user.id.to_s : @order.user = "guest"
+	    @order.payment_method = "paypal"
+	    @order.shipped = false
+	    @order.session_id = session.id
+	    if user_signed_in? 
+	    	username = User.find(@order.user)
+	    	@order.description = "#{username.username}'s Order"
+	    else
+	    	@order.description = "Guest's Order"
+	    end
+	    if @order.payment_method && @order.save
+	      if @order.approve_url
+	        redirect_to @order.approve_url
+	      else
+	    		redirect_to root_path, :notice => "Your order has been placed!!"
+	      end
+	    else
+	      render :create, :alert  => @order.errors.to_a.join(", ")
+	    end
+	  end
   end
 
   def edit
@@ -115,4 +117,15 @@ class OrdersController < ApplicationController
   		item.save
   	end
   end
+
+  def parse_item_list(order)
+		hash = {}
+		order.split("&").each do |array|
+			item_array = array.split(",")
+			sku_array = item_array[1].split(" - ")
+			hash[sku_array[1].to_i] = [item_array[3].to_i, sku_array[0]]
+		end
+		hash
+	end
+
 end
