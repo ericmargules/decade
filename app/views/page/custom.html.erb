@@ -8,8 +8,8 @@
     	<div class="product_tile">
         <%= image_tag(product, :class => "catalog_image" , :alt => product) %>
       	<div class="product_info">
-        	<text class="product_title"><%= product %></text><br>
-        	<text class="price">From <%= number_to_currency(price, :unit => '$') %></text><br><br>
+        	<p><%= product %></p>
+        	<p>From <%= number_to_currency(price, :unit => '$') %></p><br>
     		</div>
     	</div>
     <% end %>

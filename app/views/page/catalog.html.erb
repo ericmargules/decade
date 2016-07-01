@@ -1,5 +1,5 @@
-<h1>Catalog</h1>
 <div id="style_nav">
+  <h1>Catalog</h1>
   <ul>
     <li><%= link_to "All", catalog_path %></li>
     <li><%= link_to "Billfolds", catalog_path(:category => "Billfold") %></li>
@@ -16,7 +16,7 @@
           <%= image_tag(product.main_image(:medium), :class => "catalog_image" , :alt => product.name)%>
           <div class="product_info">
             <text class="product_title"><%= product.name %></text><br>
-            <text class="price"><%= number_to_currency(product.price, :unit => '$') %></text>
+            <text id="price"><%= number_to_currency(product.price, :unit => '$') %></text>
           </div>
         </div>
       <% end %>

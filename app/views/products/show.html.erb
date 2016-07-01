@@ -12,15 +12,12 @@
 	<a class="button secondary url" href="#two">context</a>
 </div>
 
-<div id="product_info">
-  <h1><%= @product.name %></h1><br>
+<h1><%= @product.name %></h1>
 
-  <%= number_to_currency(@product.price, :unit => '$') %>
-  <a href="/cart/<%= @product.id %>?type=product">Add to Cart</a><br>
-  <%= @product.short_description %><br>
-  <p>Dimensions: <%= @product.dimensions %></p>
-  <p>Category: <%= @product.category %></p>  
-  <p>Tags: <%= @product.tags %></p>
+<div id="product_info">
+  <text id="price"><%= number_to_currency(@product.price, :unit => '$') %></text><text id="cart_button"><a href="/cart/<%= @product.id %>?type=product">Add to Cart</a></text><br>
+  <text><%= @product.short_description %><br>
+  Dimensions: <%= @product.dimensions %><br>
 </div>
 
 <a href="#_" class="lightbox" id="img1">

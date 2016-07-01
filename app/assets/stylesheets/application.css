@@ -27,6 +27,52 @@ body {
 
 }	
 
+#content {
+
+	margin: .5em 0 0 0;
+
+}
+
+#content a {
+
+	text-decoration: none;
+	color: #8e8e8e;
+	font-size: 1.1em;
+	line-height: 1.7em;
+}
+
+#content a:hover {
+
+	color: #333;
+
+}
+
+p, text {
+
+  font-family: cardo;
+  font-size: 1.19em;
+  line-height: 1.7;
+  color: #555;
+}
+
+h1, h2, h3 {
+
+	font-weight: normal;
+	-webkit-font-smoothing: antialiased;
+
+}
+
+h1 {
+
+  font-family: cardo;
+  font-weight: normal;
+  font-size: 2em;
+  letter-spacing: .02em;
+  line-height: 1.2;
+  color: #555;
+
+}
+
 
 #wrapper {
 
@@ -50,8 +96,15 @@ body {
 	margin: 0 5% 0 0;
 	color: #8e8e8e;
 	text-decoration: none;
+	letter-spacing: .04em;
 	text-transform: uppercase;
 	float: right;
+
+}
+
+#session a:hover {
+
+	color: #333;
 
 }
 
@@ -73,12 +126,28 @@ body {
 #pages_nav a{
 
 	width: 100%;
-	padding: 0 4em 0 4em;
-	color: #292d33;
+	padding: 0 4.5em 0 4.5em;
+	color: #8e8e8e;
+	font-size: 1.19em;
+	letter-spacing: .04em;
 	text-decoration: none;
 	text-transform: uppercase;
 
 }
+
+#pages_nav a:hover {
+
+	color: #333;
+
+}
+
+#pages_nav a:active {
+
+	color: #333;
+
+}
+
+
 #custom_product_content {
 
 	display: none;
@@ -187,6 +256,8 @@ body {
 
 #product_info {
 
+	margin: .8em 0 0 0;
+
 }
 
 .label_swatch {
@@ -218,9 +289,16 @@ body {
 
 #logo {
 
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 124px;
+	max-width: 157px;
   display: block;
-	
+  margin: 2em auto 2em auto;	
+}
+
+#price {
+
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-weight: 600;
+  font-size: 1.19em;
+  color: #777;
+  letter-spacing: .05em;
 }
