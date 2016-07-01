@@ -23,7 +23,7 @@
 
 body {
 
-	background: #F6F6F6;
+	background: #FFF;
 
 }	
 
@@ -86,7 +86,7 @@ h1 {
 
 	width: 100%;
 	height: 2em;
-	background: #F6F6F6;
+	background: #FFF;
 }
 
 #session a{
@@ -112,7 +112,7 @@ h1 {
 
 	width: 100%;
 	height: 7em;
-	background: #F6F6F6;
+	background: #FFF;
 	text-align: center;
 
 }
@@ -289,7 +289,7 @@ h1 {
 
 #logo {
 
-	max-width: 157px;
+	max-width: 145px;
   display: block;
   margin: 2em auto 2em auto;	
 }
@@ -301,4 +301,10 @@ h1 {
   font-size: 1.19em;
   color: #777;
   letter-spacing: .05em;
+}
+
+.catalog_image {
+
+	max-width: 325px;
+	
 }
