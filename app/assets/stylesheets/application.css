@@ -29,7 +29,7 @@ body {
 
 #content {
 
-	margin: .5em 0 0 0;
+	margin: .75em 0 0 0;
 
 }
 
@@ -280,10 +280,37 @@ h1 {
 
 }
 
-.social_button {
+.social_nav {
 
-	height: 25px;
-	width: 25px;
+	text-align: center;
+
+}
+
+.social_nav ul{
+
+	list-style: none;
+	
+}
+
+.social_nav li{
+
+	width: 35px;
+	display: inline-block;
+
+}
+
+.social_nav a{
+
+	text-decoration: none;
+	font-size: 1.7em;
+
+}
+
+.social_nav a:hover {
+    
+  z-index: 2;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 
 }
 
@@ -291,7 +318,7 @@ h1 {
 
 	max-width: 145px;
   display: block;
-  margin: 2em auto 2em auto;	
+  margin: 1.5em auto 1.25em auto;	
 }
 
 #price {
@@ -306,5 +333,5 @@ h1 {
 .catalog_image {
 
 	max-width: 325px;
-	
+
 }

@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= stylesheet_link_tag    'owl.carousel.min' %>
   <%= stylesheet_link_tag    'owl.theme.default.min' %>
+  <%= stylesheet_link_tag    '//netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.css' %>
   <%= javascript_include_tag 'application' %>
   <%= javascript_include_tag 'home' %>
   <%= javascript_include_tag 'owl.carousel.min' %>
@@ -12,17 +13,18 @@
 </head>
 <body>
 
-	<div id="wrapper">
-	
-		<%= render "layouts/header.html.erb" %>
+  <div id="wrapper">
+  
+    <%= render "layouts/header.html.erb" %>
 
     <div id="content">
       <%= yield %>
     </div>
 
-		<%= render "layouts/footer.html.erb" %>
-	
-	</div>
+    <%= render "layouts/footer.html.erb" %>
+  
+  </div>
+
 
 </body>
 </html>
