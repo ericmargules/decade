@@ -217,15 +217,14 @@ h1 {
 
 }
 
-#style_nav {
+.page_title {
 
-	float: left;
-	width:	25%;
+	margin: 0 0 1em 0;
 
 }
 
 
-#style_nav ul {
+.page_title ul {
 
 	list-style: none;
 
@@ -303,6 +302,7 @@ h1 {
 
 	text-decoration: none;
 	font-size: 1.7em;
+	color: #333;
 
 }
 
@@ -333,5 +333,41 @@ h1 {
 .catalog_image {
 
 	max-width: 325px;
+	width: 100%;
+
+}
+
+.product_tile {
+
+	display: inline-block;
+	margin: 0 1em 0 0;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown_content {
+    display: none;
+    position: absolute;
+    background-color: #FFF;
+    min-width: 160px;
+    padding: 12px 16px;
+}
+
+.dropdown:hover .dropdown_content {
+    display: block;
+}
+
+.dropdown_content a:hover {
+
+	background-color: #f9f9f9;
+
+}
+
+.dropdown .fa-chevron-down {
+
+	font-size: .5em;
 
 }
