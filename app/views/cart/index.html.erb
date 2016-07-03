@@ -1,38 +1,43 @@
-<h1>Cart</h1>
+<div class="page_title">
+	<h1>Cart</h1>
+</div>
 
-<% if @cart != {} %>
-	<%= link_to 'Clear cart', cart_clear_path %>
-<% end %>
-
-<% total = 0.0 %>
-
-<% item_list = "" %>
-
-<% @cart.each do |id, info| %>
-	
-	<% if info[1] == "product" %>
-		<% product = Product.find_by_id(id) %>
-	<% elsif info[1] == "custom_product" %>
-		<% product = CustomProduct.find_by_id(id) %>
+<div id="cart_contents">
+	<% if @cart != {} %>
+		<%= link_to 'Clear cart', cart_clear_path %>
 	<% end %>
 
-	<% item_list << "#{product.name},#{info[1]} - #{id},#{product.price}.00,#{info[0]}&" %>
+	<% total = 0.0 %>
 
-	<li>
-		<%= link_to product.name, product %>
-		<p>Quantity: <%= info[0] %></p>
-		<p>Price: <%= number_to_currency(product.price, :unit => '$') %></p>
-		<a href="/cart/<%= product.id %>/remove">Remove from cart</a>
-	</li>
+	<% item_list = "" %>
 
-	<% total += product.price * info[0] %>
+	<% @cart.each do |id, info| %>
+		
+		<% if info[1] == "product" %>
+			<% product = Product.find_by_id(id) %>
+		<% elsif info[1] == "custom_product" %>
+			<% product = CustomProduct.find_by_id(id) %>
+		<% end %>
 
-<% end %>
-<br>
+		<% item_list << "#{product.name},#{info[1]} - #{id},#{product.price}.00,#{info[0]}&" %>
 
-<% if @cart.empty? %>
-	<p>Your cart is empty</p>
-<% else %>
-	<p>Total: <%= number_to_currency(total, :unit => '$') %></p>
-	<%= link_to "Checkout", orders_path( :amount => (total.to_s << "0"), :item_list => item_list.to_s ), :method => :post %>
-<% end %>
+		<li>
+			<%= link_to product.name, product %>
+			<p>Quantity: <%= info[0] %></p>
+			<p>Price: <%= number_to_currency(product.price, :unit => '$') %></p>
+			<a href="/cart/<%= product.id %>/remove">Remove from cart</a>
+		</li>
+
+		<% total += product.price * info[0] %>
+
+	<% end %>
+	<br>
+
+	<% if @cart.empty? %>
+		<p>Your cart is empty</p>
+	<% else %>
+		<p>Total: <%= number_to_currency(total, :unit => '$') %></p>
+		<%= link_to orders_path( :amount => (total.to_s << "0"), :item_list => item_list.to_s ), :method => :post do %><text id="checkout_button">Checkout</text>
+		<% end %>
+	<% end %>
+</div>
