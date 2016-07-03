@@ -66,7 +66,7 @@ h1 {
 
   font-family: cardo;
   font-weight: normal;
-  font-size: 2em;
+  font-size: 1.8em;
   letter-spacing: .02em;
   line-height: 1.2;
   color: #555;
@@ -334,6 +334,12 @@ h1 {
 
 	max-width: 325px;
 	width: 100%;
+
+}
+
+.catalog_image:hover {
+
+	opacity: .6;
 
 }
 
