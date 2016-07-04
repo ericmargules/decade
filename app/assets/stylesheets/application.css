@@ -176,12 +176,22 @@ h1 {
 .required_field {
 
 	display: block;
-
+	border-bottom: 1px solid #d9d9d9;
+	margin: 0 0 .35em 0;
+	padding: 0 0 .35em 0;
+`
 }
 
 .required_section {
 
 	display: block;
+	margin: 1em 0 0 0;
+
+}
+
+.required_section .required_section {
+
+	margin: 0 0 0 0;
 
 }
 
@@ -234,6 +244,7 @@ h1 {
 
 	width: 100%;
 	float: left;
+	margin: 2em 0 0 0;
 
 }
 
@@ -335,6 +346,17 @@ h1 {
   font-size: 1.19em;
   color: #777;
   letter-spacing: .05em;
+
+}
+
+.custom_price {
+
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-weight: 600;
+  font-size: 1em;
+  color: #777;
+  letter-spacing: .05em;
+
 }
 
 .catalog_image {
@@ -440,3 +462,26 @@ h1 {
 
 }
 
+#custom_options label {
+
+	color: #8e8e8e;
+  font-size: 1.19em;
+  letter-spacing: .04em;
+  font-family: verdana, arial, helvetica, sans-serif;
+
+}
+
+#custom_options span {
+
+	font-family: cardo;
+  font-size: 1.19em;
+  color: #555;
+
+}
+
+#custom_options p {
+
+  font-size: 1.75em;
+  line-height: 1.7;
+
+}

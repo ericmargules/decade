@@ -175,27 +175,27 @@ function maintenance() {
 function buildForm() {
 
 	switch (document.getElementById("custom_product_category").value) {
-		case "":
-			document.getElementById("custom_options").className = "hidden_field";
-			return;
-			break;
+		// case "":
+		// 	document.getElementById("custom_options").className = "hidden_field";
+		// 	return;
+		// 	break;
 		case "Billfold":
-			var requiredSections = ["custom_options", "exterior_options", "interior_options", "pocket_options", "misc"];
+			var requiredSections = ["exterior_options", "interior_options", "pocket_options", "misc"];
 			var requiredFields = ["exterior_materials", "corners", "stitching", "edges", "interior_materials", "lining", "pockets", "pocket_shape", "pockets_interior", "currency"];
 			var hiddenFields = ["pockets_same", "pocket_materials", "separate_pockets", "notebook_style"];
 			break;
 		case "Card Wallet":
-			var requiredSections = ["custom_options", "exterior_options", "interior_options", "pocket_options"];
+			var requiredSections = ["exterior_options", "interior_options", "pocket_options"];
 			var requiredFields = ["exterior_materials", "corners", "stitching", "edges", "interior_materials", "lining", "pocket_shape", "pockets_interior"];
 			var hiddenFields = ["pockets", "pockets_same", "pocket_materials", "separate_pockets", "misc",  "currency", "notebook_style"];
 			break;
 		case "ID Wallet":
-			var requiredSections = ["custom_options", "exterior_options", "interior_options", "pocket_options"];
+			var requiredSections = ["exterior_options", "interior_options", "pocket_options"];
 			var requiredFields = ["exterior_materials", "corners", "stitching", "edges", "lining", "pocket_shape"];
 			var hiddenFields = ["interior_materials", "pockets", "pockets_interior", "pockets_same", "pocket_materials", "separate_pockets", "misc",  "currency", "notebook_style"];
 			break;
 		case "Notebook":
-			var requiredSections = ["custom_options", "exterior_options", "interior_options", "misc"];
+			var requiredSections = ["exterior_options", "interior_options", "misc"];
 			var requiredFields = ["exterior_materials", "corners", "stitching", "edges", "interior_materials", "lining", "notebook_style"];
 			var hiddenFields = ["pocket_options", "pockets", "pocket_shape", "pockets_interior", "pockets_same", "pocket_materials", "separate_pockets", "currency"];
 			break;
@@ -342,9 +342,6 @@ $(document).ready(function(){
 
 	// Show Page Content
 	document.getElementById("custom_product_content").style.display = "block";
-
-	// Hide Full Form
-	document.getElementById("custom_options").className = "hidden_field";
 	
 	// Hide Inputs
 	$("input[type=radio]").addClass("radio_swatch");
@@ -359,19 +356,19 @@ $(document).ready(function(){
 		maintenance();
 	}
 	
-	//Currency Notice
+	// Currency Notice
 	document.forms.custom_product["currency"].onchange = function() {
 		document.forms.custom_product["currency"].value != "US Dollars" ? document.getElementById("currency_notice").style.display = "block" : document.getElementById("currency_notice").style.display = "none";
 	}
 
-	//Swatch Hover
+	// Swatch Hover
 	$('[class^=label_swatch]').on("mouseenter", function(){
 		var span = this.parentNode.getElementsByTagName("span")[0]
 		span.innerHTML = String($(this).attr("alt"));
 	});
 	$('[class^=label_swatch]').on("mouseleave", setLabels);
 
-	//Radio Hover
+	// Radio Hover
 	$("input[type=radio]").on("mouseenter", function(){
 		var span = this.parentNode.getElementsByTagName("span")[0]
 		span.innerHTML = String(this.value);

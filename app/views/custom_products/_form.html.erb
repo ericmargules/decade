@@ -39,8 +39,7 @@
   <div id="custom_options">
 
     <div class="field">
-      <%= f.label :price %>
-      <div id="product_price"></div>
+      <%= f.label :price %><div id="product_price"></div>
     </div>
     
     <div id="exterior_options">
@@ -48,8 +47,7 @@
 
       <div id="exterior_materials">
         <% ext_materials = { 'Black Chromexcel' =>  '#000000', 'Marine Chromexcel' => '#006080', 'Oxblood Chromexcel' => '#660000',  'Coffee Chromexcel' => '#4d2800', 'Natural Chromexcel' => '#663500', 'Natural Dublin' => '#663500', 'Natural Essex' => '#ffdd99',  'Black Shell Cordovan' => '#000000', 'Navy Shell Cordovan' => '#000066', 'Rust Shell Cordovan' => '#b37700' , 'Black Shark' => '#333', 'Coffee Shark' => '#4d2800', 'Natural Lizard' => '#fff7e6'  } %>
-        <%= label_tag :exterior, "Leather" %><br>
-        <span id="exterior_materials_label"></span><br>
+        <%= label_tag :exterior, "Leather—" %><span id="exterior_materials_label"></span><br>
         <% ext_materials.each do |material, color| %>
           <%= radio_button_tag "exterior_materials", material %>
           <%= label_tag ("exterior_materials_" + material).to_sym, '', :class => 'label_swatch', :style => ('background-color:' + color), :alt => material %>
@@ -57,8 +55,7 @@
       </div>
 
       <div id="corners">
-        <%= label_tag :corners %><br>
-        <span id="corners_label"></span><br>
+        <%= label_tag :corners, "Corners—" %><span id="corners_label"></span><br>
         <%= radio_button_tag "corners", "rounded" %>
         <%= radio_button_tag "corners", "round" %>
         <%= radio_button_tag "corners", "square" %>
@@ -66,8 +63,7 @@
 
       <div id="stitching">
         <% stitch_options = { 'Black Linen' => '#000000', 'Brown Linen' => '#660000', 'Natural Linen' => '#fff7e6' } %>
-        <%= label_tag :stitching %><br>
-        <span id="stitching_label"></span><br>
+        <%= label_tag :stitching, "Stitching—" %><span id="stitching_label"></span><br>
         <% stitch_options.each do |material, color| %>
           <%= radio_button_tag "stitching", material %>
           <%= label_tag ("stitching_" + material).to_sym, '', :class => 'label_swatch', :style => ('background-color:' + color), :alt => material %>
@@ -76,8 +72,7 @@
       
       <div id="edges">
         <% edge_options = { 'Ebony' => '#333', 'Brown' => '#660000', 'Beige' => '#ecd8c6' } %>
-        <%= label_tag :edges %><br>
-        <span id="edges_label"></span><br>
+        <%= label_tag :edges, "Edges—" %><span id="edges_label"></span><br>
         <% edge_options.each do |material, color| %>
           <%= radio_button_tag "edges", material %>
           <%= label_tag ("edges_" + material).to_sym, '', :class => 'label_swatch', :style => ('background-color:' + color), :alt => material %>
@@ -92,8 +87,7 @@
       <p>Interior</p>
    
       <div id="interior_materials">
-        <%= label_tag :interior, "Leather" %><br>
-        <span id="interior_materials_label"></span><br>
+        <%= label_tag :interior, "Leather—" %><span id="interior_materials_label"></span><br>
           <% int_materials.each do |material, color| %>
             <%= radio_button_tag "interior_materials", material %>
             <%= label_tag ("interior_materials_" + material).to_sym, '', :class => 'label_swatch', :style => ('background-color:' + color), :alt => material %>
@@ -101,8 +95,7 @@
       </div>
 
       <div id="lining">
-        <%= label_tag :lining %><br>
-        <span id="lining_label"></span><br>
+        <%= label_tag :lining, "Lining—" %><span id="lining_label"></span><br>
           <% int_materials.each do |material, color| %>
             <%= radio_button_tag "lining", material %>
             <%= label_tag ("lining_" + material).to_sym, '', :class => 'label_swatch', :style => ('background-color:' + color), :alt => material %>
@@ -116,15 +109,13 @@
       <p>Pockets</p>
 
       <div id="pockets">
-        <%= label_tag :pockets, "Number of Pockets" %><br>
-        <span id="pockets_label"></span><br>
+        <%= label_tag :pockets, "Number of Pockets—" %><span id="pockets_label"></span><br>
         <%= radio_button_tag "pockets", "4" %>
         <%= radio_button_tag "pockets", "6" %>
       </div>
 
       <div id="pocket_shape">
-        <%= label_tag :pocket_shape %><br>
-        <span id="pocket_shape_label"></span><br>
+        <%= label_tag :pocket_shape, "Pocket Shape—" %><span id="pocket_shape_label"></span><br>
         <%= radio_button_tag "pocket_shape", "straight" %>
         <%= radio_button_tag "pocket_shape", "curved"%>
         <%= radio_button_tag "pocket_shape", "notched"%>
@@ -136,8 +127,7 @@
       </div>      
 
       <div id="pocket_materials">
-        <%= label_tag :pocket_materials, "Leather" %><br>
-        <span id="pocket_materials_label"></span><br>
+        <%= label_tag :pocket_materials, "Leather—" %><span id="pocket_materials_label"></span><br>
           <% int_materials.each do |material, color| %>
             <%= radio_button_tag "pocket_materials", material %>
             <%= label_tag ("pocket_materials_" + material).to_sym, '', :class => 'label_swatch', :style => ('background-color:' + color), :alt => material %>
@@ -152,8 +142,7 @@
 
       <div id="separate_pockets">
         <div id="pocket_l1">
-          <%= label_tag :pocket_l1, "Front Left" %><br>
-          <span id="pocket_l1_label"></span><br>
+          <%= label_tag :pocket_l1, "Front Left Pocket—" %><span id="pocket_l1_label"></span><br>
             <% int_materials.each do |material, color| %>
               <%= radio_button_tag "pocket_l1", material %>
               <%= label_tag ("pocket_l1_" + material).to_sym, '', :class => 'label_swatch', :style => ('background-color:' + color), :alt => material %>
@@ -161,8 +150,7 @@
         </div>
 
         <div id="pocket_l2">
-          <%= label_tag :pocket_l2, "Back Left" %><br>
-          <span id="pocket_l2_label"></span><br>
+          <%= label_tag :pocket_l2, "Back Left Pocket—" %><span id="pocket_l2_label"></span><br>
             <% int_materials.each do |material, color| %>
               <%= radio_button_tag "pocket_l2", material %>
               <%= label_tag ("pocket_l2_" + material).to_sym, '', :class => 'label_swatch', :style => ('background-color:' + color), :alt => material %>
@@ -170,8 +158,7 @@
         </div>    
 
         <div id="pocket_lb">
-          <%= label_tag :pocket_lb, "Hidden Left" %><br>
-          <span id="pocket_lb_label"></span><br>
+          <%= label_tag :pocket_lb, "Left Hidden Pocket—" %><span id="pocket_lb_label"></span><br>
             <% int_materials.each do |material, color| %>
               <%= radio_button_tag "pocket_lb", material %>
               <%= label_tag ("pocket_lb_" + material).to_sym, '', :class => 'label_swatch', :style => ('background-color:' + color), :alt => material %>
@@ -179,8 +166,7 @@
         </div>   
 
         <div id="pocket_r1">
-          <%= label_tag :pocket_r1, "Front Right" %><br>
-          <span id="pocket_r1_label"></span><br>
+          <%= label_tag :pocket_r1, "Front Right Pocket—" %><span id="pocket_r1_label"></span><br>
             <% int_materials.each do |material, color| %>
               <%= radio_button_tag "pocket_r1", material %>
               <%= label_tag ("pocket_r1_" + material).to_sym, '', :class => 'label_swatch', :style => ('background-color:' + color), :alt => material %>
@@ -188,8 +174,7 @@
         </div>
 
         <div id="pocket_r2">
-          <%= label_tag :pocket_r2, "Back Right" %><br>
-          <span id="pocket_r2_label"></span><br>
+          <%= label_tag :pocket_r2, "Back Right Pocket—" %><span id="pocket_r2_label"></span><br>
             <% int_materials.each do |material, color| %>
               <%= radio_button_tag "pocket_r2", material %>
               <%= label_tag ("pocket_r2_" + material).to_sym, '', :class => 'label_swatch', :style => ('background-color:' + color), :alt => material %>
@@ -197,8 +182,7 @@
         </div>    
 
         <div id="pocket_rb">
-          <%= label_tag :pocket_rb, "Hidden Right" %><br>
-          <span id="pocket_rb_label"></span><br>
+          <%= label_tag :pocket_rb, "Right Hidden Pocket—" %><span id="pocket_rb_label"></span><br>
             <% int_materials.each do |material, color| %>
               <%= radio_button_tag "pocket_rb", material %>
               <%= label_tag ("pocket_rb_" + material).to_sym, '', :class => 'label_swatch', :style => ('background-color:' + color), :alt => material %>
@@ -211,11 +195,10 @@
       <p>Misc.</p>
       
       <div id="notebook_style">
-        <%= label_tag :notebook_style %><br>
-        <span id="notebook_style_label"></span><br>
-        <%= radio_button_tag "notebook_style", "blank" %>Blank 
-        <%= radio_button_tag "notebook_style", "ruled" %>Ruled 
-        <%= radio_button_tag "notebook_style", "grid" %>Grid 
+        <%= label_tag :notebook_style, "Notebook Style—" %><span id="notebook_style_label"></span><br>
+        <%= radio_button_tag "notebook_style", "blank" %> 
+        <%= radio_button_tag "notebook_style", "ruled" %> 
+        <%= radio_button_tag "notebook_style", "grid" %> 
       </div>
       
       <div id="currency">

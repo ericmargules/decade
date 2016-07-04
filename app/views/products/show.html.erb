@@ -3,13 +3,10 @@
 </div>
 <div id="product_images">
   <div class="owl-carousel">
-		<div><a href="#img1"><%= image_tag(@product.main_image(:medium), :class => "product_image" , :alt => @product.name) %><div class="item" data-hash="zero"></div></div></a>
-		<div><a href="#img2"><%= image_tag(@product.interior_image(:medium), :class => "product_image" , :alt => @product.name) %><div class="item" data-hash="one"></div></div></a>
-		<div><a href="#img3"><%= image_tag(@product.context_image(:medium), :class => "product_image" , :alt => @product.name) %><div class="item" data-hash="two"></div></div></a>
+		<div><a href="#img1"><%= image_tag(@product.main_image(:medium), :class => "product_image" , :alt => @product.name) %></div></a>
+		<div><a href="#img2"><%= image_tag(@product.interior_image(:medium), :class => "product_image" , :alt => @product.name) %></div></a>
+		<div><a href="#img3"><%= image_tag(@product.context_image(:medium), :class => "product_image" , :alt => @product.name) %></div></a>
 	</div>
-	<a class="button secondary url" href="#zero">interior</a>
-	<a class="button secondary url" href="#one">exterior</a>
-	<a class="button secondary url" href="#two">context</a>
 </div>
 
 

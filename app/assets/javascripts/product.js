@@ -4,7 +4,6 @@ $(document).ready(function(){
     loop:true,
     margin:10,
     autoplay:false,
-    URLhashListener:true,
-    startPosition: 'URLHash'
+    nav:true,
   });
 });
