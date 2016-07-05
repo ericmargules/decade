@@ -175,17 +175,17 @@ h1 {
 
 .required_field {
 
-	display: block;
-	border-bottom: 1px solid #d9d9d9;
-	margin: 0 0 .35em 0;
-	padding: 0 0 .35em 0;
-`
+  display: block;
+  margin: 0 0 .35em 0;
+  padding: 0 0 .35em 10px;
+
 }
 
 .required_section {
 
-	display: block;
-	margin: 1em 0 0 0;
+  display: block;
+  margin: 1em 0 0 0;
+  border: 2px solid #666;
 
 }
 
@@ -464,10 +464,10 @@ h1 {
 
 #custom_options label {
 
-	color: #8e8e8e;
+	color: #555;
   font-size: 1.19em;
   letter-spacing: .04em;
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: cardo;
 
 }
 
@@ -481,7 +481,20 @@ h1 {
 
 #custom_options p {
 
-  font-size: 1.75em;
-  line-height: 1.7;
+  font-size: 1.5em;
+  line-height: 1.3;
+  margin: 0 0 .35em 0;
+  color: #FFF;
+  font-family: verdana, arial, helvetica, sans-serif;
+  letter-spacing: .04em;
+  border-bottom: 2px solid #666;
+  padding-left: 10px;
+  background-color: #666;
+
+}
+
+#new_custom_product {
+
+	max-width: 40%;
 
 }

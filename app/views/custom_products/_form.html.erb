@@ -37,10 +37,6 @@
   </div>
   
   <div id="custom_options">
-
-    <div class="field">
-      <%= f.label :price %><div id="product_price"></div>
-    </div>
     
     <div id="exterior_options">
       <p>Exterior</p>
@@ -82,7 +78,7 @@
 
     <div id="interior_options">
 
-    <% int_materials = {"Black Chromexcel" => '#333', "Rust Chromexcel" => '#e64d00', "Natural Chromexcel" => '#663500', "Coffee Sierra" => '#660000', "Natural Vermont" => '#ffdd99', "Grey Chevre" => '#8c8c8c', "Navy Chevre" => '#000066', "Azure Chevre" => '#0080ff', "Maroon Chevre" => '#800000', "Crimson Chevre" => '#ff0000', "Lemon Chevre" => '#ffff00'} %>
+      <% int_materials = {"Black Chromexcel" => '#333', "Rust Chromexcel" => '#e64d00', "Natural Chromexcel" => '#663500', "Coffee Sierra" => '#660000', "Natural Vermont" => '#ffdd99', "Grey Chevre" => '#8c8c8c', "Navy Chevre" => '#000066', "Azure Chevre" => '#0080ff', "Maroon Chevre" => '#800000', "Crimson Chevre" => '#ff0000', "Lemon Chevre" => '#ffff00'} %>
 
       <p>Interior</p>
    
@@ -210,6 +206,10 @@
 
     <br>
 
+    <div class="field">
+      <%= f.label :price %><div id="product_price"></div>
+    </div>
+    
     <div class="actions">
       <%= f.submit "Add to Cart", :id => "custom_cart_button" %>
     </div>
