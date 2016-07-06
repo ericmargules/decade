@@ -10,27 +10,45 @@
 	<% total = 0.0 %>
 
 	<% item_list = "" %>
+	<% if @cart != {} %>
 
-	<% @cart.each do |id, info| %>
+		<table id="cart_items">
+
+			<tr>
+				<td></td>
+				<td></td>
+				<td><p>Quantity</p></td>
+				<td><p>Price (each)</p></td>			
+				<td></td>
+			</tr>
+
+			<% @cart.each do |id, info| %>
+				
+				<% if info[1] == "product" %>
+					<% product = Product.find_by_id(id) %>
+				<% elsif info[1] == "custom_product" %>
+					<% product = CustomProduct.find_by_id(id) %>
+				<% end %>
+
+				<% item_list << "#{product.name},#{info[1]} - #{id},#{product.price}.00,#{info[0]}&" %>
+
+				<tr>
+					<td><%= image_tag(product.main_image(:thumb), :class => "cart_image" , :alt => product.name)%>
+</td>
+					<td><%= link_to product.name, product %></td>
+					<td><p><%= info[0] %></p></td>
+					<td><p><%= number_to_currency(product.price, :unit => '$') %></p></td>
+					<td><a href="/cart/<%= product.id %>/remove"><i class="fa fa-remove"></i> </a></td>	
+				</tr>
+
+				<% total += product.price * info[0] %>
+
+			<% end %>
 		
-		<% if info[1] == "product" %>
-			<% product = Product.find_by_id(id) %>
-		<% elsif info[1] == "custom_product" %>
-			<% product = CustomProduct.find_by_id(id) %>
-		<% end %>
-
-		<% item_list << "#{product.name},#{info[1]} - #{id},#{product.price}.00,#{info[0]}&" %>
-
-		<li>
-			<%= link_to product.name, product %>
-			<p>Quantity: <%= info[0] %></p>
-			<p>Price: <%= number_to_currency(product.price, :unit => '$') %></p>
-			<a href="/cart/<%= product.id %>/remove">Remove from cart</a>
-		</li>
-
-		<% total += product.price * info[0] %>
+		</table>
 
 	<% end %>
+
 	<br>
 
 	<% if @cart.empty? %>

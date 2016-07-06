@@ -552,3 +552,29 @@ h1 {
 	line-height: 1.5;
 
 }
+
+#cart_contents li {
+
+	list-style: none
+
+}
+
+#cart_items {
+
+	text-align: right;
+
+}
+
+#cart_items p {
+
+	margin: 0 5px 0 5px;
+
+}
+
+#cart_contents tr {
+
+
+	border-top: 1px solid #777;
+
+
+}
