@@ -6,8 +6,13 @@ function sameAsInterior() {
 		document.getElementById("separate_pockets").className = "hidden_field";
 		document.getElementById("pocket_materials").className = "hidden_field";
 	} else {
-		document.getElementById("pockets_same").className = "required_field";
-		document.getElementById("pocket_materials").className = "required_field";
+		if (document.getElementById("custom_product_category").value == "ID Wallet") {
+			document.getElementById("pocket_materials").className = "required_field";
+		}
+		else {
+			document.getElementById("pockets_same").className = "required_field";
+			document.getElementById("pocket_materials").className = "required_field";
+		}
 	}
 }
 
@@ -80,6 +85,7 @@ function setPrice() {
 			break;
 		case "ID Wallet":
 			productPrice.value = 80;
+			!document.forms.custom_product["pockets_interior"].checked ? productPrice.value = Number(	productPrice.value) + 15 : productPrice.value;
 			productPrice.value = Number(productPrice.value) + upCharge();
 			break;
 		case "Notebook":
@@ -175,10 +181,6 @@ function maintenance() {
 function buildForm() {
 
 	switch (document.getElementById("custom_product_category").value) {
-		// case "":
-		// 	document.getElementById("custom_options").className = "hidden_field";
-		// 	return;
-		// 	break;
 		case "Billfold":
 			var requiredSections = ["exterior_options", "interior_options", "pocket_options", "misc"];
 			var requiredFields = ["exterior_materials", "corners", "stitching", "edges", "interior_materials", "lining", "pockets", "pocket_shape", "pockets_interior", "currency"];
@@ -191,8 +193,8 @@ function buildForm() {
 			break;
 		case "ID Wallet":
 			var requiredSections = ["exterior_options", "interior_options", "pocket_options"];
-			var requiredFields = ["exterior_materials", "corners", "stitching", "edges", "lining", "pocket_shape"];
-			var hiddenFields = ["interior_materials", "pockets", "pockets_interior", "pockets_same", "pocket_materials", "separate_pockets", "misc",  "currency", "notebook_style"];
+			var requiredFields = ["exterior_materials", "corners", "stitching", "edges", "lining", "pocket_shape", "pockets_interior"];
+			var hiddenFields = ["interior_materials", "pockets", "pockets_same", "pocket_materials", "separate_pockets", "misc",  "currency", "notebook_style"];
 			break;
 		case "Notebook":
 			var requiredSections = ["exterior_options", "interior_options", "misc"];
@@ -255,6 +257,7 @@ function setDefaultValues() {
 			document.forms.custom_product.edges.value = "Ebony";
 			document.forms.custom_product.lining.value = "Black Chromexcel";
 			document.forms.custom_product.pocket_shape.value = "notched";
+			document.forms.custom_product.pocket_materials.value = "Black Chromexcel";
 			break;
 		case "Notebook":
 			document.forms.custom_product.exterior_materials.value = "Black Chromexcel";

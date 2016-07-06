@@ -119,9 +119,18 @@
         </div>
 
         <div id="pockets_interior">
-          <%= label_tag :pockets_interior, "Same Leather as Interior" %><br>
+          <% if @category == "ID Wallet" %>
+            <%= label_tag :pockets_interior, "Same Leather as Exterior" %><br>
+          <% else %>
+            <%= label_tag :pockets_interior, "Same Leather as Interior" %><br>
+          <% end %>
           <%= check_box_tag :pockets_interior, 1, true %>
         </div>      
+
+        <div id="pockets_same">
+          <%= label_tag :pockets_same, "Same Leather for All Pockets" %><br>
+          <%= check_box_tag :pockets_same, 1, true %>
+        </div>
 
         <div id="pocket_materials">
           <%= label_tag :pocket_materials, "Leather—" %><span id="pocket_materials_label"></span><br>
@@ -130,11 +139,6 @@
               <%= label_tag ("pocket_materials_" + material).to_sym, '', :class => 'label_swatch', :style => ('background-color:' + color), :alt => material %>
 
             <% end %>
-        </div>
-
-        <div id="pockets_same">
-          <%= label_tag :pockets_same, "Same Leather for All Pockets" %><br>
-          <%= check_box_tag :pockets_same, 1, true %>
         </div>
 
         <div id="separate_pockets">
