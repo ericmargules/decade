@@ -3,14 +3,18 @@
 </div>
 
 <div id="cart_contents">
-	<% if @cart != {} %>
+	
+	<% if @cart.empty? %>
+	
+		<p>Your cart is empty</p>
+	
+	<% else %>
+
 		<%= link_to 'Clear cart', cart_clear_path %>
-	<% end %>
 
-	<% total = 0.0 %>
+		<% total = 0.0 %>
 
-	<% item_list = "" %>
-	<% if @cart != {} %>
+		<% item_list = "" %>
 
 		<table id="cart_items">
 
@@ -33,8 +37,7 @@
 				<% item_list << "#{product.name},#{info[1]} - #{id},#{product.price}.00,#{info[0]}&" %>
 
 				<tr>
-					<td><%= image_tag(product.main_image(:thumb), :class => "cart_image" , :alt => product.name)%>
-</td>
+					<td><%= image_tag(product.main_image(:thumb), :class => "cart_image" , :alt => product.name)%></td>
 					<td><%= link_to product.name, product %></td>
 					<td><p><%= info[0] %></p></td>
 					<td><p><%= number_to_currency(product.price, :unit => '$') %></p></td>
@@ -44,18 +47,22 @@
 				<% total += product.price * info[0] %>
 
 			<% end %>
-		
-		</table>
+			
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td><p>Subtotal: <%= number_to_currency(total, :unit => '$') %></p></td>			
+				<td></td>
+			</tr>
 
-	<% end %>
+		</table>
 
 	<br>
 
-	<% if @cart.empty? %>
-		<p>Your cart is empty</p>
-	<% else %>
-		<p>Total: <%= number_to_currency(total, :unit => '$') %></p>
 		<%= link_to orders_path( :amount => (total.to_s << "0"), :item_list => item_list.to_s ), :method => :post do %><text id="checkout_button">Checkout</text>
 		<% end %>
+	
 	<% end %>
+
 </div>
