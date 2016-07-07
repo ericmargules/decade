@@ -1,3 +1,6 @@
+<div id="breadcrumb">
+  <%= link_to '← Back to Orders', orders_path %>
+</div>
 <h2><%= @order.description %> (No. <%= @order.id %>)</h2> 
 
 <% if @order.shipped == false %> 

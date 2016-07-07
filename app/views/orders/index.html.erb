@@ -3,20 +3,34 @@
 		
 	<table id="order_table">
 		<tr>
+			<% if current_user.try(:admin?) %>
+				<td>User ID</td>
+			<% end %>
 			<td>Order Number</td>
 			<td>Description</td>
 			<td>Date</td>
 			<td>Status</td>
 			<td>Amount</td>
+			<td></td>
+			<% if current_user.try(:admin?) %>
+				<td></td>
+			<% end %>
 		</tr>
 
 	<% @orders.each do |order| %>
 		<tr>
+			<% if current_user.try(:admin?) %>
+				<td><%= order.user %></td>
+			<% end %>
 			<td><%= order.id %></td>
 			<td><%= order.description %></td>
 			<td><%= order.created_at %></td>
 			<td><%= order.shipped == true ? "Shipped" : order.state %></td>
 			<td>$<%= order.amount %></td>
+			<td><%= link_to 'Show', order %></td>
+			<% if current_user.try(:admin?) %>
+				<td><%= link_to 'Edit', edit_order_path(order) %></td>
+			<% end %>
 		</tr>
 	<% end %>
 	

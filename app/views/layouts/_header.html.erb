@@ -5,7 +5,16 @@
 		<%= link_to "Cart (0)", cart_path %>
 	<% end %>
 	<% if user_signed_in? %>
-		<%= link_to "Log out", destroy_user_session_path, method: :delete %>
+		<div class="dropdown">
+	 		<%= current_user.username %><i class="fa fa-chevron-down" aria-hidden="true"></i>
+	    <div class = "dropdown_content">
+	      <ul>
+	        <li><%= link_to "Orders", orders_path %></li>
+	        <li><%= link_to "Edit Info", edit_user_registration_path %></li>
+	        <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+	      </ul>
+	    </div>
+	  </div>
 	<% else %>
 		<%= link_to "Sign in", new_user_session_path %>
 	<% end %>

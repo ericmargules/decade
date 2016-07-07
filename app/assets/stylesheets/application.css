@@ -118,6 +118,13 @@ h1 {
 
 }
 
+
+#session ul {
+
+	list-style: none
+
+}
+
 #pages_nav {
 
 	margin-top: 1.75em;
@@ -403,6 +410,42 @@ h1 {
 	font-size: .5em;
 
 }
+
+#session .dropdown {
+
+	float: right;
+	line-height: 2em;
+  padding: 0 1em 0 1em;
+  margin: 0 5% 0 0;
+  color: #8e8e8e;
+  text-decoration: none;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+
+}
+
+#session .dropdown_content {
+
+	text-align: left;
+	min-width: 120px;
+	padding: 5px 0 0 10px;
+}
+
+#session .dropdown_content a {
+
+	float: none;
+	padding: 0;
+	margin: 0;
+
+}
+
+#session .dropdown .fa-chevron-down {
+
+	font-size: .8em;
+	margin: 0 0 0 4px;
+
+}
+
 
 #cart_button {
 
