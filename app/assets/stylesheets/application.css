@@ -186,7 +186,7 @@ h1 {
 
   display: block;
   margin: 1em 0 0 0;
-  border: 2px solid #666;
+  border: 2px solid #888;
 
 }
 
@@ -490,9 +490,9 @@ h1 {
   color: #FFF;
   font-family: verdana, arial, helvetica, sans-serif;
   letter-spacing: .04em;
-  border-bottom: 2px solid #666;
+  border-bottom: 2px solid #888;
   padding: 2px 0 0 10px;
-  background-color: #666;
+  background-color: #888;
 
 }
 
@@ -546,6 +546,12 @@ h1 {
 
 }
 
+#about_content {
+
+	margin-bottom: 1em;
+
+}
+
 #about_content p {
 
 	margin: 10px 0 0 0;
@@ -573,8 +579,12 @@ h1 {
 
 #cart_contents tr {
 
-
 	border-top: 1px solid #777;
 
+}
+
+#about_links a {
+
+	margin: 0 .85em 0 0;
 
 }
