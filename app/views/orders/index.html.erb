@@ -1,8 +1,27 @@
 <h2>Orders</h2>
 <% if @orders.length >= 1 %>
-	<% @orders.each do |order| %>
+		
+	<table id="order_table">
+		<tr>
+			<td>Order Number</td>
+			<td>Description</td>
+			<td>Date</td>
+			<td>Status</td>
+			<td>Amount</td>
+		</tr>
 
+	<% @orders.each do |order| %>
+		<tr>
+			<td><%= order.id %></td>
+			<td><%= order.description %></td>
+			<td><%= order.created_at %></td>
+			<td><%= order.shipped == true ? "Shipped" : order.state %></td>
+			<td>$<%= order.amount %></td>
+		</tr>
 	<% end %>
+	
+	</table>
+
 <% else %>
 	<p>You have no orders.</p>
 <% end %>
