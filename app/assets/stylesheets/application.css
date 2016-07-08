@@ -631,3 +631,127 @@ h1 {
 	margin: 0 .85em 0 0;
 
 }
+
+@media screen and (max-width:939px){
+
+	#wrapper {
+
+	max-width: 939px;
+	padding: 0 2%;
+
+	}
+
+	#product_images {
+    float: none;
+    width: 100%;
+    max-width: 100%;
+	}
+
+	#product_info {
+    
+    margin: 1.25em 0 0 0;
+    width: 100%
+  }
+
+  h1 {
+
+  	font-size: 2.3em;
+
+  }
+
+  #price {
+
+		font-size: 1.5em;  	
+
+  }
+
+  .custom_price {
+
+		font-size: 1.2em;  	
+
+  }
+
+  #cart_button, #custom_cart_button, #checkout_button {
+
+  	font-size: 1.25em;
+
+  }
+
+  #pages_nav {
+
+  	padding: 0 8%;
+
+  }
+
+  #pages_nav a {
+
+  	width: 32%;
+  	display: inline-block;
+  	padding: 0;	
+
+  }
+
+  #product_list {
+	
+	  float: none;
+    width: 100%;
+	
+	}
+
+	.product_tile {
+  
+    margin: 0 0 2em 0;
+    width: 100%;
+	
+	}
+
+	.catalog_image {
+
+    max-width: 100%;
+
+  }
+
+  .product_title {
+
+  	font-size: 1.25em;
+
+  }
+
+  .dropdown_content li {
+
+  	font-size: 17px;
+
+  }
+
+  #session .dropdown_content li {
+
+  	font-size: 1em
+
+  }
+
+  #session a {
+
+  	font-size: 1.15em;
+
+  }
+
+  #options_panel {
+
+  	width: 100%;
+  	margin: 0 0 1.5em 0;
+    display: block;
+    float: none;
+
+  }
+
+  #product_view_panel {
+  
+    position: inherit;
+    width: 100%;
+    margin-left: 0;
+    display: block;
+    float: none;
+	
+	}
+
+}

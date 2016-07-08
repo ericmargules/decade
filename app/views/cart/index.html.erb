@@ -37,7 +37,11 @@
 				<% item_list << "#{product.name},#{info[1]} - #{id},#{product.price}.00,#{info[0]}&" %>
 
 				<tr>
-					<td><%= image_tag(product.main_image(:thumb), :class => "cart_image" , :alt => product.name)%></td>
+					<td>
+						<% if defined?(product.main_image) %>
+							<%= image_tag(product.main_image(:thumb), :class => "cart_image" , :alt => product.name)%>
+						<% end %>
+					</td>
 					<td><%= link_to product.name, product %></td>
 					<td><p><%= info[0] %></p></td>
 					<td><p><%= number_to_currency(product.price, :unit => '$') %></p></td>
