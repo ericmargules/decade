@@ -10,8 +10,6 @@
 	
 	<% else %>
 
-		<%= link_to 'Clear cart', cart_clear_path %>
-
 		<% total = 0.0 %>
 
 		<% item_list = "" %>
@@ -19,11 +17,11 @@
 		<table id="cart_items">
 
 			<tr>
-				<td></td>
-				<td></td>
-				<td><p>Quantity</p></td>
-				<td><p>Price (each)</p></td>			
-				<td></td>
+				<th></th>
+				<th><p>Item</p></th>
+				<th><p>Quantity</p></th>
+				<th><p>Price (each)</p></th>			
+				<th></th>
 			</tr>
 
 			<% @cart.each do |id, info| %>
@@ -59,14 +57,21 @@
 				<td><p>Subtotal: <%= number_to_currency(total, :unit => '$') %></p></td>			
 				<td></td>
 			</tr>
-
-		</table>
-
-	<br>
-
-		<%= link_to orders_path( :amount => (total.to_s << "0"), :item_list => item_list.to_s ), :method => :post do %><text id="checkout_button">Checkout</text>
-		<% end %>
 	
+			<tr>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th><div id="checkout_button_link"><%= link_to orders_path( :amount => (total.to_s << "0"), :item_list => item_list.to_s ), :method => :post do %><text id="checkout_button">Checkout</text>
+					<% end %></div></th>			
+				<th></th>
+			</tr>
+		</table>
+	
+	<div id="clear_cart">
+		<%= link_to 'Clear cart', cart_clear_path %>
+	</div>
+
 	<% end %>
 
 </div>
