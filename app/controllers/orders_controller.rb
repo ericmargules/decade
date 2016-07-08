@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
 	      if @order.approve_url
 	        redirect_to @order.approve_url
 	      else
-	    		redirect_to root_path, :notice => "Your order has been placed!!"
+	    		redirect_to root_path, :notice => "Your order has been placed!"
 	      end
 	    else
 	      render :create, :alert  => @order.errors.to_a.join(", ")
@@ -84,8 +84,10 @@ class OrdersController < ApplicationController
     if params[:id] != "show"
 	    if current_user.try(:admin?) || user_signed_in? && Order.find(params[:id]).user == current_user.id
 		    @order = Order.find(params[:id])
-	    elsif Order.find(params[:id]).session_id == session.id
+        @products = get_products(@order)
+	    elsif Order.find(params[:id]).user.to_i == current_user.id
 	    	@order = Order.find(params[:id])
+        @products = get_products(@order)
 	    else
 	      redirect_to root_path
 	    end  
@@ -127,5 +129,18 @@ class OrdersController < ApplicationController
 		end
 		hash
 	end
+
+  def get_products(order)
+    product_array = []
+    parse_item_list(order.item_list).each do |id, info|
+      if info[1] == "product"
+        product = Product.find(id)
+      else
+        product = CustomProduct.find(id)
+      end
+      product_array << product
+    end
+    product_array
+  end
 
 end

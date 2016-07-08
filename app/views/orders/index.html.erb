@@ -4,16 +4,16 @@
 	<table id="order_table">
 		<tr>
 			<% if current_user.try(:admin?) %>
-				<td>User ID</td>
+				<th>User ID</th>
 			<% end %>
-			<td>Order Number</td>
-			<td>Description</td>
-			<td>Date</td>
-			<td>Status</td>
-			<td>Amount</td>
-			<td></td>
+			<th>Order Number</th>
+			<th>Description</th>
+			<th>Date</th>
+			<th>Status</th>
+			<th>Amount</th>
+			<th></th>
 			<% if current_user.try(:admin?) %>
-				<td></td>
+				<th></th>
 			<% end %>
 		</tr>
 

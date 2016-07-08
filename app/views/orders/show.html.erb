@@ -1,35 +1,80 @@
 <div id="breadcrumb">
   <%= link_to '← Back to Orders', orders_path %>
 </div>
-<h2><%= @order.description %> (No. <%= @order.id %>)</h2> 
+<div class="page_title">
+  <h2><%= @order.description %> (No. <%= @order.id %>)</h2> 
+</div>
 
-<% if @order.shipped == false %> 
+<div class="order_status">
+  <% if @order.shipped == false %> 
 
-	<text>Your order has been placed successfully and is being processed.</text><br>
+  	<p>Status: Your order has been placed successfully and is being processed.</p>
 
-<% elsif @order.shipped == true %>
+  <% elsif @order.shipped == true %>
 
-	<text>Your order has been shipped.</text><br>
-	<text>Tracking Number: <%= @order.tracking %></text>
+  	<p>Status: Your order has been shipped.</p>
+  	<p>Tracking Number: <%= @order.tracking %></p>
 
-<% end %>
+  <% end %>
+</div>
 
-<h3>Order Summary:</h3>
+<h3>Order Summary</h3>
 <% list = [] %>
-<% @order.item_list.split("&").each do |array| %>
-  <% hash = {} %>
-  <% item = array.split(",") %>
-  <% hash[:name] = item[0] %>
-  <% hash[:sku] = item[1] %>
-  <% hash[:price] = item[2] %>
-  <% hash[:currency] = "USD" %>
-  <% hash[:quantity] = item[3] %>
-  <% list << hash %>
-<% end %>
+  <table id="cart_items">
+
+    <tr>
+      <th></th>
+      <th><p>Item</p></th>
+      <th><p>Quantity</p></th>
+      <th><p>Price (each)</p></th>      
+    </tr>
+
+    <% @order.item_list.split("&").each do |array| %>
+      <% hash = {} %>
+      <% item = array.split(",") %>
+      <% hash[:name] = item[0] %>
+      <% hash[:sku] = item[1] %>
+      <% hash[:price] = item[2] %>
+      <% hash[:currency] = "USD" %>
+      <% hash[:quantity] = item[3] %>
+      <% list << hash %>
+    <% end %>
+   
+    <% list.each do |item_hash| %>
+      
+      <tr>
+        <td>
+          <% @products.each do |product| %>
+            <% if product.name == item_hash[:name] %>
+              <% if defined?(product.main_image) %>
+                <%= image_tag(product.main_image(:thumb), :class => "cart_image" , :alt => product.name)%>
+              <% end %>
+            <% end %>
+          <% end %>
+        </td>        <td><p><%= item_hash[:name] %></p></td>
+        <td><p><%= item_hash[:quantity] %></p></td>
+        <td><p><%= number_to_currency(item_hash[:price], :unit => '$') %></p></td>
+      </tr>
+
+    <% end %>
+    
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><p>Total: <%= number_to_currency(@order.amount, :unit => '$') %></p></td>      
+      <td></td>
+    </tr>
+
+  </table>
+
+<!-- 
+
+
 <% list.each do |item_hash| %>
 	<text><%= item_hash[:name] %> x <%= item_hash[:quantity] %>...<%= item_hash[:price] %></text><br>
 <% end %>
-<text>Total: <%= @order.amount %></text><br>
+<text>Total: <%= @order.amount %></text><br> -->
 
 <% if current_user.try(:admin?) %>
   <%= link_to 'Edit', edit_order_path(@order) %>
