@@ -1,41 +1,47 @@
-<h2>Orders</h2>
-<% if @orders.length >= 1 %>
-		
-	<table id="order_table">
-		<tr>
-			<% if current_user.try(:admin?) %>
-				<th>User ID</th>
-			<% end %>
-			<th>Order Number</th>
-			<th>Description</th>
-			<th>Date</th>
-			<th>Status</th>
-			<th>Amount</th>
-			<th></th>
-			<% if current_user.try(:admin?) %>
+<div class="page_title">
+	<h1>Orders</h1>
+</div>
+<hr class="small">
+
+<div id="order_content">
+	<% if @orders.length >= 1 %>
+			
+		<table id="order_table">
+			<tr>
+				<% if current_user.try(:admin?) %>
+					<th>User ID</th>
+				<% end %>
+				<th><p>Order Number</p></th>
+				<th><p>Description</p></th>
+				<th><p>Date</p></th>
+				<th><p>Status</p></th>
+				<th><p>Amount</p></th>
 				<th></th>
-			<% end %>
-		</tr>
+				<% if current_user.try(:admin?) %>
+					<th></th>
+				<% end %>
+			</tr>
 
-	<% @orders.each do |order| %>
-		<tr>
-			<% if current_user.try(:admin?) %>
-				<td><%= order.user %></td>
-			<% end %>
-			<td><%= order.id %></td>
-			<td><%= order.description %></td>
-			<td><%= order.created_at %></td>
-			<td><%= order.shipped == true ? "Shipped" : order.state %></td>
-			<td>$<%= order.amount %></td>
-			<td><%= link_to 'Show', order %></td>
-			<% if current_user.try(:admin?) %>
-				<td><%= link_to 'Edit', edit_order_path(order) %></td>
-			<% end %>
-		</tr>
+		<% @orders.each do |order| %>
+			<tr>
+				<% if current_user.try(:admin?) %>
+					<td><%= order.user %></td>
+				<% end %>
+				<td><%= order.id %></td>
+				<td><%= order.description %></td>
+				<td><%= order.created_at %></td>
+				<td><%= order.shipped == true ? "Shipped" : order.state %></td>
+				<td>$<%= order.amount %></td>
+				<td><%= link_to 'Show', order %></td>
+				<% if current_user.try(:admin?) %>
+					<td><%= link_to 'Edit', edit_order_path(order) %></td>
+				<% end %>
+			</tr>
+		<% end %>
+		
+		</table>
+
+	<% else %>
+		<p id="empty">You have no orders.</p>
 	<% end %>
-	
-	</table>
-
-<% else %>
-	<p>You have no orders.</p>
-<% end %>
+</div>

@@ -2,8 +2,9 @@
   <%= link_to '← Back to Orders', orders_path %>
 </div>
 <div class="page_title">
-  <h2><%= @order.description %> (No. <%= @order.id %>)</h2> 
+  <h1><%= @order.description %> (No. <%= @order.id %>)</h1> 
 </div>
+<hr class="small">
 
 <div class="order_status">
   <% if @order.shipped == false %> 

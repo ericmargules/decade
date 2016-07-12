@@ -1,12 +1,14 @@
 <div class="page_title">
-	<h1>Cart</h1>
+	<h1>Your Cart</h1>
 </div>
+
+<hr class="small">
 
 <div id="cart_contents">
 	
 	<% if @cart.empty? %>
 	
-		<p>Your cart is empty</p>
+		<p id="empty">Your cart is empty</p>
 	
 	<% else %>
 
@@ -18,7 +20,7 @@
 
 			<tr>
 				<th></th>
-				<th><p>Item</p></th>
+				<th></th>
 				<th><p>Quantity</p></th>
 				<th><p>Price (each)</p></th>			
 				<th></th>
