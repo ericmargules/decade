@@ -602,6 +602,12 @@ h1 {
 	line-height: 1.5;
 }
 
+#about_content p.firstp {
+
+	margin: 0;
+
+}
+
 #cart_contents li {
 
 	list-style: none
