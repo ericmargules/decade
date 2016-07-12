@@ -353,7 +353,7 @@ h1 {
 	font-family: verdana, arial, helvetica, sans-serif;
 	font-weight: 600;
   font-size: 1.19em;
-  color: ##555;
+  color: #555;
   letter-spacing: .05em;
 
 }
@@ -363,7 +363,7 @@ h1 {
 	font-family: verdana, arial, helvetica, sans-serif;
 	font-weight: 600;
   font-size: 1em;
-  color: ##555;
+  color: #555;
   letter-spacing: .05em;
 
 }
@@ -720,6 +720,12 @@ p#empty {
   line-height: 1.7;
   color: #555;
   text-align: center;
+
+}
+
+#main_content {
+
+	margin: 2em 0 0 0;
 
 }
 

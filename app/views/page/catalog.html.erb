@@ -13,18 +13,22 @@
   </div>
 </div>
 
-<div id="product_list">
-  <% @products.each do |product| %>
-    <% if product.stock > 0 %>
-      <div class="product_tile">
-        <%= link_to product do %>
-          <%= image_tag(product.main_image(:medium), :class => "catalog_image" , :alt => product.name)%>
-          <div class="product_info">
-            <div class="product_title"><%= product.name %></div>
-            <div id="price"><%= number_to_currency(product.price, :unit => '$') %></div>
-          </div>
-        <% end %>
-      </div>  
+<hr class="small">
+
+<div id="main_content">
+  <div id="product_list">
+    <% @products.each do |product| %>
+      <% if product.stock > 0 %>
+        <div class="product_tile">
+          <%= link_to product do %>
+            <%= image_tag(product.main_image(:medium), :class => "catalog_image" , :alt => product.name)%>
+            <div class="product_info">
+              <div class="product_title"><%= product.name %></div>
+              <div id="price"><%= number_to_currency(product.price, :unit => '$') %></div>
+            </div>
+          <% end %>
+        </div>  
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
