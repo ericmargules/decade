@@ -1,3 +1,20 @@
+function setPocketsToInterior() {  
+  var allPockets = ["pocket_r1", "pocket_r2", "pocket_l1", "pocket_l2", "pocket_lb", "pocket_rb", "pocket_materials"];
+  
+  for (var i = 0; i < allPockets.length; i++) {         
+    document.forms.custom_product[allPockets[i]].value = document.forms.custom_product.interior_materials.value;
+  }
+}
+
+function setPocketsToPocketMaterials() {  
+  var allPockets = ["pocket_r1", "pocket_r2", "pocket_l1", "pocket_l2", "pocket_lb", "pocket_rb"];
+  
+  for (var i = 0; i < allPockets.length; i++) {         
+    document.forms.custom_product[allPockets[i]].value = document.forms.custom_product.pocket_materials.value;
+  }
+}
+
+
 function sameAsInterior() {
 
 	if (document.forms.custom_product["pockets_interior"].checked) {
@@ -5,6 +22,7 @@ function sameAsInterior() {
 		document.forms.custom_product["pockets_same"].checked = "checked";
 		document.getElementById("separate_pockets").className = "hidden_field";
 		document.getElementById("pocket_materials").className = "hidden_field";
+		setPocketsToInterior();
 	} else {
 		if (document.getElementById("custom_product_category").value == "ID Wallet") {
 			document.getElementById("pocket_materials").className = "required_field";
@@ -26,6 +44,8 @@ function checkAllPockets() {
 		for (var i = 0; i < allPockets.length; i++) {
 			document.getElementById(allPockets[i]).className = "hidden_field";
 		}
+
+		setPocketsToPocketMaterials();
 
 	} else {
 		document.getElementById("separate_pockets").className = "required_section";
@@ -358,7 +378,7 @@ $(document).ready(function(){
 	document.forms.custom_product.onchange = function() {
 		maintenance();
 	}
-	
+
 	// Currency Notice
 	document.forms.custom_product["currency"].onchange = function() {
 		document.forms.custom_product["currency"].value != "US Dollars" ? document.getElementById("currency_notice").style.display = "block" : document.getElementById("currency_notice").style.display = "none";
@@ -366,14 +386,14 @@ $(document).ready(function(){
 
 	// Swatch Hover
 	$('[class^=label_swatch]').on("mouseenter", function(){
-		var span = this.parentNode.getElementsByTagName("span")[0]
+		var span = this.parentNode.getElementsByTagName("span")[0];
 		span.innerHTML = String($(this).attr("alt"));
 	});
 	$('[class^=label_swatch]').on("mouseleave", setLabels);
 
 	// Radio Hover
 	$("input[type=radio]").on("mouseenter", function(){
-		var span = this.parentNode.getElementsByTagName("span")[0]
+		var span = this.parentNode.getElementsByTagName("span")[0];
 		span.innerHTML = String(this.value);
 	});
 	$("input[type=radio]").on("mouseleave", setLabels);
