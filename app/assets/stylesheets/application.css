@@ -290,15 +290,18 @@ h1 {
 
 .label_swatch {
 
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 15px;
+  border-top: 7px solid white;
 	display: inline-block;
 
 }
 
 .label_swatch.selected {
 
-  border: solid 2px #8f6806;
+  width: 30px;
+  height: 22px;
+  border-top: none;
 
 }
 

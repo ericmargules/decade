@@ -403,11 +403,11 @@ $(document).ready(function(){
 	$('[class^=label_swatch]').on("mouseleave", setLabels);
 
 	// Radio Hover
-	$("input[type=radio]").on("mouseenter", function(){
+	$("input[type=radio]:not(#view_choice input)").on("mouseenter", function(){
 		var span = this.parentNode.getElementsByTagName("span")[0];
 		span.innerHTML = String(this.value);
 	});
-	$("input[type=radio]").on("mouseleave", setLabels);
+	$("input[type=radio]:not(#view_choice input)").on("mouseleave", setLabels);
 
 	// Watch Submit
 	document.forms.custom_product.commit.onclick = function() {
