@@ -40,11 +40,9 @@ function checkAllPockets() {
 
 	if (document.forms.custom_product["pockets_same"].checked) {
 		document.getElementById("separate_pockets").className = "hidden_field";
-		
 		for (var i = 0; i < allPockets.length; i++) {
 			document.getElementById(allPockets[i]).className = "hidden_field";
 		}
-
 		setPocketsToPocketMaterials();
 
 	} else {
@@ -192,7 +190,7 @@ function maintenance() {
 	markSwatches();
 
 	// Build Product Image
-	//buildImage();
+	buildPath("exterior_materials", ["corners", "stitching"]);
 
 }
 
@@ -289,12 +287,6 @@ function setDefaultValues() {
 			document.forms.custom_product.notebook_style.value = "ruled";
 			break;
 	}
-
-	$('#exterior_options .required_field').each(function() {
-		if (document.forms.custom_product[this.id].value != "") {
-			console.log(this.id);
-		}
-	});
 }
 
 // Image Building Functions
@@ -309,18 +301,37 @@ function createImage(src) {
 
 }
 
-function createPath(element) {
+function collectImageData(category){
 
-	var source = "/assets/custom_products/" + String(document.forms.custom_product.view.value) + "/" + String(document.getElementById("custom_product_category").value).toLowerCase() + "/"; 
-	if (element == "corners") {
-
-		source += (String(document.forms.custom_product.corners.value) + ".png");
-
-	} else {
-
-		source += (String(document.forms.custom_product.corners.value) + "/" + String(element) + "/" + String(document.forms.custom_product[element].value) + ".png");
+	switch(category)
+		case "Billfold":
+			["exterior_materials", "interior_materials", "stitching", "edges", "pockets", "lining"]
+			break;
+		case "ID Wallet":
+			break;
+		case "Card Wallet":
+			break;
+		case "Notebook":
+			break;
 	}
-	return source;
+}
+
+function buildPath(element, modifiers){
+
+	modifiers = modifiers || [];
+
+  var urlString = "";
+
+  urlString = "/assets/custom_products/" + document.forms.custom_product["custom_product_category"].value + "/" + String(document.forms.custom_product.view.value) + "/" + element + "/"
+
+  for (var i = 0; i < modifiers.length; i++) {         
+    urlString = urlString + document.forms.custom_product[modifiers[i]].value + "/";
+  }
+
+  urlString = (urlString + document.forms.custom_product[element].value + ".png").toLowerCase().replace(/ /g,"_");
+
+  console.log(urlString);
+  return urlString;
 }
 
 function processId(element) {

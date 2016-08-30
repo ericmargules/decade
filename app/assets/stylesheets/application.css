@@ -234,6 +234,7 @@ h1 {
 #currency_notice {
 
 	display: none;
+	text-transform: none;
 
 }
 
