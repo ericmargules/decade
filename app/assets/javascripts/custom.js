@@ -303,7 +303,7 @@ function createImage(src) {
 
 function collectImageData(category){
 
-	switch(category)
+	switch(category){
 		case "Billfold":
 			["exterior_materials", "interior_materials", "stitching", "edges", "pockets", "lining"]
 			break;

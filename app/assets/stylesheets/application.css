@@ -231,7 +231,7 @@ h1 {
 
 }
 
-#currency_notice {
+#custom_product_content #currency_notice {
 
 	display: none;
 	text-transform: none;
