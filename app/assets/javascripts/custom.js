@@ -190,8 +190,8 @@ function maintenance() {
 	markSwatches();
 
 	// Build Product Image
-	buildPath("exterior_materials", ["corners", "stitching"]);
-
+	buildImage(document.getElementById("custom_product_category").value);
+	// buildPath("stitching", []);
 }
 
 // Initial Form Building Functions
@@ -291,31 +291,6 @@ function setDefaultValues() {
 
 // Image Building Functions
 
-function createImage(src) {
-
-	var img = document.createElement('img');
-	img.src = src;
-	img.width = "500";
-	img.height = "500";
-	return img;
-
-}
-
-function collectImageData(category){
-
-	switch(category){
-		case "Billfold":
-			["exterior_materials", "interior_materials", "stitching", "edges", "pockets", "lining"]
-			break;
-		case "ID Wallet":
-			break;
-		case "Card Wallet":
-			break;
-		case "Notebook":
-			break;
-	}
-}
-
 function buildPath(element, modifiers){
 
 	modifiers = modifiers || [];
@@ -334,39 +309,86 @@ function buildPath(element, modifiers){
   return urlString;
 }
 
-function processId(element) {
- var id = String(element) + "_view";
- if (document.getElementById(id) != null) {
- 	document.getElementById(id).remove();
- }
- return id
+
+function createImage(src) {
+
+	var img = document.createElement('img');
+	img.src = src;
+	img.width = "500";
+	img.height = "500";
+	return img;
+
 }
 
 
-function layerImage(element) {
-	var path = createPath(element);
-	var img = createImage(path);
-	img.id = processId(element);
-	document.getElementById("product_view").appendChild(img);
-}
+function buildImage(category){
 
+	var viewValue;
+	var images = [];
+	var billfold =	[	[	["lining", "corners"],
+											["interior_materials"], 
+											["pocket_rb"], 
+											["pocket_r2"], 
+											["pocket_r1"], 
+											["exterior_materials", "corners"], 
+											["edges", "corners"], 
+											["stitching", "corners"] 
+										],
+										[ ["lining", "corners"],
+											["interior_materials"],
+											["pocket_lb", "pocket_shape"],
+											["pocket_rb", "pocket_shape"],
+											["pocket_l2", "pocket_shape"],
+											["pocket_r2", "pocket_shape"],
+											["pocket_l1", "corners", "pocket_shape"],
+											["pocket_r1", "corners", "pocket_shape"],  
+  										["stitching", "corners", "pockets"] 
+										]
+									];
 
-function buildImage() {
+	document.forms.custom_product.view.value == "exterior" ? viewValue = 0 : viewValue = 1;
 
-	if(document.forms.custom_product.view.value == "exterior") { 
-		$('#exterior_options .required_field').each(function() {
-			if (document.forms.custom_product[this.id].value != "") {
-				layerImage(this.id);
-			}
-		});
-	} else {
-		$('#interior_options .required_field').each(function() {
-			if (document.forms.custom_product[this.id].value != "") {
-				layerImage(this.id);
-			}
-		});
+	switch (category){
+		case "Billfold":
+			$.each(billfold[viewValue], function(index,value){
+				if((value[0] == "pocket_lb" || value[0] == "pocket_rb") && document.forms.custom_product["pockets"].value != "6"){
+					return true; 
+				}else{
+					var element = value[0];
+					value.shift();    
+	        images.push(createImage(buildPath(element, value)));	 
+	      }
+	    });
+	  break;
 	}
+	console.log(images);
 }
+
+
+// function layerImage(element) {
+// 	var path = createPath(element);
+// 	var img = createImage(path);
+// 	img.id = processId(element);
+// 	document.getElementById("product_view").appendChild(img);
+// }
+
+
+// function buildImage() {
+
+// 	if(document.forms.custom_product.view.value == "exterior") { 
+// 		$('#exterior_options .required_field').each(function() {
+// 			if (document.forms.custom_product[this.id].value != "") {
+// 				layerImage(this.id);
+// 			}
+// 		});
+// 	} else {
+// 		$('#interior_options .required_field').each(function() {
+// 			if (document.forms.custom_product[this.id].value != "") {
+// 				layerImage(this.id);
+// 			}
+// 		});
+// 	}
+// }
 
 // Kick Things Off
 $(document).ready(function(){
