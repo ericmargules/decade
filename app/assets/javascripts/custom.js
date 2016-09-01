@@ -190,8 +190,8 @@ function maintenance() {
 	markSwatches();
 
 	// Build Product Image
-	buildImage(document.getElementById("custom_product_category").value);
-	// buildPath("stitching", []);
+	// buildImage(document.getElementById("custom_product_category").value);
+	layerImages(['/assets/site/test_img1.png', '/assets/site/test_img2.png', '/assets/site/test_img3.png']);
 }
 
 // Initial Form Building Functions
@@ -316,7 +316,26 @@ function createImage(src) {
 	img.src = src;
 	img.width = "500";
 	img.height = "500";
-	return img;
+	return img
+}
+
+
+function layerImages(images){
+
+	var canvas = document.getElementById("product_view");
+	var context = canvas.getContext("2d");
+	var imageArray = [];
+	context.clearRect(0, 0, canvas.width, canvas.height); //maybe?
+
+  for (var i = 0; i < images.length; i++) {         
+    imageArray.push(createImage(images[i]));
+  }
+
+  imageArray[(imageArray.length - 1)].onload = function(){
+	  for (var i = 0; i < imageArray.length; i++) {         
+    	context.drawImage(imageArray[i],0,0);
+    }
+  }
 
 }
 
@@ -356,12 +375,12 @@ function buildImage(category){
 				}else{
 					var element = value[0];
 					value.shift();    
-	        images.push(createImage(buildPath(element, value)));	 
+	        images.push(buildPath(element, value));	 
 	      }
 	    });
 	  break;
 	}
-	console.log(images);
+	layerImages(images);
 }
 
 
