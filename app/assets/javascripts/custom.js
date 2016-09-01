@@ -336,7 +336,6 @@ function layerImages(images){
     	context.drawImage(imageArray[i],0,0);
     }
   }
-
 }
 
 
@@ -382,32 +381,6 @@ function buildImage(category){
 	}
 	layerImages(images);
 }
-
-
-// function layerImage(element) {
-// 	var path = createPath(element);
-// 	var img = createImage(path);
-// 	img.id = processId(element);
-// 	document.getElementById("product_view").appendChild(img);
-// }
-
-
-// function buildImage() {
-
-// 	if(document.forms.custom_product.view.value == "exterior") { 
-// 		$('#exterior_options .required_field').each(function() {
-// 			if (document.forms.custom_product[this.id].value != "") {
-// 				layerImage(this.id);
-// 			}
-// 		});
-// 	} else {
-// 		$('#interior_options .required_field').each(function() {
-// 			if (document.forms.custom_product[this.id].value != "") {
-// 				layerImage(this.id);
-// 			}
-// 		});
-// 	}
-// }
 
 // Kick Things Off
 $(document).ready(function(){
