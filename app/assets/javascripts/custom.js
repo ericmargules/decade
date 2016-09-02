@@ -145,28 +145,25 @@ function markSwatches(){
 	})
 }
 
-function validateForm() {
+function setImgURL(){
+
+	var canvas = document.getElementById("product_view");
+	var imgurl = document.getElementById("custom_product_imgurl");
+	imgurl.value = canvas.toDataURL();
+
+}
+
+function validateForm(){
 
 	var reqs = new Array();
-	$("#new_custom_product .required_field, .error_highlight").each(function() {
+	$("#new_custom_product .required_field").each(function() {
 		reqs.push(this.id)
 	});
 
-  var missingReqs = new Array();
+	setPrice();
+	buildOptions(reqs);
+	setImgURL();
 
-  for (var i = 0; i < reqs.length; i++) {
-    if(document.forms.custom_product[reqs[i]].value == "" && document.forms.custom_product[reqs[i]].type != "checkbox") {
-      missingReqs.push(reqs[i]);
-      document.getElementById(reqs[i]).className = "error_highlight";
-    }
-  }
-    
-  if(missingReqs.length != 0) {
-    return false;  
-  } else {
-  	setPrice();
-  	buildOptions(reqs);
-  }
 }
 
 function maintenance() {
@@ -426,6 +423,7 @@ $(document).ready(function(){
 	// Watch Submit
 	document.forms.custom_product.commit.onclick = function() {
 		return validateForm();
+		//return false;
 	};
 
 	// Stay Out of My Code!

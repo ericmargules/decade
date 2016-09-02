@@ -98,7 +98,7 @@ class CustomProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def custom_product_params
-      params.require(:custom_product).permit(:name, :category, :price, :user_id, :options, :stock)
+      params.require(:custom_product).permit(:name, :category, :price, :user_id, :options, :stock, :imgurl)
     end
 
     def resolve_layout
