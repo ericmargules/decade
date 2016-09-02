@@ -1,3 +1,5 @@
+require "base64"
+
 class CustomProductsController < ApplicationController
   before_action :set_custom_product, only: [:show, :edit, :update, :destroy]
 
@@ -49,6 +51,16 @@ class CustomProductsController < ApplicationController
       if @custom_product.save
         # I don't know what the following line of code does.
         # format.json { render :show, status: :created, location: @custom_product }
+        data = @custom_product.imgurl
+        img_url = "/system/custom_products/images/custom_product_#{Time.now.to_s[(0..9)]
+}_#{@custom_product.id}.png"
+        image_data = Base64.decode64(data['data:image/png;base64,'.length .. -1])
+        File.open(("#{Rails.root}/public" + img_url), 'wb') do |f|
+          f.write image_data
+        end
+        @custom_product.imgurl = img_url
+        @custom_product.save
+
         format.html { redirect_to "/cart/#{@custom_product.id}?type=custom_product", notice: 'Custom product was successfully created.' }
 
       else

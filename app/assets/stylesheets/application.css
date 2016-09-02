@@ -645,6 +645,12 @@ h1 {
 
 }
 
+.cart_image {
+
+	max-width: 100px;
+
+}
+
 #about_links a {
 
 	margin: 0 .85em 0 0;
