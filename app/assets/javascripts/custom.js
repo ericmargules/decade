@@ -162,6 +162,7 @@ function validateForm(){
 
 	setPrice();
 	buildOptions(reqs);
+  // buildImage(document.getElementById("exterior"));  <<-- turn this code on before launch
 	setImgURL();
 
 }
