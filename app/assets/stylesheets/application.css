@@ -177,8 +177,15 @@ h1 {
 
 #product_view {
 
+	display: none;
 	position: relative;
-	
+
+}
+
+#view_container .product_image{
+
+	position: absolute;
+
 }
 
 .required_field {

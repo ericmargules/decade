@@ -57,12 +57,16 @@ function checkAllPockets() {
 
 function checkPockets() {
 
-	if(document.forms.custom_product["pockets"].value == "6" && !document.forms.custom_product["pockets_same"].checked) {
+	if(document.forms.custom_product["pockets"].value == "6") {
 		document.getElementById("pocket_l3").className = "required_field";
 		document.getElementById("pocket_r3").className = "required_field";
+		document.getElementById("pocket_l3_image").style = "display: block;";
+		document.getElementById("pocket_r3_image").style = "display: block;";
 	}else {
 		document.getElementById("pocket_l3").className = "hidden_field";
 		document.getElementById("pocket_r3").className = "hidden_field";
+		document.getElementById("pocket_l3_image").style = "display: none;";
+		document.getElementById("pocket_r3_image").style = "display: none;";
 	}
 }
 
@@ -242,7 +246,7 @@ function setDefaultValues() {
 			document.forms.custom_product.edges.value = "Ebony";
 			document.forms.custom_product.interior_materials.value = "Black Chromexcel";
 			document.forms.custom_product.lining.value = "Black Chromexcel";
-			document.forms.custom_product.pockets.value = "4";
+			document.forms.custom_product.pockets.value = "6";
 			document.forms.custom_product.pocket_shape.value = "straight";
 			var allPockets = ["pocket_r1", "pocket_r2", "pocket_l1", "pocket_l2", "pocket_l3", "pocket_r3", "pocket_materials"];
 			for (var i = 0; i < allPockets.length; i++) {
@@ -317,8 +321,19 @@ function createImage(src) {
 	return img
 }
 
+function setImage(src, element) {
 
-function layerImages(images){
+	var img = document.getElementById(String(element + "_image"));
+	img.src = src;
+	img.width = "730";
+	img.height = "547";
+	return img
+}
+
+
+function layerImages(images, elements){
+
+	// Separate out drawing to canvas so it only executes on custom_products save?
 
 	var canvas = document.getElementById("product_view");
 	var context = canvas.getContext("2d");
@@ -326,7 +341,7 @@ function layerImages(images){
 	context.clearRect(0, 0, canvas.width, canvas.height); //maybe?
 
   for (var i = 0; i < images.length; i++) {         
-    imageArray.push(createImage(images[i]));
+    imageArray.push(setImage(images[i], elements[i]));
   }
 
   imageArray[(imageArray.length - 1)].onload = function(){
@@ -341,6 +356,7 @@ function buildImage(category){
 
 	var viewValue;
 	var images = [];
+	var elements = [];
 	var billfold =	[	[	["lining", "corners"],
 											["interior_materials"], 
 											["pocket_r3"], 
@@ -371,13 +387,14 @@ function buildImage(category){
 					return true; 
 				}else{
 					var element = value[0];
+					elements.push(element);
 					value.shift();    
 	        images.push(buildPath(element, value));	 
 	      }
 	    });
 	  break;
 	}
-	layerImages(images);
+	layerImages(images, elements);
 }
 
 // Kick Things Off
