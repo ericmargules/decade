@@ -1,5 +1,5 @@
 function setPocketsToInterior() {  
-  var allPockets = ["pocket_r1", "pocket_r2", "pocket_l1", "pocket_l2", "pocket_lb", "pocket_rb", "pocket_materials"];
+  var allPockets = ["pocket_r1", "pocket_r2", "pocket_l1", "pocket_l2", "pocket_l3", "pocket_r3", "pocket_materials"];
   
   for (var i = 0; i < allPockets.length; i++) {         
     document.forms.custom_product[allPockets[i]].value = document.forms.custom_product.interior_materials.value;
@@ -7,7 +7,7 @@ function setPocketsToInterior() {
 }
 
 function setPocketsToPocketMaterials() {  
-  var allPockets = ["pocket_r1", "pocket_r2", "pocket_l1", "pocket_l2", "pocket_lb", "pocket_rb"];
+  var allPockets = ["pocket_r1", "pocket_r2", "pocket_l1", "pocket_l2", "pocket_l3", "pocket_r3"];
   
   for (var i = 0; i < allPockets.length; i++) {         
     document.forms.custom_product[allPockets[i]].value = document.forms.custom_product.pocket_materials.value;
@@ -58,11 +58,11 @@ function checkAllPockets() {
 function checkPockets() {
 
 	if(document.forms.custom_product["pockets"].value == "6" && !document.forms.custom_product["pockets_same"].checked) {
-		document.getElementById("pocket_lb").className = "required_field";
-		document.getElementById("pocket_rb").className = "required_field";
+		document.getElementById("pocket_l3").className = "required_field";
+		document.getElementById("pocket_r3").className = "required_field";
 	}else {
-		document.getElementById("pocket_lb").className = "hidden_field";
-		document.getElementById("pocket_rb").className = "hidden_field";
+		document.getElementById("pocket_l3").className = "hidden_field";
+		document.getElementById("pocket_r3").className = "hidden_field";
 	}
 }
 
@@ -188,8 +188,8 @@ function maintenance() {
 	markSwatches();
 
 	// Build Product Image
-	// buildImage(document.getElementById("custom_product_category").value);
-	layerImages(['/assets/site/test_img1.png', '/assets/site/test_img2.png', '/assets/site/test_img3.png']);
+	buildImage(document.getElementById("custom_product_category").value);
+	//layerImages(['/assets/site/test_img1.png', '/assets/site/test_img2.png', '/assets/site/test_img3.png']);
 }
 
 // Initial Form Building Functions
@@ -244,7 +244,7 @@ function setDefaultValues() {
 			document.forms.custom_product.lining.value = "Black Chromexcel";
 			document.forms.custom_product.pockets.value = "4";
 			document.forms.custom_product.pocket_shape.value = "straight";
-			var allPockets = ["pocket_r1", "pocket_r2", "pocket_l1", "pocket_l2", "pocket_lb", "pocket_rb", "pocket_materials"];
+			var allPockets = ["pocket_r1", "pocket_r2", "pocket_l1", "pocket_l2", "pocket_l3", "pocket_r3", "pocket_materials"];
 			for (var i = 0; i < allPockets.length; i++) {
 
 				document.forms.custom_product[allPockets[i]].value = "Black Chromexcel";
@@ -260,7 +260,7 @@ function setDefaultValues() {
 			document.forms.custom_product.lining.value = "Black Chromexcel";
 			document.forms.custom_product.pockets.value = "6";
 			document.forms.custom_product.pocket_shape.value = "straight";
-			var allPockets = ["pocket_r1", "pocket_r2", "pocket_l1", "pocket_l2", "pocket_lb", "pocket_rb", "pocket_materials"];
+			var allPockets = ["pocket_r1", "pocket_r2", "pocket_l1", "pocket_l2", "pocket_l3", "pocket_r3", "pocket_materials"];
 			for (var i = 0; i < allPockets.length; i++) {
 
 				document.forms.custom_product[allPockets[i]].value = "Black Chromexcel";
@@ -343,7 +343,7 @@ function buildImage(category){
 	var images = [];
 	var billfold =	[	[	["lining", "corners"],
 											["interior_materials"], 
-											["pocket_rb"], 
+											["pocket_r3"], 
 											["pocket_r2"], 
 											["pocket_r1"], 
 											["exterior_materials", "corners"], 
@@ -352,8 +352,8 @@ function buildImage(category){
 										],
 										[ ["lining", "corners"],
 											["interior_materials"],
-											["pocket_lb", "pocket_shape"],
-											["pocket_rb", "pocket_shape"],
+											["pocket_l3", "pocket_shape"],
+											["pocket_r3", "pocket_shape"],
 											["pocket_l2", "pocket_shape"],
 											["pocket_r2", "pocket_shape"],
 											["pocket_l1", "corners", "pocket_shape"],
@@ -367,7 +367,7 @@ function buildImage(category){
 	switch (category){
 		case "Billfold":
 			$.each(billfold[viewValue], function(index,value){
-				if((value[0] == "pocket_lb" || value[0] == "pocket_rb") && document.forms.custom_product["pockets"].value != "6"){
+				if((value[0] == "pocket_l3" || value[0] == "pocket_r3") && document.forms.custom_product["pockets"].value != "6"){
 					return true; 
 				}else{
 					var element = value[0];
