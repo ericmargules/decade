@@ -19,7 +19,7 @@ function sameAsInterior() {
 
 	if (document.forms.custom_product["pockets_interior"].checked) {
 		document.getElementById("pockets_same").className = "hidden_field";
-		document.forms.custom_product["pockets_same"].checked = "checked";
+		document.forms.custom_product["pockets_same"].checked = false;
 		document.getElementById("separate_pockets").className = "hidden_field";
 		document.getElementById("pocket_materials").className = "hidden_field";
 		setPocketsToInterior();
@@ -38,7 +38,7 @@ function checkAllPockets() {
 
 	var allPockets = ["pocket_r1", "pocket_r2", "pocket_l1", "pocket_l2"];
 
-	if (document.forms.custom_product["pockets_same"].checked) {
+	if (!document.forms.custom_product["pockets_same"].checked) {
 		document.getElementById("separate_pockets").className = "hidden_field";
 		for (var i = 0; i < allPockets.length; i++) {
 			document.getElementById(allPockets[i]).className = "hidden_field";
