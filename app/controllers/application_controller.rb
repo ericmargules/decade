@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
           go_on = false
         end
       elsif array[1] == "custom_product"
-        if CustomProduct.find(item).stock < array[0] 
+        if !CustomProduct.find_by_id(item) || CustomProduct.find(item).stock < array[0] 
           cart.delete(item)
           go_on = false
         end
