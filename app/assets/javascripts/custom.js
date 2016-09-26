@@ -14,7 +14,6 @@ function setPocketsToPocketMaterials() {
   }
 }
 
-
 function sameAsInterior() {
 
 	if (document.forms.custom_product["pockets_interior"].checked) {
@@ -95,7 +94,7 @@ function setPrice() {
 	switch(document.getElementById("custom_product_category").value){
 		case "Billfold":
 			productPrice.value = 200;
-			document.forms.custom_product["pockets"].value == "6" ? productPrice.value = Number(productPrice.value) + 50 : productPrice.value;
+			document.forms.custom_product["pockets"].value == "6" ? productPrice.value = Number(productPrice.value) + 30 : productPrice.value;
 			document.forms.custom_product["currency"].value != "US Dollars" ? productPrice.value = Number(productPrice.value) + 20 : productPrice.value;
 			!document.forms.custom_product["pockets_interior"].checked ? productPrice.value = Number(	productPrice.value) + 20 : productPrice.value;
 			productPrice.value = Number(productPrice.value) + upCharge();
@@ -166,7 +165,7 @@ function validateForm(){
 
 	setPrice();
 	buildOptions(reqs);
-  // buildImage(document.getElementById("exterior"));  <<-- turn this code on before launch
+	drawCanvas(document.getElementById("custom_product_category").value);
 	setImgURL();
 
 }
@@ -193,8 +192,8 @@ function maintenance() {
 
 	// Build Product Image
 	buildImage(document.getElementById("custom_product_category").value);
-	//layerImages(['/assets/site/test_img1.png', '/assets/site/test_img2.png', '/assets/site/test_img3.png']);
 }
+
 
 // Initial Form Building Functions
 
@@ -293,12 +292,41 @@ function setDefaultValues() {
 
 // Image Building Functions
 
+function categoryRequirements(category){
+
+	var reqs;
+
+	switch (category){
+		case "Billfold":
+		reqs  =	[	[	["lining", "corners"],
+							["interior_materials"], 
+							["pocket_r3"], 
+							["pocket_r2"], 
+							["pocket_r1"], 
+							["exterior_materials", "corners"], 
+							["edges", "corners"], 
+							["stitching", "corners"] 
+						],
+						[ ["lining", "corners"],
+							["interior_materials"],
+							["pocket_l3", "pocket_shape"],
+							["pocket_r3", "pocket_shape"],
+							["pocket_l2", "pocket_shape"],
+							["pocket_r2", "pocket_shape"],
+							["pocket_l1", "corners", "pocket_shape"],
+							["pocket_r1", "corners", "pocket_shape"],  
+							["stitching", "corners", "pockets"] 
+						]
+					];
+		break;
+	}
+	return reqs;
+}
+
 function buildPath(element, modifiers){
 
 	modifiers = modifiers || [];
-
   var urlString = "";
-
   urlString = "/assets/custom_products/" + document.forms.custom_product["custom_product_category"].value + "/" + String(document.forms.custom_product.view.value) + "/" + element + "/"
 
   for (var i = 0; i < modifiers.length; i++) {         
@@ -306,19 +334,8 @@ function buildPath(element, modifiers){
   }
 
   urlString = (urlString + document.forms.custom_product[element].value + ".png").toLowerCase().replace(/ /g,"_");
-
   console.log(urlString);
   return urlString;
-}
-
-
-function createImage(src) {
-
-	var img = document.createElement('img');
-	img.src = src;
-	img.width = "500";
-	img.height = "500";
-	return img
 }
 
 function setImage(src, element) {
@@ -330,72 +347,48 @@ function setImage(src, element) {
 	return img
 }
 
-
-function layerImages(images, elements){
-
-	// Separate out drawing to canvas so it only executes on custom_products save?
-
-	var canvas = document.getElementById("product_view");
-	var context = canvas.getContext("2d");
-	var imageArray = [];
-	context.clearRect(0, 0, canvas.width, canvas.height); //maybe?
-
-  for (var i = 0; i < images.length; i++) {         
-    imageArray.push(setImage(images[i], elements[i]));
-  }
-
-  imageArray[(imageArray.length - 1)].onload = function(){
-	  for (var i = 0; i < imageArray.length; i++) {         
-    	context.drawImage(imageArray[i],0,0);
-    }
-  }
-}
-
-
 function buildImage(category){
 
 	var viewValue;
 	var images = [];
 	var elements = [];
-	var billfold =	[	[	["lining", "corners"],
-											["interior_materials"], 
-											["pocket_r3"], 
-											["pocket_r2"], 
-											["pocket_r1"], 
-											["exterior_materials", "corners"], 
-											["edges", "corners"], 
-											["stitching", "corners"] 
-										],
-										[ ["lining", "corners"],
-											["interior_materials"],
-											["pocket_l3", "pocket_shape"],
-											["pocket_r3", "pocket_shape"],
-											["pocket_l2", "pocket_shape"],
-											["pocket_r2", "pocket_shape"],
-											["pocket_l1", "corners", "pocket_shape"],
-											["pocket_r1", "corners", "pocket_shape"],  
-  										["stitching", "corners", "pockets"] 
-										]
-									];
-
 	document.forms.custom_product.view.value == "exterior" ? viewValue = 0 : viewValue = 1;
 
 	switch (category){
 		case "Billfold":
-			$.each(billfold[viewValue], function(index,value){
+			$.each(categoryRequirements(category)[viewValue], function(index,value){
 				if((value[0] == "pocket_l3" || value[0] == "pocket_r3") && document.forms.custom_product["pockets"].value != "6"){
 					return true; 
 				}else{
 					var element = value[0];
-					elements.push(element);
 					value.shift();    
-	        images.push(buildPath(element, value));	 
+	     		setImage(buildPath(element, value), element);
 	      }
 	    });
 	  break;
 	}
-	layerImages(images, elements);
 }
+
+function drawCanvas(category){
+
+	var canvas = document.getElementById("product_view");
+	var context = canvas.getContext("2d");
+	var imageArray = categoryRequirements(category)[1]; //change to [0] on deployment
+  switch (category){
+		case "Billfold":
+			$.each(imageArray, function(index,value){
+				if((value[0] == "pocket_l3" || value[0] == "pocket_r3") && document.forms.custom_product["pockets"].value != "6"){
+					return true; 
+				}else{
+					var element = value[0];
+					value.shift();    		
+			  	context.drawImage(document.getElementById(String(element + "_image")),0,0);
+	      }
+	    });
+	  break;
+	}
+}
+
 
 // Kick Things Off
 $(document).ready(function(){
