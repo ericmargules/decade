@@ -1,32 +1,25 @@
-<p>
-  <strong>Name:</strong>
-  <%= @custom_product.name %>
-</p>
+<div id="breadcrumb">
+  <%= link_to '← Back to Cart', cart_path %>
+</div>
 
-<p>
-  <strong>Category:</strong>
-  <%= @custom_product.category %>
-</p>
+<div id="product_images">
+  <%= image_tag(@custom_product.imgurl, width: '470px') %>
+</div>
 
-<p>
-  <strong>Price:</strong>
-  <%= @custom_product.price %>
-</p>
+<div id="product_info">
+  <div class="page_title">
+    <h1><%= @custom_product.name %></h1>
+  </div>
+  <text id="price"><%= number_to_currency(@custom_product.price, :unit => '$') %></text><br>
 
-<p>
-  <strong>Stock:</strong>
-  <%= @custom_product.stock.to_s %>
-</p>
+  <p>
+    <strong>User:</strong>
+    <%= @custom_product.user_id %>
+  </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @custom_product.user_id %>
-</p>
+</div>
 
-<p>
-  <strong>Options:</strong>
-  <%= @custom_product.options %>
-</p>
-
-<%= link_to 'Edit', edit_custom_product_path(@custom_product) %> |
-<%= link_to 'Back', custom_products_path %>
+  <p>
+    <strong>Options:</strong>
+    <%= @custom_product.options %>
+  </p>

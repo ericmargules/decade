@@ -241,7 +241,7 @@ function setDefaultValues() {
 		case "Billfold":
 			document.forms.custom_product.exterior_materials.value = "Black Chromexcel";
 			document.forms.custom_product.corners.value = "rounded";
-			document.forms.custom_product.stitching.value = "Black Linen";
+			document.forms.custom_product.stitching.value = "White Linen";
 			document.forms.custom_product.edges.value = "Ebony";
 			document.forms.custom_product.interior_materials.value = "Black Chromexcel";
 			document.forms.custom_product.lining.value = "Black Chromexcel";
