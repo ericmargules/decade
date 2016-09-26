@@ -13,13 +13,14 @@
   <text id="price"><%= number_to_currency(@custom_product.price, :unit => '$') %></text><br>
 
   <p>
-    <strong>User:</strong>
-    <%= @custom_product.user_id %>
+    <strong>Options:</strong>
+    <%= @custom_product.options %>
   </p>
 
 </div>
 
+
   <p>
-    <strong>Options:</strong>
-    <%= @custom_product.options %>
+    <strong>User:</strong>
+    <%= @custom_product.user_id %>
   </p>
