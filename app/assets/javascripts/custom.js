@@ -249,7 +249,11 @@ function setDefaultValues() {
 			options_array.push(options[i].split(": "))
 		}
 		for (var i = 0; i < options_array.length; i++) {
-			document.forms.custom_product[options_array[i][0]].value = options_array[i][1];
+			if (options_array[i][0] == "pockets_interior" || options_array[i][0] == "pockets_same"){
+				options_array[i][1] == "true" ? document.forms.custom_product[options_array[i][0]].checked = true : document.forms.custom_product[options_array[i][0]].checked = false;
+			}else{
+				document.forms.custom_product[options_array[i][0]].value = options_array[i][1];
+			}
 		}
 
 	}else {
