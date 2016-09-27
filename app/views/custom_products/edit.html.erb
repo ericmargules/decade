@@ -6,7 +6,11 @@
 	JavaScript is required to view this page.
 </div>
 
+<div
+
 <div id="custom_product_content">
+	<%= hidden_field_tag "options_array", @options, { :id => "options_array" } %>
+
 	<div id="main_content">
 		<%= render 'form' %>
 	</div>

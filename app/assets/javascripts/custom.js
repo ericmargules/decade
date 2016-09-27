@@ -73,7 +73,11 @@ function buildOptions(reqs) {
 
 	var productOptions = document.getElementById("custom_product_options");
 	for (var i = 0; i < reqs.length; i++) {
-		productOptions.value = String(productOptions.value + String(reqs[i]) + ": " + document.forms.custom_product[reqs[i]].value + "; "); 
+		if (String(reqs[i]) == "pockets_interior" || String(reqs[i]) == "pockets_same"){
+			document.forms.custom_product[reqs[i]].checked == true ? productOptions.value = String(productOptions.value + String(reqs[i]) + ": true; ") : productOptions.value = String(productOptions.value + String(reqs[i]) + ": false; ");
+		}else {
+			productOptions.value = String(productOptions.value + String(reqs[i]) + ": " + document.forms.custom_product[reqs[i]].value + "; ");
+		}
 	}
 }
 
@@ -237,56 +241,74 @@ function buildForm() {
 
 function setDefaultValues() {
 
-	switch (document.getElementById("custom_product_category").value) {
-		case "Billfold":
-			document.forms.custom_product.exterior_materials.value = "Black Chromexcel";
-			document.forms.custom_product.corners.value = "rounded";
-			document.forms.custom_product.stitching.value = "White Linen";
-			document.forms.custom_product.edges.value = "Ebony";
-			document.forms.custom_product.interior_materials.value = "Black Chromexcel";
-			document.forms.custom_product.lining.value = "Black Chromexcel";
-			document.forms.custom_product.pockets.value = "6";
-			document.forms.custom_product.pocket_shape.value = "straight";
-			var allPockets = ["pocket_r1", "pocket_r2", "pocket_l1", "pocket_l2", "pocket_l3", "pocket_r3", "pocket_materials"];
-			for (var i = 0; i < allPockets.length; i++) {
+	if(window.location.href.includes("edit")){
+		var options = document.getElementById("options_array").value;
+		var options_array = [];
+		options = options.split("; ")
+		for (var i = 0; i < options.length; i++) {
+			options_array.push(options[i].split(": "))
+		}
+		for (var i = 0; i < options_array.length; i++) {
+			document.forms.custom_product[options_array[i][0]].value = options_array[i][1];
+		}
 
-				document.forms.custom_product[allPockets[i]].value = "Black Chromexcel";
-			}
+	}else {
+		switch (document.getElementById("custom_product_category").value) {
+			case "Billfold":
+				document.forms.custom_product.exterior_materials.value = "Black Chromexcel";
+				document.forms.custom_product.corners.value = "rounded";
+				document.forms.custom_product.stitching.value = "White Linen";
+				document.forms.custom_product.edges.value = "Ebony";
+				document.forms.custom_product.interior_materials.value = "Black Chromexcel";
+				document.forms.custom_product["pockets_interior"].checked = true;
+				document.forms.custom_product.lining.value = "Black Chromexcel";
+				document.forms.custom_product["pockets_same"].checked = false;
+				document.forms.custom_product.pockets.value = "6";
+				document.forms.custom_product.pocket_shape.value = "straight";
+				var allPockets = ["pocket_r1", "pocket_r2", "pocket_l1", "pocket_l2", "pocket_l3", "pocket_r3", "pocket_materials"];
+				for (var i = 0; i < allPockets.length; i++) {
 
-			break;
-		case "Card Wallet":
-			document.forms.custom_product.exterior_materials.value = "Black Chromexcel";
-			document.forms.custom_product.corners.value = "rounded";
-			document.forms.custom_product.stitching.value = "Black Linen";
-			document.forms.custom_product.edges.value = "Ebony";
-			document.forms.custom_product.interior_materials.value = "Black Chromexcel";
-			document.forms.custom_product.lining.value = "Black Chromexcel";
-			document.forms.custom_product.pockets.value = "6";
-			document.forms.custom_product.pocket_shape.value = "straight";
-			var allPockets = ["pocket_r1", "pocket_r2", "pocket_l1", "pocket_l2", "pocket_l3", "pocket_r3", "pocket_materials"];
-			for (var i = 0; i < allPockets.length; i++) {
+					document.forms.custom_product[allPockets[i]].value = "Black Chromexcel";
+				}
 
-				document.forms.custom_product[allPockets[i]].value = "Black Chromexcel";
-			}
-			break;
-		case "ID Wallet":
-			document.forms.custom_product.exterior_materials.value = "Black Chromexcel";
-			document.forms.custom_product.corners.value = "rounded";
-			document.forms.custom_product.stitching.value = "Black Linen";
-			document.forms.custom_product.edges.value = "Ebony";
-			document.forms.custom_product.lining.value = "Black Chromexcel";
-			document.forms.custom_product.pocket_shape.value = "notched";
-			document.forms.custom_product.pocket_materials.value = "Black Chromexcel";
-			break;
-		case "Notebook":
-			document.forms.custom_product.exterior_materials.value = "Black Chromexcel";
-			document.forms.custom_product.corners.value = "rounded";
-			document.forms.custom_product.stitching.value = "Black Linen";
-			document.forms.custom_product.edges.value = "Ebony";
-			document.forms.custom_product.interior_materials.value = "Black Chromexcel";
-			document.forms.custom_product.lining.value = "Black Chromexcel";
-			document.forms.custom_product.notebook_style.value = "ruled";
-			break;
+				break;
+			case "Card Wallet":
+				document.forms.custom_product.exterior_materials.value = "Black Chromexcel";
+				document.forms.custom_product.corners.value = "rounded";
+				document.forms.custom_product.stitching.value = "Black Linen";
+				document.forms.custom_product.edges.value = "Ebony";
+				document.forms.custom_product.interior_materials.value = "Black Chromexcel";
+				document.forms.custom_product["pockets_interior"].checked = true;
+				document.forms.custom_product.lining.value = "Black Chromexcel";
+				document.forms.custom_product["pockets_same"].checked = false;
+				document.forms.custom_product.pockets.value = "6";
+				document.forms.custom_product.pocket_shape.value = "straight";
+				var allPockets = ["pocket_r1", "pocket_r2", "pocket_l1", "pocket_l2", "pocket_l3", "pocket_r3", "pocket_materials"];
+				for (var i = 0; i < allPockets.length; i++) {
+
+					document.forms.custom_product[allPockets[i]].value = "Black Chromexcel";
+				}
+				break;
+			case "ID Wallet":
+				document.forms.custom_product.exterior_materials.value = "Black Chromexcel";
+				document.forms.custom_product["pockets_interior"].checked = true;
+				document.forms.custom_product.corners.value = "rounded";
+				document.forms.custom_product.stitching.value = "Black Linen";
+				document.forms.custom_product.edges.value = "Ebony";
+				document.forms.custom_product.lining.value = "Black Chromexcel";
+				document.forms.custom_product.pocket_shape.value = "notched";
+				document.forms.custom_product.pocket_materials.value = "Black Chromexcel";
+				break;
+			case "Notebook":
+				document.forms.custom_product.exterior_materials.value = "Black Chromexcel";
+				document.forms.custom_product.corners.value = "rounded";
+				document.forms.custom_product.stitching.value = "Black Linen";
+				document.forms.custom_product.edges.value = "Ebony";
+				document.forms.custom_product.interior_materials.value = "Black Chromexcel";
+				document.forms.custom_product.lining.value = "Black Chromexcel";
+				document.forms.custom_product.notebook_style.value = "ruled";
+				break;
+		}
 	}
 }
 

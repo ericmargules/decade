@@ -43,13 +43,8 @@ class CustomProductsController < ApplicationController
       redirect_to root_path
     end
     @category = @custom_product.category
-    options = @custom_product.options
-    @options_array = []
-    options[-2..-1] = ""
-    options = options.split("; ")
-    options.each do |element|
-      @options_array << element.split(": ")
-    end
+    @options = @custom_product.options
+    @options[-2..-1] = ""
   end
 
   # POST /custom_products
