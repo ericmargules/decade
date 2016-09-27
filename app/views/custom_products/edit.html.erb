@@ -1,6 +1,13 @@
-<h1>Editing Custom Product</h1>
+<div id="breadcrumb">
+  <%= link_to '← Back to Cart', cart_path %>
+</div>
 
-<%= render 'form' %>
+<div id="js_notice">
+	JavaScript is required to view this page.
+</div>
 
-<%= link_to 'Show', @custom_product %> |
-<%= link_to 'Back', custom_products_path %>
+<div id="custom_product_content">
+	<div id="main_content">
+		<%= render 'form' %>
+	</div>
+</div>

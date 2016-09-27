@@ -342,8 +342,6 @@ function setImage(src, element) {
 
 	var img = document.getElementById(String(element + "_image"));
 	img.src = src;
-	// img.width = "730";
-	// img.height = "547";
 	return img
 }
 

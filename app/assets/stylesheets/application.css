@@ -484,11 +484,11 @@ h1 {
 
 #custom_cart_button {
 
-  border: 2px solid #8f6806;
-  padding: 5px;
+  border: 3px solid #8f6806;
+  padding: 6px;
   color: #8f6806;
 	font-family: verdana, arial, helvetica, sans-serif;
-	font-size: 1em;
+	font-size: 1.25em;
 	font-weight: bold;
 	background-color: #FFF;
 	cursor: pointer;

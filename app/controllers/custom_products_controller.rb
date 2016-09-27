@@ -35,16 +35,25 @@ class CustomProductsController < ApplicationController
 
   # GET /custom_products/1/edit
   def edit
-    if current_user.try(:admin?)
-    else
-      redirect_to root_path
+    if @custom_product.stock == 0
+      redirect_to cart_path
+    elsif @custom_product.user_id != "Guest" && current_user.id.to_s != @custom_product.user_id
+      redirect_to cart_path
     end
+    options = @custom_product.options
+    @options_array = []
+    options[-1] = ""
+    options[-1] = ""
+    options = options.split("; ")
+    options.each do |element|
+      @options_array << element.split(": ")
+    end
+    @category = @custom_product.category
   end
 
   # POST /custom_products
   # POST /custom_products.json
   def create
-
     @custom_product = CustomProduct.new(custom_product_params)
     current_user ? @user_id = current_user.id : @user_id = "Guest" 
     respond_to do |format|
@@ -73,6 +82,7 @@ class CustomProductsController < ApplicationController
   # PATCH/PUT /custom_products/1
   # PATCH/PUT /custom_products/1.json
   def update
+
     if current_user.try(:admin?)
       respond_to do |format|
         if @custom_product.update(custom_product_params)
