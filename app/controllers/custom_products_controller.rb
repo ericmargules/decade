@@ -36,19 +36,20 @@ class CustomProductsController < ApplicationController
   # GET /custom_products/1/edit
   def edit
     if @custom_product.stock == 0
-      redirect_to cart_path
+      redirect_to root_path
     elsif @custom_product.user_id != "Guest" && current_user.id.to_s != @custom_product.user_id
-      redirect_to cart_path
+      redirect_to root_path
+    elsif @custom_product.user_id == "Guest" && @custom_product.session_id != session.id
+      redirect_to root_path
     end
+    @category = @custom_product.category
     options = @custom_product.options
     @options_array = []
-    options[-1] = ""
-    options[-1] = ""
+    options[-2..-1] = ""
     options = options.split("; ")
     options.each do |element|
       @options_array << element.split(": ")
     end
-    @category = @custom_product.category
   end
 
   # POST /custom_products
@@ -60,6 +61,7 @@ class CustomProductsController < ApplicationController
       if @custom_product.save
         # I don't know what the following line of code does.
         # format.json { render :show, status: :created, location: @custom_product }
+        @custom_product.session_id = session.id 
         data = @custom_product.imgurl
         img_url = "/system/custom_products/images/custom_product_#{Time.now.to_s[(0..9)]
 }_#{@custom_product.id}.png"
