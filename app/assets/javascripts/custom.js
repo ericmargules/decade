@@ -72,6 +72,7 @@ function checkPockets() {
 function buildOptions(reqs) { 
 
 	var productOptions = document.getElementById("custom_product_options");
+	productOptions.value = "";
 	for (var i = 0; i < reqs.length; i++) {
 		if (String(reqs[i]) == "pockets_interior" || String(reqs[i]) == "pockets_same"){
 			document.forms.custom_product[reqs[i]].checked == true ? productOptions.value = String(productOptions.value + String(reqs[i]) + ": true; ") : productOptions.value = String(productOptions.value + String(reqs[i]) + ": false; ");
@@ -163,9 +164,15 @@ function setImgURL(){
 function validateForm(){
 
 	var reqs = new Array();
-	$("#new_custom_product .required_field").each(function() {
-		reqs.push(this.id)
-	});
+	if(window.location.href.includes("edit")){
+		$(".edit_custom_product .required_field").each(function() {
+			reqs.push(this.id)
+		});
+	}else{	
+		$("#new_custom_product .required_field").each(function() {
+			reqs.push(this.id)
+		});
+	}
 
 	setPrice();
 	buildOptions(reqs);

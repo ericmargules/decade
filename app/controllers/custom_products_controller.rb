@@ -58,17 +58,14 @@ class CustomProductsController < ApplicationController
         # format.json { render :show, status: :created, location: @custom_product }
         @custom_product.session_id = session.id 
         data = @custom_product.imgurl
-        img_url = "/system/custom_products/images/custom_product_#{Time.now.to_s[(0..9)]
-}_#{@custom_product.id}.png"
+        img_url = "/system/custom_products/images/custom_product_#{@custom_product.id}_#{Time.now.to_s[(0..9)]}.png"
         image_data = Base64.decode64(data['data:image/png;base64,'.length .. -1])
         File.open(("#{Rails.root}/public" + img_url), 'wb') do |f|
           f.write image_data
         end
         @custom_product.imgurl = img_url
         @custom_product.save
-
         format.html { redirect_to "/cart/#{@custom_product.id}?type=custom_product", notice: 'Custom product was successfully created.' }
-
       else
         format.html { render :new }
         format.json { render json: @custom_product.errors, status: :unprocessable_entity }
@@ -79,19 +76,24 @@ class CustomProductsController < ApplicationController
   # PATCH/PUT /custom_products/1
   # PATCH/PUT /custom_products/1.json
   def update
-
-    if current_user.try(:admin?)
-      respond_to do |format|
-        if @custom_product.update(custom_product_params)
-          format.html { redirect_to @custom_product, notice: 'Custom product was successfully updated.' }
-          format.json { render :show, status: :ok, location: @custom_product }
-        else
-          format.html { render :edit }
-          format.json { render json: @custom_product.errors, status: :unprocessable_entity }
+    respond_to do |format|
+      if @custom_product.update(custom_product_params)
+        current_user ? @custom_product.user_id = current_user.id : @custom_product.user_id = "Guest"
+        data = @custom_product.imgurl
+        img_url = "/system/custom_products/images/custom_product_#{@custom_product.id}_#{Time.now.to_s[(0..9)]}.png"
+        image_data = Base64.decode64(data['data:image/png;base64,'.length .. -1])
+        File.open(("#{Rails.root}/public" + img_url), 'wb') do |f|
+          f.write image_data
         end
+        @custom_product.imgurl = img_url
+        @custom_product.save
+
+        format.html { redirect_to cart_path, notice: 'Custom product was successfully updated.' }
+        # format.json { render :show, status: :ok, location: @custom_product }
+      else
+        format.html { render :edit }
+        format.json { render json: @custom_product.errors, status: :unprocessable_entity }
       end
-    else
-      redirect_to root_path
     end
   end
 
@@ -117,7 +119,7 @@ class CustomProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def custom_product_params
-      params.require(:custom_product).permit(:name, :category, :price, :user_id, :options, :stock, :imgurl)
+      params.require(:custom_product).permit(:name, :category, :price, :user_id, :options, :stock, :imgurl, :session_id)
     end
 
     def resolve_layout

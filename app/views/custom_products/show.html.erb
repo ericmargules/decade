@@ -10,17 +10,10 @@
   <div class="page_title">
     <h1><%= @custom_product.name %></h1>
   </div>
-  <text id="price"><%= number_to_currency(@custom_product.price, :unit => '$') %></text><br>
+  <text id="price"><%= number_to_currency(@custom_product.price, :unit => '$') %></text>&nbsp; <%= link_to 'Edit', edit_custom_product_path(@custom_product.id) %><br>
 
   <p>
     <strong>Options:</strong>
     <%= @custom_product.options %>
   </p>
-
 </div>
-
-
-  <p>
-    <strong>User:</strong>
-    <%= @custom_product.user_id %>
-  </p>

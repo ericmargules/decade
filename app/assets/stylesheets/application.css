@@ -288,6 +288,7 @@ h1 {
 
 	display: inline-block;
   margin: 0 0 0 2em;
+	max-width: 47%;
 
 }
 
@@ -360,7 +361,7 @@ h1 {
 
 	font-family: verdana, arial, helvetica, sans-serif;
 	font-weight: 600;
-  font-size: 1.19em;
+  font-size: 1.25em;
   color: #555;
   letter-spacing: .05em;
 
@@ -466,11 +467,11 @@ h1 {
 
 #cart_button {
 
-  border: 2px solid #8f6806;
+  border: 3px solid #8f6806;
   padding: 5px;
   color: #8f6806;
 	font-family: verdana, arial, helvetica, sans-serif;
-	font-size: 1em;
+	font-size: 1.25em;
 	font-weight: bold;
 	margin: 0 0 0 1.25em;
 
@@ -744,6 +745,11 @@ p#empty {
 
 }
 
+#product_info a {
+
+	font-size: 1.25em;
+
+}
 
 @media screen and (max-width:939px){
 
@@ -781,6 +787,7 @@ p#empty {
 	#product_info {
     
     margin: 1.25em 0 0 0;
+    max-width: 100%;
     width: 100%
   }
 
