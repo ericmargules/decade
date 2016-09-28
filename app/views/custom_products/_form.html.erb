@@ -100,9 +100,20 @@
         </div> 
       </div>
 
+
       <div id="interior_options">
 
         <% int_materials = {"Black Chromexcel" => '#333', "Natural Chromexcel" => '#996633', "Rust Chromexcel" => '#802b00', "Natural Vermont" => '#ffdd99', "Grey Chevre" => '#8c8c8c', "Navy Chevre" => '#000066', "Cerulean Chevre" => '#0080ff', "Maroon Chevre" => '#800000', "Crimson Chevre" => '#ff0000', "Lemon Chevre" => '#cca300'} %>
+
+        <div id="lining">
+          <%= label_tag :lining, "Lining—" %><span id="lining_label"></span><br>
+            <% int_materials.each do |material, color| %>
+              <%= radio_button_tag "lining", material %>
+              <%= label_tag ("lining_" + material).to_sym, '', :class => 'label_swatch', :style => ('background-color:' + color), :alt => material %>
+
+            <% end %>
+        </div>
+
         <div id="interior_materials">
           <%= label_tag :interior, "Interior Leather—" %><span id="interior_materials_label"></span><br>
             <% int_materials.each do |material, color| %>
@@ -118,16 +129,6 @@
           </div> 
         <% end %>
 
-        <div id="lining">
-          <%= label_tag :lining, "Lining—" %><span id="lining_label"></span><br>
-            <% int_materials.each do |material, color| %>
-              <%= radio_button_tag "lining", material %>
-              <%= label_tag ("lining_" + material).to_sym, '', :class => 'label_swatch', :style => ('background-color:' + color), :alt => material %>
-
-            <% end %>
-        </div>
-     
-     
       </div>
 
       <div id="pocket_options">
