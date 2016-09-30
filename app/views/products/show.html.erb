@@ -15,7 +15,7 @@
 		<h1><%= @product.name %></h1>
 	</div>
 
-  <text id="price"><%= number_to_currency(@product.price, :unit => '$') %></text><a href="/cart/<%= @product.id %>?type=product"><text id="cart_button">Add to Cart</text></a><br>
+  <text id="show_price"><%= number_to_currency(@product.price, :unit => '$') %></text><a href="/cart/<%= @product.id %>?type=product"><text id="cart_button">Add to Cart</text></a><br>
   <div id="product_description"><text><%= @product.short_description %><br>
   Dimensions: <%= @product.dimensions %></text></div><br>
 </div>

@@ -38,7 +38,7 @@ body {
 
 	text-decoration: none;
 	color: #8e8e8e;
-	font-size: 1.1em;
+	font-size: 1.25em;
 	line-height: 1.7em;
 }
 
@@ -51,7 +51,7 @@ body {
 p, text {
 
   font-family: cardo;
-  font-size: 1.19em;
+  font-size: 1.25em;
   line-height: 1.7;
   color: #555;
 }
@@ -67,7 +67,7 @@ h1 {
 
   font-family: cardo;
   font-weight: normal;
-  font-size: 1.8em;
+  font-size: 1.6em;
   letter-spacing: .02em;
   line-height: 1.2;
   color: #555;
@@ -247,6 +247,17 @@ h1 {
 
 }
 
+.page_title h1 {
+
+	font-family: cardo;
+  font-weight: normal;
+  font-size: 1.8em;
+  letter-spacing: .02em;
+  line-height: 1.2;
+  color: #555;
+
+}
+
 
 .page_title ul {
 
@@ -357,7 +368,28 @@ h1 {
   margin: 2em auto 2.5em auto;	
 }
 
+.custom_title {
+
+	font-family: cardo;
+	font-weight: normal;
+	font-size: 1.85em;
+	letter-spacing: .02em;
+	line-height: 1.2;
+	color: #555;
+
+}
+
 #price {
+
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-weight: 600;
+  font-size: 1.1em;
+  color: #555;
+  letter-spacing: .05em;
+
+}
+
+#show_price {
 
 	font-family: verdana, arial, helvetica, sans-serif;
 	font-weight: 600;
@@ -371,7 +403,7 @@ h1 {
 
 	font-family: verdana, arial, helvetica, sans-serif;
 	font-weight: 600;
-  font-size: 1em;
+  font-size: 16px;
   color: #555;
   letter-spacing: .05em;
 
@@ -394,6 +426,10 @@ h1 {
 
 	display: inline-block;
 	margin: 0 1em 0 0;
+}
+
+#breadcrumb a {
+	font-size: 1.19em;
 }
 
 .dropdown {
@@ -471,7 +507,7 @@ h1 {
   padding: 5px;
   color: #8f6806;
 	font-family: verdana, arial, helvetica, sans-serif;
-	font-size: 1.1em;
+	font-size: 1em;
 	font-weight: bold;
 	margin: 0 0 0 1.25em;
 
@@ -587,17 +623,17 @@ h1 {
 }
 
 #cart_div {
-
 	display: inline;
 	margin: 0 0 0 1.25em;
-
 }
 
 
 #about_links {
-
 	margin: 1em 0 0 0;
+}
 
+#about_links a {
+	font-size: 1.19em;
 }
 
 #about_content p {
@@ -732,7 +768,7 @@ hr.small-centered {
 p#empty {
 
 	font-family: cardo;
-  font-size: 1.19em;
+  font-size: 1.25em;
   line-height: 1.7;
   color: #555;
   text-align: center;
