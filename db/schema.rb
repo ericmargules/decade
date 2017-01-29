@@ -26,11 +26,6 @@ ActiveRecord::Schema.define(version: 20160927032829) do
     t.string   "session_id", limit: 255
   end
 
-  create_table "items", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "orders", force: :cascade do |t|
     t.string   "user",           limit: 255
     t.string   "payment_id",     limit: 255

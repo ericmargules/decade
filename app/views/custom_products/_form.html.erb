@@ -59,7 +59,7 @@
       <div id="exterior_options">
 
         <div id="exterior_materials">
-          <% ext_materials = { 'Black Chromexcel' =>  '#000000', 'Marine Chromexcel' => '#006080', 'Oxblood Chromexcel' => '#660000',  'Coffee Chromexcel' => '#4d2800', 'Natural Chromexcel' => '#663500', 'Natural Dublin' => '#663500', 'Natural Essex' => '#ffdd99',  'Black Shell Cordovan' => '#000000', 'Navy Shell Cordovan' => '#000066', 'Rust Shell Cordovan' => '#b37700' , 'Black Shark' => '#333', 'Coffee Shark' => '#4d2800', 'Natural Lizard' => '#fff7e6'  } %>
+          <% ext_materials = { 'Black Chromexcel Horsehide' =>  '#000000', 'Marine Chromexcel' => '#006080', 'Oxblood Chromexcel' => '#660000',  'Coffee Chromexcel' => '#4d2800', 'Natural Chromexcel' => '#663500', 'Natural Dublin' => '#663500', 'Natural Essex' => '#ffdd99',  'Black Shell Cordovan' => '#000000', 'Navy Shell Cordovan' => '#000066', 'Rust Shell Cordovan' => '#b37700' , 'Black Shark' => '#333', 'Coffee Shark' => '#4d2800', 'Natural Lizard' => '#fff7e6'  } %>
           <%= label_tag :exterior, "Exterior Leather—" %><span id="exterior_materials_label"></span><br>
           <% ext_materials.each do |material, color| %>
             <%= radio_button_tag "exterior_materials", material %>
@@ -244,6 +244,8 @@
         <img id="pocket_r2_image" class="product_image"></img>
         <img id="pocket_l1_image" class="product_image"></img>
         <img id="pocket_r1_image" class="product_image"></img>
+        <img id="exterior_materials_image" class="product_image"></img>
+        <img id="edges_image" class="product_image"></img>
         <img id="stitching_image" class="product_image"></img>        
         <canvas id="product_view" height="547px" width="730px">
         </canvas>

@@ -266,7 +266,7 @@ function setDefaultValues() {
 	}else {
 		switch (document.getElementById("custom_product_category").value) {
 			case "Billfold":
-				document.forms.custom_product.exterior_materials.value = "Black Chromexcel";
+				document.forms.custom_product.exterior_materials.value = "Black Chromexcel Horsehide";
 				document.forms.custom_product.corners.value = "rounded";
 				document.forms.custom_product.stitching.value = "White Linen";
 				document.forms.custom_product.edges.value = "Ebony";
@@ -332,10 +332,11 @@ function categoryRequirements(category){
 	switch (category){
 		case "Billfold":
 		reqs  =	[	[	["lining", "corners"],
-							["interior_materials"], 
+							["interior_materials"],
+							["lining", "corners"], 
 							["pocket_r3"], 
 							["pocket_r2"], 
-							["pocket_r1"], 
+							["pocket_r1", "corners"], 
 							["exterior_materials", "corners"], 
 							["edges", "corners"], 
 							["stitching", "corners"] 
@@ -442,6 +443,17 @@ $(document).ready(function(){
 	document.forms.custom_product.onchange = function() {
 		maintenance();
 	}
+
+	// Watch View Choice
+	$('input[type=radio]').change(function(){
+	
+			$(".product_image").each(function(){
+	
+				$.src = "";
+	
+			});
+	
+	});
 
 	// Currency Notice
 	document.forms.custom_product["currency"].onchange = function() {
