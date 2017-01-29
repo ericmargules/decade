@@ -445,13 +445,15 @@ $(document).ready(function(){
 	}
 
 	// Watch View Choice
-	$('input[type=radio]').change(function(){
-	
-			$(".product_image").each(function(){
-	
-				$.src = "";
-	
-			});
+ 	$("input[type=radio][name='view']").on("change", function(){
+		
+		console.log("hello");
+		$(".product_image").each(function(){
+
+			$(this).attr("src", "");
+
+		});
+
 	
 	});
 
