@@ -379,6 +379,7 @@ function setImage(src, element) {
 	return img
 }
 
+
 function buildImage(category){
 
 	var viewValue;
@@ -406,7 +407,7 @@ function drawCanvas(category){
 	var canvas = document.getElementById("product_view");
 	var context = canvas.getContext("2d");
 	var imageArray = categoryRequirements(category)[1]; //change to [0] on deployment
-  switch (category){
+  	switch (category){
 		case "Billfold":
 			$.each(imageArray, function(index,value){
 				if((value[0] == "pocket_l3" || value[0] == "pocket_r3") && document.forms.custom_product["pockets"].value != "6"){
