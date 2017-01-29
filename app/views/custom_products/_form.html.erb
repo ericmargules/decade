@@ -59,7 +59,7 @@
       <div id="exterior_options">
 
         <div id="exterior_materials">
-          <% ext_materials = { 'Black Chromexcel Horsehide' =>  '#000000', 'Marine Chromexcel' => '#006080', 'Oxblood Chromexcel' => '#660000',  'Coffee Chromexcel' => '#4d2800', 'Natural Chromexcel' => '#663500', 'Natural Dublin' => '#663500', 'Natural Essex' => '#ffdd99',  'Black Shell Cordovan' => '#000000', 'Navy Shell Cordovan' => '#000066', 'Rust Shell Cordovan' => '#b37700' , 'Black Shark' => '#333', 'Coffee Shark' => '#4d2800', 'Natural Lizard' => '#fff7e6'  } %>
+          <% ext_materials = { 'Black Chromexcel Horsehide' =>  '#000000', 'Oxblood Chromexcel Horsehide' => '#660000', 'Natural Chromexcel Horsehide' => '#663500', 'Marine Chromexcel' => '#006080', 'Brown Chromexcel' => '#4d2800', 'Natural Chromexcel' => '#663500', "Grey Chevre" => '#8c8c8c', "Navy Chevre" => '#000066', "Cerulean Chevre" => '#0080ff', 'Leaf Chevre' => '#3d8c3f', "Maroon Chevre" => '#800000', "Crimson Chevre" => '#d8002e', "Lemon Chevre" => '#cca300', 'Natural Veg Tan' => '#ffdd99',  'Black Shell Cordovan' => '#000000', 'Navy Shell Cordovan' => '#000066', 'Rust Shell Cordovan' => '#b37700' , 'Black Shark' => '#333', 'Brown Shark' => '#4d2800', 'Natural Lizard' => '#c9c2ab'  } %>
           <%= label_tag :exterior, "Exterior Leather—" %><span id="exterior_materials_label"></span><br>
           <% ext_materials.each do |material, color| %>
             <%= radio_button_tag "exterior_materials", material %>
@@ -91,7 +91,7 @@
         </div>
         
         <div id="edges">
-          <% edge_options = { 'Ebony' => '#333', 'Brown' => '#660000', 'Beige' => '#ecd8c6' } %>
+          <% edge_options = { 'Ebony' => '#333', 'Brown' => '#660000', 'Beige' => '#ecd8c6', 'Blue' => '#082a75', 'Green' => '#236d26', 'Red' => '#911212', 'Yellow' => '#ffd633',} %>
           <%= label_tag :edges, "Edges—" %><span id="edges_label"></span><br>
           <% edge_options.each do |material, color| %>
             <%= radio_button_tag "edges", material %>
@@ -103,7 +103,7 @@
 
       <div id="interior_options">
 
-        <% int_materials = {"Black Chromexcel" => '#333', "Natural Chromexcel" => '#996633', "Rust Chromexcel" => '#802b00', "Natural Vermont" => '#ffdd99', "Grey Chevre" => '#8c8c8c', "Navy Chevre" => '#000066', "Cerulean Chevre" => '#0080ff', "Maroon Chevre" => '#800000', "Crimson Chevre" => '#ff0000', "Lemon Chevre" => '#cca300'} %>
+        <% int_materials = {"Black Chromexcel" => '#333', "Natural Chromexcel" => '#996633', "Rust Chromexcel" => '#802b00', "Natural Vermont" => '#ffdd99', "Grey Chevre" => '#8c8c8c', "Navy Chevre" => '#000066', "Cerulean Chevre" => '#0080ff', 'Leaf Chevre' => '#3d8c3f', "Maroon Chevre" => '#800000', "Crimson Chevre" => '#d8002e', "Lemon Chevre" => '#cca300'} %>
 
         <div id="lining">
           <%= label_tag :lining, "Lining—" %><span id="lining_label"></span><br>
@@ -231,8 +231,8 @@
     <div id="product_view_panel">
       <div id="view_choice">
         <%= label_tag :view %><br>
-        <%= radio_button_tag "view", "exterior" %>Exterior 
-        <%= radio_button_tag "view", "interior", :value => "checked" %>Interior 
+        <%= radio_button_tag "view", "exterior" , :value => "checked" %>Exterior 
+        <%= radio_button_tag "view", "interior" %>Interior 
       </div>
 
       <div id="view_container">
