@@ -540,9 +540,9 @@ h1 {
 
 #checkout_button {
 
-  border: 2px solid #8f6806;
-  padding: 5px;
-  color: #8f6806;
+ 	border: 2px solid #8f6806;
+ 	padding: 5px;
+ 	color: #8f6806;
 	font-family: verdana, arial, helvetica, sans-serif;
 	font-size: 1em;
 	font-weight: bold;
@@ -565,17 +565,18 @@ h1 {
 #custom_options label {
 
 	color: #555;
-  font-size: 1.25em;
-  letter-spacing: .04em;
-  font-family: cardo;
+ 	font-size: 1.25em;
+ 	letter-spacing: .04em;
+ 	font-family: cardo;
 
 }
 
 #custom_options span {
 
 	font-family: cardo;
-  font-size: 1.25em;
-  color: #555;
+	font-size: 1.15em;
+	font-style: italic;
+	color: #555;
 
 }
 
@@ -583,10 +584,10 @@ h1 {
 
 	font-family: verdana, arial, helvetica, sans-serif;
 	font-weight: 600;
-  font-size: 1.5em;
-  color: #555;
-  letter-spacing: .05em;
-  display: inline;
+ 	font-size: 1.5em;
+ 	color: #555;
+ 	letter-spacing: .05em;
+	display: inline;
 
 }
 

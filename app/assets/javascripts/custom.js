@@ -266,15 +266,15 @@ function setDefaultValues() {
 		switch (document.getElementById("custom_product_category").value) {
 			case "Billfold":
 				document.forms.custom_product.exterior_materials.value = "Black Chromexcel Horsehide";
-				document.forms.custom_product.corners.value = "rounded";
+				document.forms.custom_product.corners.value = "Rounded";
 				document.forms.custom_product.stitching.value = "White Linen";
 				document.forms.custom_product.edges.value = "Ebony";
 				document.forms.custom_product.interior_materials.value = "Black Chromexcel";
 				document.forms.custom_product["pockets_interior"].checked = true;
 				document.forms.custom_product.lining.value = "Black Chromexcel";
 				document.forms.custom_product["pockets_same"].checked = false;
-				document.forms.custom_product.pockets.value = "6";
-				document.forms.custom_product.pocket_shape.value = "straight";
+				document.forms.custom_product.pockets.value = "4";
+				document.forms.custom_product.pocket_shape.value = "Straight";
 				var allPockets = ["pocket_r1", "pocket_r2", "pocket_l1", "pocket_l2", "pocket_l3", "pocket_r3", "pocket_materials"];
 				for (var i = 0; i < allPockets.length; i++) {
 
@@ -284,7 +284,7 @@ function setDefaultValues() {
 				break;
 			case "Card Wallet":
 				document.forms.custom_product.exterior_materials.value = "Black Chromexcel";
-				document.forms.custom_product.corners.value = "rounded";
+				document.forms.custom_product.corners.value = "Rounded";
 				document.forms.custom_product.stitching.value = "Black Linen";
 				document.forms.custom_product.edges.value = "Ebony";
 				document.forms.custom_product.interior_materials.value = "Black Chromexcel";
@@ -292,7 +292,7 @@ function setDefaultValues() {
 				document.forms.custom_product.lining.value = "Black Chromexcel";
 				document.forms.custom_product["pockets_same"].checked = false;
 				document.forms.custom_product.pockets.value = "6";
-				document.forms.custom_product.pocket_shape.value = "straight";
+				document.forms.custom_product.pocket_shape.value = "Straight";
 				var allPockets = ["pocket_r1", "pocket_r2", "pocket_l1", "pocket_l2", "pocket_l3", "pocket_r3", "pocket_materials"];
 				for (var i = 0; i < allPockets.length; i++) {
 
@@ -302,16 +302,16 @@ function setDefaultValues() {
 			case "ID Wallet":
 				document.forms.custom_product.exterior_materials.value = "Black Chromexcel";
 				document.forms.custom_product["pockets_interior"].checked = true;
-				document.forms.custom_product.corners.value = "rounded";
+				document.forms.custom_product.corners.value = "Rounded";
 				document.forms.custom_product.stitching.value = "Black Linen";
 				document.forms.custom_product.edges.value = "Ebony";
 				document.forms.custom_product.lining.value = "Black Chromexcel";
-				document.forms.custom_product.pocket_shape.value = "notched";
+				document.forms.custom_product.pocket_shape.value = "Notched";
 				document.forms.custom_product.pocket_materials.value = "Black Chromexcel";
 				break;
 			case "Notebook":
 				document.forms.custom_product.exterior_materials.value = "Black Chromexcel";
-				document.forms.custom_product.corners.value = "rounded";
+				document.forms.custom_product.corners.value = "Rounded";
 				document.forms.custom_product.stitching.value = "Black Linen";
 				document.forms.custom_product.edges.value = "Ebony";
 				document.forms.custom_product.interior_materials.value = "Black Chromexcel";
@@ -363,10 +363,10 @@ function buildPath(element, modifiers){
   urlString = "/assets/custom_products/" + document.forms.custom_product["custom_product_category"].value + "/" + String(document.forms.custom_product.view.value) + "/" + element + "/"
 
   for (var i = 0; i < modifiers.length; i++) {         
-    urlString = urlString + document.forms.custom_product[modifiers[i]].value + "/";
+    urlString = urlString + document.forms.custom_product[modifiers[i]].value.toLowerCase()  + "/";
   }
 
-  urlString = (urlString + document.forms.custom_product[element].value + ".png").toLowerCase().replace(/ /g,"_");
+  urlString = (urlString + document.forms.custom_product[element].value.toLowerCase() + ".png").toLowerCase().replace(/ /g,"_");
   console.log(urlString);
   return urlString;
 }
