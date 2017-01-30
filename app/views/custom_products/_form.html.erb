@@ -74,6 +74,13 @@
           </div> 
         <% end %>
         
+        <div id="corners">
+          <%= label_tag :corners, "Corners—" %><span id="corners_label"></span><br>
+          <%= radio_button_tag "corners", "rounded" %>
+          <%= radio_button_tag "corners", "round" %>
+          <%= radio_button_tag "corners", "square" %>
+        </div>
+
         <div id="stitching">
           <% stitch_options = { 'Black Linen' => '#000000', 'White Linen' => '#f2f2f2', 'Natural Linen' => '#fff7e6', 'Brown Linen' => '#660000', 'Blue Linen' => '#0047b3', 'Red Linen' => '#b30000', 'Green Linen' => '#006600', 'Yellow Linen' => '#ffd633' } %>
           <%= label_tag :stitching, "Stitching—" %><span id="stitching_label"></span><br>
@@ -81,13 +88,6 @@
             <%= radio_button_tag "stitching", material %>
             <%= label_tag ("stitching_" + material).to_sym, '', :class => 'label_swatch', :style => ('background-color:' + color), :alt => material %>
           <% end %>
-        </div>
-
-        <div id="corners">
-          <%= label_tag :corners, "Corners—" %><span id="corners_label"></span><br>
-          <%= radio_button_tag "corners", "rounded" %>
-          <%= radio_button_tag "corners", "round" %>
-          <%= radio_button_tag "corners", "square" %>
         </div>
         
         <div id="edges">

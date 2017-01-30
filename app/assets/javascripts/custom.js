@@ -158,7 +158,6 @@ function setImgURL(){
 	var canvas = document.getElementById("product_view");
 	var imgurl = document.getElementById("custom_product_imgurl");
 	imgurl.value = canvas.toDataURL();
-
 }
 
 function validateForm(){
@@ -402,11 +401,23 @@ function buildImage(category){
 	}
 }
 
+function resetImage(){
+	$(".product_image").each(function(){
+		$(this).attr("src", "");
+	});
+}
+
+
 function drawCanvas(category){
 
 	var canvas = document.getElementById("product_view");
 	var context = canvas.getContext("2d");
-	var imageArray = categoryRequirements(category)[1]; //change to [0] on deployment
+	if(document.getElementById("view_interior").checked){
+		document.getElementById("view_exterior").checked = "checked"
+		resetImage();
+		buildImage(document.getElementById("custom_product_category").value);
+	};
+	var imageArray = categoryRequirements(category)[0]; //change to [0] on deployment
   	switch (category){
 		case "Billfold":
 			$.each(imageArray, function(index,value){
@@ -447,15 +458,7 @@ $(document).ready(function(){
 
 	// Watch View Choice
  	$("input[type=radio][name='view']").on("change", function(){
-		
-		console.log("hello");
-		$(".product_image").each(function(){
-
-			$(this).attr("src", "");
-
-		});
-
-	
+ 		resetImage();	
 	});
 
 	// Currency Notice
