@@ -229,11 +229,6 @@
     </div>
     
     <div id="product_view_panel">
-      <div id="view_choice">
-        <%= label_tag :view %><br>
-        <%= radio_button_tag "view", "exterior" , :value => "checked" %>Exterior 
-        <%= radio_button_tag "view", "interior" %>Interior 
-      </div>
 
       <div id="view_container">
         <img id="interior_materials_image" class="product_image"></img>
@@ -249,6 +244,12 @@
         <img id="stitching_image" class="product_image"></img>        
         <canvas id="product_view" height="750px" width="1000px">
         </canvas>
+      </div>
+
+      <div id="view_choice">
+        <%= label_tag :view %><br>
+        <%= radio_button_tag "view", "exterior" , :value => "checked" %>Exterior 
+        <%= radio_button_tag "view", "interior" %>Interior 
       </div>
       
     </div>
