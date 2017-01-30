@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.3.3'
+
 gem 'paypal-sdk-rest'
 
 gem 'devise', '~> 3.5', '>= 3.5.6'

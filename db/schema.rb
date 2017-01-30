@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20160927032829) do
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
     t.integer  "stock",      limit: 4
-    t.text     "imgurl",     limit: 4294967295
+    t.text     "imgurl",     limit: 1073741823
     t.string   "session_id", limit: 255
   end
 
