@@ -54,7 +54,33 @@
   </div>
     
   <div id="custom_options">
-   
+
+    <div id="product_view_panel">
+      
+      <div id="view_container">
+        <img id="interior_materials_image" class="first_product_image"></img>
+        <img id="lining_image" class="product_image"></img>
+        <img id="pocket_l3_image" class="product_image"></img>
+        <img id="pocket_r3_image" class="product_image"></img>
+        <img id="pocket_l2_image" class="product_image"></img>
+        <img id="pocket_r2_image" class="product_image"></img>
+        <img id="pocket_l1_image" class="product_image"></img>
+        <img id="pocket_r1_image" class="product_image"></img>
+        <img id="exterior_materials_image" class="product_image"></img>
+        <img id="edges_image" class="product_image"></img>
+        <img id="stitching_image" class="product_image"></img>        
+        <canvas id="product_view" height="750px" width="1000px">
+        </canvas>
+      </div>
+
+      <div id="view_choice">
+        <%= label_tag :view %><br>
+        <%= radio_button_tag "view", "exterior" , :value => "checked" %>Exterior 
+        <%= radio_button_tag "view", "interior" %>Interior 
+      </div>
+
+    </div>
+  
     <div id="options_panel">  
       <div id="exterior_options">
 
@@ -228,32 +254,6 @@
       </div>
     </div>
     
-    <div id="product_view_panel">
-
-      <div id="view_container">
-        <img id="interior_materials_image" class="product_image"></img>
-        <img id="lining_image" class="product_image"></img>
-        <img id="pocket_l3_image" class="product_image"></img>
-        <img id="pocket_r3_image" class="product_image"></img>
-        <img id="pocket_l2_image" class="product_image"></img>
-        <img id="pocket_r2_image" class="product_image"></img>
-        <img id="pocket_l1_image" class="product_image"></img>
-        <img id="pocket_r1_image" class="product_image"></img>
-        <img id="exterior_materials_image" class="product_image"></img>
-        <img id="edges_image" class="product_image"></img>
-        <img id="stitching_image" class="product_image"></img>        
-        <canvas id="product_view" height="750px" width="1000px">
-        </canvas>
-      </div>
-
-      <div id="view_choice">
-        <%= label_tag :view %><br>
-        <%= radio_button_tag "view", "exterior" , :value => "checked" %>Exterior 
-        <%= radio_button_tag "view", "interior" %>Interior 
-      </div>
-      
-    </div>
-
   </div>
 
 <% end %>
