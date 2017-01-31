@@ -801,7 +801,7 @@ p#empty {
 
 }
 
-@media screen and (max-width:939px){
+@media screen and (max-width:950px){
 
 	#wrapper {
 
@@ -825,7 +825,7 @@ p#empty {
   }
 }
 
-@media screen and (max-width:750px){
+@media screen and (max-width:800px){
 
 
 	#product_view_panel {
