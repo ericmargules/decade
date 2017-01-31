@@ -945,5 +945,13 @@ p#empty {
 		height: 35px;
 		border-top: none;
 	}
-
+	
+	#custom_options label {
+		font-size: 1.6em;
+	}
+	
+	#custom_options span {
+		font-size: 1.45em;
+		line-height: 1.5;
+	}
 }
