@@ -940,10 +940,10 @@ p#empty {
     	display: inline-block;
 	}
 	
-	.label_swatch {
+	.label_swatch.selected {
 		width: 50px;
-		height: 25px;
-		border-top: 10px solid white;
-		display: inline-block;
+		height: 35px;
+		border-top: none;
 	}
+
 }
