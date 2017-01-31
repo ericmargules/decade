@@ -461,6 +461,17 @@ $(document).ready(function(){
  		resetImage();	
 	});
 
+	// Watch View Container
+	$("#view_container").on("click", function(){
+		if(document.getElementById("view_interior").checked){
+			document.getElementById("view_exterior").checked = "checked"
+		}else{
+			document.getElementById("view_interior").checked = "checked"
+		};
+		resetImage();
+		buildImage(document.getElementById("custom_product_category").value);
+	});
+
 	// Currency Notice
 	document.forms.custom_product["currency"].onchange = function() {
 		document.forms.custom_product["currency"].value != "US Dollars" ? document.getElementById("currency_notice").style.display = "block" : document.getElementById("currency_notice").style.display = "none";
