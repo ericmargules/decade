@@ -932,4 +932,18 @@ p#empty {
   	font-size: 1.25em;
 
   }
+
+	.label_swatch {
+		width: 50px;
+    	height: 25px;
+    	border-top: 10px solid white;
+    	display: inline-block;
+	}
+	
+	.label_swatch {
+		width: 50px;
+		height: 25px;
+		border-top: 10px solid white;
+		display: inline-block;
+	}
 }
