@@ -69,7 +69,7 @@
         <img id="exterior_materials_image" class="product_image"></img>
         <img id="edges_image" class="product_image"></img>
         <img id="stitching_image" class="product_image"></img>        
-        <canvas id="product_view" height="750px" width="1000px">
+        <canvas id="product_view" height="500px" width="667px">
         </canvas>
       </div>
 
@@ -108,7 +108,7 @@
         </div>
 
         <div id="stitching">
-          <% stitch_options = { 'Black Linen' => '#000000', 'White Linen' => '#f2f2f2', 'Brown Linen' => '#660000', 'Natural Linen' => '#fff7e6', 'Blue Linen' => '#0047b3', 'Red Linen' => '#b30000', 'Green Linen' => '#006600', 'Yellow Linen' => '#ffd633' } %>
+          <% stitch_options = { 'Black Linen' => '#000000', 'White Linen' => '#f2f2f2', 'Brown Linen' => '#593000', 'Natural Linen' => '#fff7e6', 'Red Linen' => '#b30000', 'Blue Linen' => '#0047b3', 'Green Linen' => '#006600', 'Yellow Linen' => '#ffd633' } %>
           <%= label_tag :stitching, "Stitching—" %><span id="stitching_label"></span><br>
           <% stitch_options.each do |material, color| %>
             <%= radio_button_tag "stitching", material %>
@@ -117,7 +117,7 @@
         </div>
         
         <div id="edges">
-          <% edge_options = { 'Ebony' => '#333', 'Brown' => '#660000', 'Beige' => '#ecd8c6', 'Blue' => '#082a75', 'Green' => '#236d26', 'Red' => '#911212', 'Yellow' => '#ffd633',} %>
+          <% edge_options = { 'Ebony' => '#333', 'Brown' => '#593000', 'Beige' => '#ecd8c6', 'Red' => '#b30000', 'Blue' => '#0047b3', 'Green' => '#236d26', 'Yellow' => '#ffd633',} %>
           <%= label_tag :edges, "Edges—" %><span id="edges_label"></span><br>
           <% edge_options.each do |material, color| %>
             <%= radio_button_tag "edges", material %>
