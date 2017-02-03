@@ -86,8 +86,10 @@ function upCharge(){
 
 	var re1 = /Cordovan/;
 	var re2 = /Shark/;
+	var re3 = /Natural/;
 	var charge = 0;
-	re1.test(document.forms.custom_product["exterior_materials"].value) ? charge = 100 : charge;
+	if(re1.test(document.forms.custom_product["exterior_materials"].value)){
+	re3.test(document.forms.custom_product["exterior_materials"].value)? charge = 120 : charge = 100 };  
 	re2.test(document.forms.custom_product["exterior_materials"].value) ? charge = 50 : charge;
 	return charge;
 
