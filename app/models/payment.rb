@@ -25,7 +25,7 @@ class Payment < PayPal::SDK::REST::Payment
       item = array.split(",")
       hash[:name] = item[0]
       hash[:sku] = item[1]
-      hash[:price] = item[2]
+      hash[:price] = item[2].to_f
       hash[:currency] = "USD"
       hash[:quantity] = item[3]
       list << hash
