@@ -82,10 +82,11 @@ class CustomProductsController < ApplicationController
         data = @custom_product.imgurl
         img_url = "/system/custom_products/images/custom_product_#{@custom_product.id}_#{Time.now.to_s[(0..9)]}.png"
         image_data = Base64.decode64(data['data:image/png;base64,'.length .. -1])
-        File.open(("#{Rails.root}/public" + img_url), 'wb') do |f|
+        image_file = File.open(("#{Rails.root}/public" + img_url), 'wb') do |f|
           f.write image_data
         end
-        @custom_product.imgurl = img_url
+        @custom_product.image = image_file
+        #@custom_product.imgurl = img_url
         @custom_product.save
 
         format.html { redirect_to cart_path, notice: 'Custom product was successfully updated.' }
@@ -119,7 +120,7 @@ class CustomProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def custom_product_params
-      params.require(:custom_product).permit(:name, :category, :price, :user_id, :options, :stock, :imgurl, :session_id)
+      params.require(:custom_product).permit(:name, :category, :price, :user_id, :options, :stock, :imgurl, :session_id, :image)
     end
 
     def resolve_layout

@@ -40,6 +40,7 @@
 							<%= image_tag(product.main_image(:thumb), :class => "cart_image" , :alt => product.name)%>
 						<% else %>
 							<%= image_tag(product.imgurl, :class => "cart_image" , :alt => product.name)%>
+							<%= image_tag(product.image(:thumb), :class => "cart_image" , :alt => product.name)%>							
 						<% end %>
 					</td>
 					<td><%= link_to product.name, product %></td>

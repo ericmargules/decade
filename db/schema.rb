@@ -11,19 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160927032829) do
+ActiveRecord::Schema.define(version: 20170210025155) do
 
   create_table "custom_products", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.string   "category",   limit: 255
-    t.decimal  "price",                         precision: 10
-    t.string   "user_id",    limit: 255
-    t.text     "options",    limit: 65535
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
-    t.integer  "stock",      limit: 4
-    t.text     "imgurl",     limit: 1073741823
-    t.string   "session_id", limit: 255
+    t.string   "name",               limit: 255
+    t.string   "category",           limit: 255
+    t.decimal  "price",                                 precision: 10
+    t.string   "user_id",            limit: 255
+    t.text     "options",            limit: 65535
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
+    t.integer  "stock",              limit: 4
+    t.text     "imgurl",             limit: 4294967295
+    t.string   "session_id",         limit: 255
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
+    t.datetime "image_updated_at"
   end
 
   create_table "orders", force: :cascade do |t|
