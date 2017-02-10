@@ -6,7 +6,8 @@ class CustomProduct < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   def image_from_url(url)
-  	self.image = open(url)
+  	self.image = URI.parse(url)
+
   end
 
 end
