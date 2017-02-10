@@ -52,29 +52,19 @@ class CustomProductsController < ApplicationController
   def create
     @custom_product = CustomProduct.new(custom_product_params)
     current_user ? @user_id = current_user.id : @user_id = "Guest" 
-    data = @custom_product.imgurl
-    img_url = "/system/custom_products/images/custom_product_#{@custom_product.id}_#{Time.now.to_s[(0..9)]}.png"
-    image_data = Base64.decode64(data['data:image/png;base64,'.length .. -1])
-    image_file = File.open(("#{Rails.root}/public" + img_url), 'wb') do |f|
-      f.write image_data
-    end
-    @custom_product.image = image_file
-    @custom_product.imgurl = img_url
-    @custom_product.save    
     respond_to do |format|
       if @custom_product.save
         # I don't know what the following line of code does.
         # format.json { render :show, status: :created, location: @custom_product }
         @custom_product.session_id = session.id 
-        # data = @custom_product.imgurl
-        # img_url = "/system/custom_products/images/custom_product_#{@custom_product.id}_#{Time.now.to_s[(0..9)]}.png"
-        # image_data = Base64.decode64(data['data:image/png;base64,'.length .. -1])
-        # image_file = File.open(("#{Rails.root}/public" + img_url), 'wb') do |f|
-        #   f.write image_data
-        # end
-        # @custom_product.image = image_file
-        # @custom_product.imgurl = img_url
-        # @custom_product.save
+        data = @custom_product.imgurl
+        img_url = "/system/custom_products/images/custom_product_#{@custom_product.id}_#{Time.now.to_s[(0..9)]}.png"
+        image_data = Base64.decode64(data['data:image/png;base64,'.length .. -1])
+        @custom_product.image = File.open(("#{Rails.root}/public" + img_url), 'wb') do |f|
+          f.write image_data
+        end
+        @custom_product.imgurl = img_url
+        @custom_product.save
         format.html { redirect_to "/cart/#{@custom_product.id}?type=custom_product", notice: 'Custom product was successfully created.' }
       else
         format.html { render :new }
@@ -92,11 +82,10 @@ class CustomProductsController < ApplicationController
         data = @custom_product.imgurl
         img_url = "/system/custom_products/images/custom_product_#{@custom_product.id}_#{Time.now.to_s[(0..9)]}.png"
         image_data = Base64.decode64(data['data:image/png;base64,'.length .. -1])
-        image_file = File.open(("#{Rails.root}/public" + img_url), 'wb') do |f|
+        @custom_product.image = File.open(("#{Rails.root}/public" + img_url), 'wb') do |f|
           f.write image_data
         end
-        @custom_product.image = image_file
-        #@custom_product.imgurl = img_url
+        @custom_product.imgurl = img_url
         @custom_product.save
 
         format.html { redirect_to cart_path, notice: 'Custom product was successfully updated.' }
