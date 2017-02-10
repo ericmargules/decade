@@ -1,4 +1,4 @@
-require "open-uri"
+require "uri"
 
 class CustomProduct < ActiveRecord::Base
   has_attached_file :image, styles: { default: "667×500>", thumb: "133x100>" }, default_url: "/images/:style/missing.png"
@@ -6,8 +6,9 @@ class CustomProduct < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   def image_from_url(url)
-  	self.image = URI.parse(url)
-
+  	if url.present?
+	  	self.image = URI.parse(url)
+  	end
   end
 
 end
