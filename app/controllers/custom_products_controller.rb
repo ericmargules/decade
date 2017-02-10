@@ -33,7 +33,6 @@ class CustomProductsController < ApplicationController
   
   end
 
-  # GET /custom_products/1/edit
   def edit
     if @custom_product.stock == 0
       redirect_to root_path
@@ -47,24 +46,19 @@ class CustomProductsController < ApplicationController
     @options[-2..-1] = ""
   end
 
-  # POST /custom_products
-  # POST /custom_products.json
   def create
     @custom_product = CustomProduct.new(custom_product_params)
     current_user ? @user_id = current_user.id : @user_id = "Guest" 
     respond_to do |format|
       if @custom_product.save
-        # I don't know what the following line of code does.
-        # format.json { render :show, status: :created, location: @custom_product }
         @custom_product.session_id = session.id 
         data = @custom_product.imgurl
         img_url = "/system/custom_products/images/custom_product_#{@custom_product.id}_#{Time.now.to_s[(0..9)]}.png"
         image_data = Base64.decode64(data['data:image/png;base64,'.length .. -1])
-        @custom_product.image do
-          File.open(("#{Rails.root}/public" + img_url), 'wb') do |f|
-            f.write image_data
-          end
+        File.open(("#{Rails.root}/public" + img_url), 'wb') do |f|
+          f.write image_data
         end
+        @custom_product.image_from_url = ("#{Rails.root}/public" + img_url)
         @custom_product.imgurl = img_url
         @custom_product.save
         format.html { redirect_to "/cart/#{@custom_product.id}?type=custom_product", notice: 'Custom product was successfully created.' }
@@ -75,8 +69,6 @@ class CustomProductsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /custom_products/1
-  # PATCH/PUT /custom_products/1.json
   def update
     respond_to do |format|
       if @custom_product.update(custom_product_params)
