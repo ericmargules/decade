@@ -58,7 +58,8 @@ class CustomProductsController < ApplicationController
         File.open(("#{Rails.root}/public" + img_url), 'wb') do |f|
           f.write image_data
         end
-        @custom_product.image_from_url(("#{Rails.root}/public" + img_url))
+        @custom_product.image_from_url("https://vignette2.wikia.nocookie.net/pokemon/images/1/15/007Squirtle_XY_anime.png")
+        # @custom_product.image_from_url(("#{Rails.root}/public" + img_url))
         @custom_product.imgurl = img_url
         @custom_product.save
         format.html { redirect_to "/cart/#{@custom_product.id}?type=custom_product", notice: 'Custom product was successfully created.' }
