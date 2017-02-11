@@ -98,7 +98,7 @@ class CustomProductsController < ApplicationController
 
     def set_custom_product_image
       imgurl = ("http://decadeleather.herokuapp.com" + @custom_product.imgurl).to_s
-      @custom_product.image_from_url(imgurl)
+      @custom_product.image_from_url("http://decadeleather.herokuapp.com/system/custom_products/images/custom_product_24_2017-02-11.png")
       @custom_product.save
     end
 
