@@ -1,8 +1,5 @@
-require "base64"
-
 class CustomProductsController < ApplicationController
   before_action :set_custom_product, only: [:show, :edit, :update, :destroy]
-  after_action :set_custom_product_image, only: [:create, :update]
 
   layout :resolve_layout
 
@@ -53,7 +50,8 @@ class CustomProductsController < ApplicationController
     respond_to do |format|
       if @custom_product.save
         @custom_product.session_id = session.id 
-        process_canvas
+        @custom_product.image = @custom_product.imgurl
+        @custom_product.save
         format.html { redirect_to "/cart/#{@custom_product.id}?type=custom_product", notice: 'Custom product was successfully created.' }
       else
         format.html { render :new }
@@ -66,7 +64,8 @@ class CustomProductsController < ApplicationController
     respond_to do |format|
       if @custom_product.update(custom_product_params)
         current_user ? @custom_product.user_id = current_user.id : @custom_product.user_id = "Guest"
-        process_canvas
+        @custom_product.image = @custom_product.imgurl
+        @custom_product.save
         format.html { redirect_to cart_path, notice: 'Custom product was successfully updated.' }
         # format.json { render :show, status: :ok, location: @custom_product }
       else
@@ -94,23 +93,6 @@ class CustomProductsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_custom_product
       @custom_product = CustomProduct.find(params[:id])
-    end
-
-    def set_custom_product_image
-      imgurl = ("http://decadeleather.herokuapp.com" + @custom_product.imgurl).to_s
-      @custom_product.image_from_url("http://vignette2.wikia.nocookie.net/pokemon/images/1/15/007Squirtle_XY_anime.png")
-      @custom_product.save
-    end
-
-    def process_canvas
-      data = @custom_product.imgurl
-      img_url = "/system/custom_products/images/custom_product_#{@custom_product.id}_#{Time.now.to_s[(0..9)]}.png"
-      image_data = Base64.decode64(data['data:image/png;base64,'.length .. -1])
-      File.open(("#{Rails.root}/public" + img_url), 'wb') do |f|
-        f.write image_data
-      end
-      @custom_product.imgurl = img_url
-      @custom_product.save
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
