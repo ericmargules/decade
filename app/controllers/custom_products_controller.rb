@@ -58,10 +58,10 @@ class CustomProductsController < ApplicationController
         File.open(("#{Rails.root}/public" + img_url), 'wb') do |f|
           f.write image_data
         end
-        # image_url = ("").to_s
-        # image_url = ("https://decadeleather.herokuapp.com" + img_url).to_s
-        # @custom_product.image_from_url(image_url)
         @custom_product.imgurl = img_url
+        @custom_product.save
+        image_url = ("http://decadeleather.herokuapp.com" + img_url).to_s
+        @custom_product.image_from_url(image_url)
         @custom_product.save
         format.html { redirect_to "/cart/#{@custom_product.id}?type=custom_product", notice: 'Custom product was successfully created.' }
       else
