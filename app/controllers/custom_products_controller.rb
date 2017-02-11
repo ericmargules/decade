@@ -58,7 +58,10 @@ class CustomProductsController < ApplicationController
         File.open(("#{Rails.root}/public" + img_url), 'wb') do |f|
           f.write image_data
         end
-        @custom_product.image_from_url("https://vignette2.wikia.nocookie.net/pokemon/images/1/15/007Squirtle_XY_anime.png")
+        @custom_product.image_from_url("https://decadeleather.herokuapp.com" + img_url)
+        image_url = ("https://" + "#{Rails.root}/public" + img_url)
+        p image_url
+        # @custom_product.image_from_url(image_url)
         # @custom_product.image_from_url(("#{Rails.root}/public" + img_url))
         @custom_product.imgurl = img_url
         @custom_product.save
