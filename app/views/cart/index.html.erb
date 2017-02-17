@@ -64,8 +64,13 @@
 				<th></th>
 				<th></th>
 				<th></th>
-				<th><div id="checkout_button_link"><%= link_to orders_path( :amount => (total.to_s << "0"), :item_list => item_list.to_s ), :method => :post do %><text id="checkout_button">Checkout</text>
-					<% end %></div></th>			
+				<th><div id="checkout_button_link">
+					<% if user_signed_in? %>
+						<%= link_to orders_path( :amount => (total.to_s << "0"), :item_list => item_list.to_s ), :method => :post do %><text id="checkout_button">Checkout</text>
+						<% end %>
+					<% else %>
+					<% end %>	
+					</div></th>			
 				<th></th>
 			</tr>
 		</table>

@@ -48,6 +48,16 @@ class CartController < ApplicationController
   	end
   end
 
+  def checkout_verify
+    if session[:cart] && session[:cart] != {}
+      if user.logged_in?
+        redirect_to :action => :index
+      end
+    else
+      redirect_to :action => :index
+    end
+  end
+
   private 
 
   def cleanup_cart
