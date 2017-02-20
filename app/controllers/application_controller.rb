@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  helper_method :resource_name, :resource, :devise_mapping
 
   protect_from_forgery with: :exception
 
@@ -31,6 +32,18 @@ class ApplicationController < ActionController::Base
       redirect_to cart_path , notice: 'Some items in your cart are no longer available.'
       return false
     end
+  end
+
+  def resource_name
+    :user
+  end
+ 
+  def resource
+    @resource ||= User.new
+  end
+ 
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
   end
 
 end
