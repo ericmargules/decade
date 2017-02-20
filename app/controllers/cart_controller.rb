@@ -50,7 +50,7 @@ class CartController < ApplicationController
 
   def checkout_verify
     if session[:cart] && session[:cart] != {}
-      if user.logged_in?
+      if current_user
         redirect_to :action => :index
       end
     else
