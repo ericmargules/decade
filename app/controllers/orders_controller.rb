@@ -99,11 +99,11 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-  	params.permit(:amount, :description, :state, :item_list, :payment_method, :return_url, :cancel_url, :payment_id, :user, :session_id, :shipped, :tracking)
+  	params.permit(:amount, :description, :state, :item_list, :payment_method, :return_url, :cancel_url, :payment_id, :user, :session_id, :shipped, :tracking, :address)
   end
   
   def edit_order_params
-  	params.require(:order).permit(:amount, :description, :state, :item_list, :payment_method, :return_url, :cancel_url, :payment_id, :user, :session_id, :shipped, :tracking)
+  	params.require(:order).permit(:amount, :description, :state, :item_list, :payment_method, :return_url, :cancel_url, :payment_id, :user, :session_id, :shipped, :tracking, :address)
   end
 
   def update_stock(order)

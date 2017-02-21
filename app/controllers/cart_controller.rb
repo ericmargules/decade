@@ -53,6 +53,7 @@ class CartController < ApplicationController
       if current_user
         redirect_to :action => :index
       end
+      @cart = session[:cart]
     else
       redirect_to :action => :index
     end
