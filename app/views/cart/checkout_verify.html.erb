@@ -31,15 +31,5 @@
 <h2> Or </h2>
 
 <div>
-  <h2>Checkout as Guest</h2>
-  <%= form_tag do %>
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.text_field %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "Submit" %>
-    </div>
-  <% end %>
+  <h2>  <%= link_to "Checkout as Guest", checkout_info_path(:level => "Guest") %></h2>
 </div>

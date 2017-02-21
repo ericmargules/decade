@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   get '/cart/:id/remove' => 'cart#remove'
 
+  get '/checkout' => 'cart#checkout_verify'
+
   get '/checkout/verify' => 'cart#checkout_verify'
 
   get '/checkout/info' => 'cart#checkout_info'

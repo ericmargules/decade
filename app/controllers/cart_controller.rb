@@ -51,7 +51,7 @@ class CartController < ApplicationController
   def checkout_verify
     if session[:cart] && session[:cart] != {}
       if current_user
-        redirect_to :action => checkout_info
+        redirect_to :action => :checkout_info, level: "Verified"
       else
         check_stock(session[:cart])
       end
@@ -61,7 +61,7 @@ class CartController < ApplicationController
   end
 
   def checkout_info
-    if params[:status] == "Verified" && session[:cart] && session[:cart] != {}
+    if params[:level] == "Verified" && session[:cart] && session[:cart] != {}
       if current_user
         check_stock(session[:cart])
         @user = current_user
@@ -75,7 +75,7 @@ class CartController < ApplicationController
   end
 
   def checkout_confirm
-    if params[:status] == "Verified" && params[:address] && session[:cart] && session[:cart] != {}
+    if params[:level] == "Verified" && params[:address] && session[:cart] && session[:cart] != {}
         @cart = session[:cart]
         check_stock(@cart)
         @address = params[:address]
