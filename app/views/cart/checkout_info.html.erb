@@ -1,0 +1,20 @@
+<h2>Shipping Information</h2><br>
+<%= form_tag do %>
+	<%= label_tag 'Name' %><br>
+	<%= text_field_tag 'Name' %><br><br>
+	<%= label_tag 'Address 1' %><br>
+	<%= text_field_tag 'Address 1' %><br><br>
+	<%= label_tag 'Address 2' %><br>
+	<%= text_field_tag 'Address 2' %><br><br>
+	<%= label_tag 'City' %><br>
+	<%= text_field_tag 'City' %><br><br>
+	<%= label_tag 'State' %><br>
+	<%= text_field_tag 'State' %><br><br>
+	<%= label_tag 'ZIP Code' %><br>
+	<%= text_field_tag 'ZIP Code' %><br><br>
+	<%= label_tag 'Country' %><br>
+	<%= select_tag 'Country', options_for_select(["option1","option2"]) %><br><br>
+	<%= label_tag 'email' %><br>
+	<%= text_field_tag 'email' %><br><br>
+	<%= submit_tag 'Review & Confirm' %>
+<% end %>

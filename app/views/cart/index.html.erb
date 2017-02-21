@@ -17,7 +17,7 @@
 		<table id="cart_items">
 
 			<tr>
-				<th></th>
+				<th><p>Item</p></th>
 				<th></th>
 				<th><p>Quantity</p></th>
 				<th><p>Price (each)</p></th>			
@@ -65,10 +65,9 @@
 				<th></th>
 				<th></th>
 				<th><div id="checkout_button_link">
-					<% if user_signed_in? %>
-						<%= link_to orders_path( :amount => (total.to_s << "0"), :item_list => item_list.to_s ), :method => :post do %><text id="checkout_button">Checkout</text>
-						<% end %>
-					<% else %>
+					<%= link_to checkout_verify_path do %><text id="checkout_button">Checkout</text>
+					<% end %>	
+					<%= link_to orders_path( :amount => (total.to_s << "0"), :item_list => item_list.to_s ), :method => :post do %><text id="checkout_button">Old Checkout</text>
 					<% end %>	
 					</div></th>			
 				<th></th>
