@@ -801,6 +801,20 @@ p#empty {
 
 }
 
+.address_field input, .address_field select {
+
+	display: block;
+	margin: 0 0 1em 0;
+
+}
+
+.error_notice {
+
+	display: block;
+	color: red;
+
+}
+
 @media screen and (max-width:950px){
 
 	#wrapper {

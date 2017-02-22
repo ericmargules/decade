@@ -1,20 +1,46 @@
+<% countries = ["United States", "United Kingdom", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegowina", "Botswana", "Bouvet Island", "Brazil", "British Indian Ocean Territory", "Brunei Darussalam", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central African Republic", "Chad", "Chile", "China", "Christmas Island", "Cocos (Keeling) Islands", "Colombia", "Comoros", "Congo", "Cook Islands", "Costa Rica", "Cote d'Ivoire", "Croatia (Hrvatska)", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Falkland Islands (Malvinas)", "Faroe Islands", "Fiji", "Finland", "France", "France Metropolitan", "French Guiana", "French Polynesia", "French Southern Territories", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Heard and Mc Donald Islands", "Holy See (Vatican City State)", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran (Islamic Republic of)", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, Republic of", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libyan Arab Jamahiriya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia, Federated States of", "Moldova, Republic of", "Monaco", "Mongolia", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Niue", "Norfolk Island", "Northern Mariana Islands", "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcairn", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russian Federation", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Seychelles", "Sierra Leone", "Singapore", "Slovakia (Slovak Republic)", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "Spain", "Sri Lanka", "St. Helena", "St. Pierre and Miquelon", "Sudan", "Suriname", "Svalbard and Jan Mayen Islands", "Swaziland", "Sweden", "Switzerland", "Syrian Arab Republic", "Taiwan, Province of China", "Tajikistan", "Tanzania, United Republic of", "Thailand", "Togo", "Tokelau", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks and Caicos Islands", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Virgin Islands (British)", "Virgin Islands (U.S.)", "Wallis and Futuna Islands", "Western Sahara", "Yemen", "Yugoslavia", "Zambia", "Zimbabwe"] %>
+
 <h2>Shipping Information</h2><br>
 <%= form_tag do %>
-	<%= label_tag 'Name' %><br>
-	<%= text_field_tag 'Name' %><br><br>
-	<%= label_tag 'Address 1' %><br>
-	<%= text_field_tag 'Address 1' %><br><br>
-	<%= label_tag 'Address 2' %><br>
-	<%= text_field_tag 'Address 2' %><br><br>
-	<%= label_tag 'City' %><br>
-	<%= text_field_tag 'City' %><br><br>
-	<%= label_tag 'State' %><br>
-	<%= text_field_tag 'State' %><br><br>
-	<%= label_tag 'ZIP Code' %><br>
-	<%= text_field_tag 'ZIP Code' %><br><br>
-	<%= label_tag 'Country' %><br>
-	<%= select_tag 'Country', options_for_select(["option1","option2"]) %><br><br>
-	<%= label_tag 'email' %><br>
-	<%= text_field_tag 'email' %><br><br>
+	<div class="address_field">
+		<%= label_tag 'Name' %>
+		<span class="error_notice"></span>
+		<%= text_field_tag 'name', nil, class: "required_address" %>
+	</div>
+	<div class="address_field">
+		<%= label_tag 'Address 1' %>
+		<span class="error_notice"></span>
+		<%= text_field_tag 'address 1', nil, class: "required_address" %>
+	</div>
+	<div class="address_field">
+		<%= label_tag 'Address 2' %>
+		<span class="error_notice"></span>
+		<%= text_field_tag 'address 2' %>
+	</div>
+	<div class="address_field">
+		<%= label_tag 'City' %>
+		<span class="error_notice"></span>
+		<%= text_field_tag 'city', nil, class: "required_address" %>
+	</div>
+	<div class="address_field">
+		<%= label_tag 'State' %>
+		<span class="error_notice"></span>
+		<%= text_field_tag 'state', nil, class: "required_address" %>
+	</div>
+	<div class="address_field">
+		<%= label_tag 'ZIP Code' %>
+		<span class="error_notice"></span>
+		<%= text_field_tag 'zip code', nil, class: "required_address" %>
+	</div>
+	<div class="address_field">
+		<%= label_tag 'Country' %>
+		<span class="error_notice"></span>
+		<%= select_tag 'country', options_for_select(countries), class: "required_address" %>
+	</div>
+	<div class="address_field">
+		<%= label_tag 'email' %>
+		<span class="error_notice"></span>
+		<%= text_field_tag 'required_email' %>
+	</div>
 	<%= submit_tag 'Review & Confirm' %>
 <% end %>
