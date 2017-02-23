@@ -1,6 +1,8 @@
 class CartController < ApplicationController
   
   before_action :cleanup_cart, only: [:index]
+  
+  layout :resolve_layout
 
   def add
   	id = params[:id]
@@ -94,6 +96,15 @@ class CartController < ApplicationController
         end
       end
     end
+  end
+  
+  def resolve_layout
+    case action_name
+      when "checkout_info"
+        "checkout"
+      else
+        "application"
+    end 
   end
 
 end

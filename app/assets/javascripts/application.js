@@ -17,3 +17,4 @@
 //= stub home
 //= stub product
 //= stub owl.carousel.min
+//= stub checkout

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Decade</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= stylesheet_link_tag    '//netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.css' %>
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'checkout' %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width">
+</head>
+<body>
+
+	<div id="wrapper">
+	
+		<%= render "layouts/header.html.erb" %>
+
+		<div id="content">
+			<%= yield %>
+		</div>
+
+		<%= render "layouts/footer.html.erb" %>
+	
+	</div>
+
+</body>
+</html>
