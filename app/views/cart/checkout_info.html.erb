@@ -42,6 +42,6 @@
 		<span class="error_notice"></span>
 		<%= select_tag 'country', options_for_select(countries), class: "required_address" %>
 	</div>
-	<%= submit_tag 'Review & Confirm', id: "submit" %>
 	<%= hidden_field_tag 'params' %>
 <% end %>
+	<%= submit_tag 'Review & Confirm', id: "submit" %>

@@ -708,6 +708,11 @@ h1 {
     padding: 1em 0;
 }
 
+#cart_items td.borderless {
+    border-top: none;
+    padding: 1em 0;
+}
+
 #clear_cart {
 
 	margin-left: 1em;

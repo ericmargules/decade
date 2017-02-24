@@ -31,12 +31,12 @@ function checkAddress(){
 function setParams(){
     var params = ""
     $(".required_address").each(function(){
-        params += String( this.id ) + ": " + String(this.value) + ";";
+        params += String( this.id ) + "~~" + String(this.value) + "__";
         if (String( this.id ) == "address_1"){
-            params += "address_2: " + String($("#address_2")[0].value) + ";";
+            params += "address_2~~" + String($("#address_2")[0].value) + "__";
         }
     });
-    params += String($("#required_email")[0].id) + ": " + String($("#required_email")[0].value) + ";";
+    params += "email~~" + String($("#required_email")[0].value) + "__";
     $("#params")[0].value = params;
 }
 
@@ -54,6 +54,7 @@ $(document).ready(function(){
             return false;
         } 
         setParams();
+        window.location = encodeURI("/checkout/confirm?level=Verified&address=" + $("#params")[0].value);
     });
     
     $(".required_address").on("focusout", function(){

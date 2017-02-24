@@ -1,0 +1,99 @@
+<% address_hash = {} %>
+<% @address.split("__").each do |string| %>
+<% string2 = string.split("~~") %>
+<% address_hash[string2[0]] = string2[1] %>
+<% end %>
+
+<div class="page_title">
+	<h1>Confirm Your Order</h1>
+</div>
+
+<div id="address">
+	<h2>Shipping Address</h2>
+	<p class="address_line"><%= address_hash["name"] %></p>
+	<p class="address_line"><%= address_hash["email"] %></p>
+	<p class="address_line"><%= address_hash["address_1"] %></p>
+	<% if address_hash["address_2"] %>
+		<p class="address_line"><%= address_hash["address_2"] %></p>
+	<% end %>
+	<p class="address_line"><%= address_hash["city"] %>, <%= address_hash["state"] %> <%= address_hash["zip_code"] %></p>
+	<p class="address_line"><%= address_hash["country"] %></p>
+
+</div>
+
+<div id="cart_contents">
+
+		<% total = 0.0 %>
+
+		<% item_list = "" %>
+
+		<% total_quantity = 0 %>
+
+		<table id="cart_items">
+
+			<tr>
+				<th><p>Item</p></th>
+				<th><p>Quantity</p></th>
+				<th><p>Price (each)</p></th>			
+			</tr>
+
+			<% @cart.each do |id, info| %>
+				
+				<% total_quantity += info[0] %>
+				<% if info[1] == "product" %>
+					<% product = Product.find_by_id(id) %>
+				<% elsif info[1] == "custom_product" %>
+					<% product = CustomProduct.find_by_id(id) %>
+				<% end %>
+
+				<% item_list << "#{product.name},#{info[1]} - #{id},#{product.price}.00,#{info[0]}&" %>
+
+				<tr>
+					<td><p><%= product.name %></p></td>
+					<td><p><%= info[0] %></p></td>
+					<td><p><%= number_to_currency(product.price, :unit => '$') %></p></td>
+				</tr>
+
+				<% total += product.price * info[0] %>
+
+			<% end %>
+			
+			<tr>
+				<td></td>
+				<td></td>
+				<td><p>Subtotal: <%= number_to_currency(total, :unit => '$') %></p></td>			
+			</tr>
+
+			<tr>
+				<td class="borderless"></td>
+				<td class="borderless"></td>
+				<% if address_hash["country"] == "United States" %>
+					<% shipping = 6 %>
+					<% shipping += ((total_quantity - 1) * 3) %>
+				<% else %>
+					<% shipping = 15 %>
+					<% shipping += ((total_quantity - 1) * 5) %>
+				<% end %>
+				<td class="borderless"><p>Shipping: <%= number_to_currency(shipping, :unit => '$') %></p></td>			
+			</tr>
+
+			<tr>
+				<td class="borderless"></td>
+				<td class="borderless"></td>
+				<td class="borderless"><p>Total: <%= number_to_currency((total + shipping), :unit => '$') %></p></td>			
+			</tr>
+
+			<tr>
+				<th></th>
+				<th></th>
+				<th><div id="checkout_button_link">	
+					<%= link_to orders_path( :amount => ((total+shipping).to_s << "0"), :item_list => item_list.to_s ), :address => @adderss, :method => :post do %><text id="checkout_button">Complete Your Order</text>
+					<% end %>	
+					</div></th>			
+			</tr>
+		</table>
+	
+	<div id="clear_cart">
+		<%= link_to 'Edit order', cart_path %>
+	</div>
+</div>
