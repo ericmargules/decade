@@ -26,6 +26,7 @@ class ApplicationController < ActionController::Base
           cart.delete(item)
           go_on = false
         end
+      elsif array[1] == "shipping"
       end
     end
     if go_on == false

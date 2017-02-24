@@ -74,6 +74,8 @@
 					<% shipping = 15 %>
 					<% shipping += ((total_quantity - 1) * 5) %>
 				<% end %>
+				<% item_list << "Shipping,shipping - SHIP,#{shipping}.00,1&" %>
+
 				<td class="borderless"><p>Shipping: <%= number_to_currency(shipping, :unit => '$') %></p></td>			
 			</tr>
 
