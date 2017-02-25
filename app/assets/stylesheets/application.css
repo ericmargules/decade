@@ -517,12 +517,11 @@ h1 {
 
 #cart_button {
 
-  border: 3px solid #8f6806;
-  padding: 5px;
-  color: #8f6806;
+	border: 2px solid #8f6806;
+	padding: 5px 15px;
+	color: #8f6806;
 	font-family: verdana, arial, helvetica, sans-serif;
 	font-size: 1em;
-	font-weight: bold;
 	margin: 0 0 0 1.25em;
 
 }
@@ -555,11 +554,10 @@ h1 {
 #checkout_button {
 
  	border: 2px solid #8f6806;
- 	padding: 5px;
+ 	padding: 5px 15px;
  	color: #8f6806;
 	font-family: verdana, arial, helvetica, sans-serif;
 	font-size: 1em;
-	font-weight: bold;
 	margin: 0 0 0 0;
 
 }

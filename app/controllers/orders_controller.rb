@@ -26,11 +26,12 @@ class OrdersController < ApplicationController
 	    	@order.description = "Guest's Order"
 	    end
 	    if @order.payment_method && @order.save
-	      if @order.approve_url
-	        redirect_to @order.approve_url
-	      else
-	    		redirect_to root_path, :notice => "Your order has been placed!"
-	      end
+        if @order.approve_url
+          redirect_to @order.approve_url
+        else
+          redirect_to root_path, :notice => "Your order has been placed!"
+        end
+        OrderConfirmation.email_confirmation(@order).deliver
 	    else
 	      render :create, :alert  => @order.errors.to_a.join(", ")
 	    end
