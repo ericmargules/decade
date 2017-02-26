@@ -89,7 +89,7 @@
 				<th></th>
 				<th></th>
 				<th><div id="checkout_button_link">	
-					<%= link_to orders_path( :amount => ((total+shipping).to_s << "0"), :item_list => item_list.to_s ), :address => @adderss, :method => :post do %><text id="checkout_button">Complete Your Order</text>
+					<%= link_to orders_path( :amount => ((total+shipping).to_s << "0"), :item_list => item_list.to_s, :address => @address), :method => :post do %><text id="checkout_button">Complete Your Order</text>
 					<% end %>	
 					</div></th>			
 			</tr>

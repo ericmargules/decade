@@ -52,6 +52,8 @@ class OrdersController < ApplicationController
       # respond_to do |format|
       if @order.update(edit_order_params)
       	redirect_to @order, notice: 'Order was successfully updated.'
+        OrderConfirmation.email_shipping(@order).deliver
+
       else
       	render :edit
       end
@@ -115,7 +117,9 @@ class OrdersController < ApplicationController
   			item = Product.find(sku_array[1])
   		elsif sku_array[0] == "custom_product"
   			item = CustomProduct.find(sku_array[1])
-  		end
+  		else
+        next 
+      end
   		item.stock -= 1
   		item.save
   	end
@@ -136,8 +140,10 @@ class OrdersController < ApplicationController
     parse_item_list(order.item_list).each do |id, info|
       if info[1] == "product"
         product = Product.find(id)
-      else
+      elsif info[1] == "custom_prodcut"
         product = CustomProduct.find(id)
+      else  
+        next
       end
       product_array << product
     end
