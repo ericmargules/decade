@@ -1,4 +1,5 @@
-function toggleError(object, message = ""){
+function toggleError(object, message){
+    message = message || "";
     var span = object.parentNode.getElementsByTagName("span")[0];
     span.innerHTML = String(message);
 }
