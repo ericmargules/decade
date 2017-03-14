@@ -52,7 +52,7 @@ class CustomProductsController < ApplicationController
         @custom_product.session_id = session.id 
         @custom_product.image = @custom_product.imgurl
         @custom_product.save
-        format.html { redirect_to "/cart/#{@custom_product.id}?type=custom_product", notice: 'Custom product was successfully created.' }
+        format.html { redirect_to "/cart/#{@custom_product.id}?type=custom_product" } #, notice: 'Custom product was successfully created.' }
       else
         format.html { render :new }
         format.json { render json: @custom_product.errors, status: :unprocessable_entity }
@@ -66,7 +66,7 @@ class CustomProductsController < ApplicationController
         current_user ? @custom_product.user_id = current_user.id : @custom_product.user_id = "Guest"
         @custom_product.image = @custom_product.imgurl
         @custom_product.save
-        format.html { redirect_to cart_path, notice: 'Custom product was successfully updated.' }
+        format.html { redirect_to cart_path } #, notice: 'Custom product was successfully updated.' }
         # format.json { render :show, status: :ok, location: @custom_product }
       else
         format.html { render :edit }
@@ -81,7 +81,7 @@ class CustomProductsController < ApplicationController
     if current_user.try(:admin?)
       @custom_product.destroy
       respond_to do |format|
-        format.html { redirect_to custom_products_url, notice: 'Custom product was successfully destroyed.' }
+        format.html { redirect_to custom_products_url } #, notice: 'Custom product was successfully destroyed.' }
         format.json { head :no_content }
       end
     else
