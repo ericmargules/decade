@@ -818,6 +818,14 @@ p#empty {
 
 }
 
+.verify_block {
+
+	display: inline;
+	float: left;
+	margin-right: 8%
+
+}
+
 @media screen and (max-width:950px){
 
 	#wrapper {
